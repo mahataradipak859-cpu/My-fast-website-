@@ -14,296 +14,6 @@
 body{
   margin:0;
   font-family:Arial,sans-serif;
-  background:#f3f6fa;
-  color:#17202a;
-}
-
-header{
-  background:linear-gradient(135deg,#111827,#26364a);
-  color:white;
-  text-align:center;
-  padding:30px 15px;
-}
-
-header h1{
-  margin:0;
-  font-size:30px;
-}
-
-header p{
-  margin:8px 0 0;
-  opacity:.85;
-}
-
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:15px;
-}
-
-.card{
-  background:white;
-  margin-bottom:18px;
-  padding:20px;
-  border-radius:15px;
-  box-shadow:0 5px 18px rgba(0,0,0,.08);
-}
-
-.card h2{
-  margin-top:0;
-}
-
-.info-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:12px;
-}
-
-.info{
-  background:#f5f7fa;
-  padding:15px;
-  border-radius:10px;
-}
-
-.info b{
-  display:block;
-  margin-bottom:6px;
-}
-
-.members{
-  width:100%;
-  border-collapse:collapse;
-}
-
-.members th,
-.members td{
-  border:1px solid #ddd;
-  padding:12px;
-  text-align:center;
-}
-
-.members th{
-  background:#17202a;
-  color:white;
-}
-
-@media(max-width:600px){
-  header h1{
-    font-size:25px;
-  }
-
-  .card{
-    padding:15px;
-  }
-}
-</style>
-</head>
-
-<body>
-
-<header>
-
-<h1>🤝 THE BROTHERHOOD</h1>
-
-<p>
-Saving • Investment • Financial Record
-</p>
-
-</header>
-
-
-<div class="container">
-
-
-<!-- GROUP DETAILS -->
-
-<div class="card">
-
-<h2>👥 Group Details</h2>
-
-<div class="info-grid">
-
-
-<div class="info">
-
-<b>Name</b>
-
-The Brotherhood
-
-</div>
-
-
-<div class="info">
-
-<b>Start Date</b>
-
-January 1, 2024
-
-</div>
-
-
-<div class="info">
-
-<b>Chairman</b>
-
-Dipak Mahatara
-
-</div>
-
-
-<div class="info">
-
-<b>Secretary</b>
-
-Surya Bahadur Adhikari
-
-</div>
-
-
-<div class="info">
-
-<b>Total Members</b>
-
-5 Members
-
-</div>
-
-
-<div class="info">
-
-<b>Monthly Collection</b>
-
-Rs. 25,000
-
-</div>
-
-
-</div>
-
-</div>
-
-
-
-<!-- MEMBERS -->
-
-<div class="card">
-
-<h2>👤 Members</h2>
-
-
-<table class="members">
-
-<thead>
-
-<tr>
-
-<th>S.N.</th>
-
-<th>Member Name</th>
-
-<th>Monthly Saving</th>
-
-</tr>
-
-</thead>
-
-
-<tbody>
-
-
-<tr>
-
-<td>1</td>
-
-<td>Dipak Mahatara</td>
-
-<td>Rs. 5,000</td>
-
-</tr>
-
-
-<tr>
-
-<td>2</td>
-
-<td>Dipendra Mahatara</td>
-
-<td>Rs. 5,000</td>
-
-</tr>
-
-
-<tr>
-
-<td>3</td>
-
-<td>Rajan Mahatara</td>
-
-<td>Rs. 5,000</td>
-
-</tr>
-
-
-<tr>
-
-<td>4</td>
-
-<td>Milan Mahatara</td>
-
-<td>Rs. 5,000</td>
-
-</tr>
-
-
-<tr>
-
-<td>5</td>
-
-<td>Surya Bahadur Adhikari</td>
-
-<td>Rs. 5,000</td>
-
-</tr>
-
-
-</tbody>
-
-</table>
-
-</div>
-
-
-
-</div>
-
-
-<footer>
-
-<p style="text-align:center;color:#667085;">
-© 2026 The Brotherhood
-</p>
-
-</footer>
-
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>The Brotherhood</title>
-
-<style>
-*{
-  box-sizing:border-box;
-}
-
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
   background:#f3f4f6;
   color:#222;
 }
@@ -544,3 +254,191 @@ Rs. 25,000
 <b>Total Fine</b>
 <span id="totalFine">Rs. 0</span>
 </div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+The Brotherhood © 2026
+</div>
+
+
+<script>
+
+const members = [
+"Dipak Mahatara",
+"Dipendra Mahatara",
+"Rajan Mahatara",
+"Milan Mahatara",
+"Surya Bahadur Adhikari"
+];
+
+const months = [
+"Jan","Feb","Mar","Apr","May","Jun",
+"Jul","Aug","Sep","Oct","Nov","Dec"
+];
+
+const MONTHLY_AMOUNT = 5000;
+const FINE_AMOUNT = 250;
+
+
+/* Saved data */
+
+let savingData =
+JSON.parse(localStorage.getItem("brotherhoodSaving")) || {};
+
+
+/* Create table */
+
+function renderSaving(){
+
+const tbody =
+document.querySelector("#savingTable tbody");
+
+tbody.innerHTML = "";
+
+let collected = 0;
+let unpaid = 0;
+
+
+members.forEach((member,memberIndex)=>{
+
+let row = document.createElement("tr");
+
+let nameCell = document.createElement("td");
+
+nameCell.innerHTML =
+"<b>"+member+"</b>";
+
+row.appendChild(nameCell);
+
+
+months.forEach((month,monthIndex)=>{
+
+const key =
+memberIndex+"-"+monthIndex;
+
+
+/* Default unpaid */
+
+if(!savingData[key]){
+savingData[key] = {
+status:"unpaid"
+};
+}
+
+
+const cell =
+document.createElement("td");
+
+
+const amount =
+document.createElement("div");
+
+amount.className="amount";
+
+amount.innerText="Rs. 5,000";
+
+
+const button =
+document.createElement("button");
+
+button.className="pay-btn";
+
+
+if(savingData[key].status==="paid"){
+
+button.classList.add("paid");
+button.innerText="Paid";
+
+collected += MONTHLY_AMOUNT;
+
+}else{
+
+button.classList.add("unpaid");
+button.innerText="Unpaid";
+
+unpaid++;
+
+}
+
+
+/* Click button */
+
+button.onclick=function(){
+
+if(savingData[key].status==="paid"){
+
+savingData[key].status="unpaid";
+
+}else{
+
+savingData[key].status="paid";
+
+}
+
+saveData();
+renderSaving();
+
+};
+
+
+cell.appendChild(amount);
+cell.appendChild(button);
+
+row.appendChild(cell);
+
+});
+
+
+tbody.appendChild(row);
+
+});
+
+
+/* Automatic calculation */
+
+const fine =
+unpaid * FINE_AMOUNT;
+
+
+document.getElementById("totalCollected").innerText =
+"Rs. "+collected.toLocaleString();
+
+
+document.getElementById("totalUnpaid").innerText =
+unpaid;
+
+
+document.getElementById("totalFine").innerText =
+"Rs. "+fine.toLocaleString();
+
+
+saveData();
+
+}
+
+
+/* Save data */
+
+function saveData(){
+
+localStorage.setItem(
+"brotherhoodSaving",
+JSON.stringify(savingData)
+);
+
+}
+
+
+/* Start */
+
+renderSaving();
+
+</script>
+
+</body>
+</html>
