@@ -288,3 +288,259 @@ Rs. 25,000
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Brotherhood</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f3f4f6;
+  color:#222;
+}
+
+.header{
+  background:linear-gradient(135deg,#111827,#374151);
+  color:white;
+  text-align:center;
+  padding:30px 15px;
+}
+
+.header h1{
+  margin:0;
+  font-size:30px;
+}
+
+.header p{
+  margin:8px 0 0;
+  opacity:.8;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+}
+
+.card{
+  background:white;
+  border-radius:15px;
+  padding:20px;
+  margin-bottom:20px;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.card h2{
+  margin-top:0;
+}
+
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:12px;
+}
+
+.info{
+  background:#f9fafb;
+  padding:15px;
+  border-radius:10px;
+}
+
+.info b{
+  display:block;
+  margin-bottom:7px;
+}
+
+.table-wrap{
+  overflow-x:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:1000px;
+}
+
+th,td{
+  border:1px solid #ddd;
+  padding:8px;
+  text-align:center;
+}
+
+th{
+  background:#111827;
+  color:white;
+}
+
+td:first-child{
+  text-align:left;
+  min-width:190px;
+}
+
+.pay-btn{
+  border:0;
+  padding:6px 9px;
+  border-radius:6px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.paid{
+  background:#16a34a;
+  color:white;
+}
+
+.unpaid{
+  background:#dc2626;
+  color:white;
+}
+
+.amount{
+  font-size:11px;
+  margin-bottom:4px;
+  color:#555;
+}
+
+.member-list{
+  line-height:1.9;
+}
+
+.footer{
+  text-align:center;
+  padding:20px;
+  color:#666;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>🤝 THE BROTHERHOOD</h1>
+  <p>Saving • Investment • Financial Record</p>
+</div>
+
+<div class="container">
+
+<!-- GROUP DETAILS -->
+
+<div class="card">
+<h2>🏢 Group Details</h2>
+
+<div class="info-grid">
+
+<div class="info">
+<b>Name</b>
+The Brotherhood
+</div>
+
+<div class="info">
+<b>Start Date</b>
+2024-01-01
+</div>
+
+<div class="info">
+<b>Chairman</b>
+Dipak Mahatara
+</div>
+
+<div class="info">
+<b>Secretary</b>
+Surya Bahadur Adhikari
+</div>
+
+<div class="info">
+<b>Monthly Saving</b>
+Rs. 5,000 / Member
+</div>
+
+<div class="info">
+<b>Monthly Collection</b>
+Rs. 25,000
+</div>
+
+</div>
+</div>
+
+
+<!-- MEMBERS -->
+
+<div class="card">
+<h2>👥 Members (5)</h2>
+
+<div class="member-list">
+1. Dipak Mahatara<br>
+2. Dipendra Mahatara<br>
+3. Rajan Mahatara<br>
+4. Milan Mahatara<br>
+5. Surya Bahadur Adhikari
+</div>
+
+</div>
+
+
+<!-- MONTHLY SAVING -->
+
+<div class="card">
+
+<h2>💰 Monthly Saving Record</h2>
+
+<p>
+प्रत्येक सदस्यले प्रत्येक महिना <b>Rs. 5,000</b> जम्मा गर्नुपर्नेछ।
+</p>
+
+<div class="table-wrap">
+
+<table id="savingTable">
+
+<thead>
+<tr>
+<th>Member</th>
+<th>Jan</th>
+<th>Feb</th>
+<th>Mar</th>
+<th>Apr</th>
+<th>May</th>
+<th>Jun</th>
+<th>Jul</th>
+<th>Aug</th>
+<th>Sep</th>
+<th>Oct</th>
+<th>Nov</th>
+<th>Dec</th>
+</tr>
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+</div>
+
+<br>
+
+<div class="info-grid">
+
+<div class="info">
+<b>Total Collected</b>
+<span id="totalCollected">Rs. 0</span>
+</div>
+
+<div class="info">
+<b>Total Unpaid</b>
+<span id="totalUnpaid">0</span>
+</div>
+
+<div class="info">
+<b>Total Fine</b>
+<span id="totalFine">Rs. 0</span>
+</div>
