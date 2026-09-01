@@ -1,144 +1,543 @@
 <!DOCTYPE html>
-<html lang="ne">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Saving Group</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-      background: #f4f6f8;
-    }
+<title>Hamro Sasto</title>
 
-    .container {
-      max-width: 700px;
-      margin: auto;
-    }
+<style>
+* {
+    box-sizing: border-box;
+}
 
-    h1 {
-      text-align: center;
-    }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f2f4f7;
+    color: #222;
+}
 
-    .summary {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-      text-align: center;
-    }
+header {
+    background: #1f4e79;
+    color: white;
+    text-align: center;
+    padding: 25px 10px;
+}
 
-    .total {
-      font-size: 28px;
-      font-weight: bold;
-    }
+header h1 {
+    margin: 0;
+    font-size: 30px;
+}
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-    }
+.container {
+    max-width: 950px;
+    margin: auto;
+    padding: 15px;
+}
 
+.card {
+    background: white;
+    margin: 15px 0;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+    margin-top: 0;
+    color: #1f4e79;
+}
+
+.info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 10px;
+}
+
+.box {
+    background: #f5f7fa;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.box b {
+    display: block;
+    margin-bottom: 6px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background: #1f4e79;
+    color: white;
+}
+
+button {
+    border: none;
+    border-radius: 7px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.paid {
+    background: #d9f7df;
+    color: green;
+}
+
+.unpaid {
+    background: #ffe0e0;
+    color: red;
+}
+
+.action {
+    background: #1f4e79;
+    color: white;
+}
+
+.reset {
+    background: #777;
+    color: white;
+    margin-top: 10px;
+}
+
+.summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+}
+
+.summaryBox {
+    padding: 18px;
+    background: #eef4fa;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.summaryBox strong {
+    display: block;
+    font-size: 22px;
+    margin-top: 5px;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 7px;
+    border: 1px solid #bbb;
+    margin-top: 5px;
+}
+
+footer {
+    text-align: center;
+    color: #666;
+    padding: 25px;
+}
+
+@media(max-width:600px) {
     th, td {
-      padding: 12px;
-      border-bottom: 1px solid #ddd;
-      text-align: center;
+        font-size: 13px;
+        padding: 7px;
     }
 
-    th {
-      background: #222;
-      color: white;
+    header h1 {
+        font-size: 25px;
     }
-
-    .paid {
-      color: green;
-      font-weight: bold;
-    }
-
-    .unpaid {
-      color: red;
-      font-weight: bold;
-    }
-
-    .note {
-      margin-top: 20px;
-      background: white;
-      padding: 15px;
-      border-radius: 12px;
-    }
-  </style>
+}
+</style>
 </head>
 
 <body>
 
+<header>
+    <h1>💰 Hamro Sasto</h1>
+    <p>Saving & Investment Group</p>
+</header>
+
 <div class="container">
 
-  <h1>💰 हाम्रो बचत समूह</h1>
+    <!-- GROUP INFORMATION -->
+    <div class="card">
+        <h2>📌 Group Information</h2>
 
-  <div class="summary">
-    <p>मासिक बचत प्रति व्यक्ति</p>
-    <div class="total">रु. 5,000</div>
+        <div class="info">
 
-    <p>५ जनाको मासिक कुल बचत</p>
-    <div class="total">रु. 25,000</div>
-  </div>
+            <div class="box">
+                <b>Start Date</b>
+                2024-01-01
+            </div>
 
-  <table>
-    <tr>
-      <th>क्र.सं.</th>
-      <th>सदस्य</th>
-      <th>मासिक बचत</th>
-      <th>Status</th>
-    </tr>
+            <div class="box">
+                <b>Duration</b>
+                30 Years
+            </div>
 
-    <tr>
-      <td>1</td>
-      <td>Dipak Mahatara</td>
-      <td>रु. 5,000</td>
-      <td class="paid">Paid ✅</td>
-    </tr>
+            <div class="box">
+                <b>SIP</b>
+                Rs. 5,000 / Month
+            </div>
 
-    <tr>
-      <td>2</td>
-      <td>Dipendra Mahatara</td>
-      <td>रु. 5,000</td>
-      <td class="paid">Paid ✅</td>
-    </tr>
+            <div class="box">
+                <b>Market</b>
+                Rs. 5,000 / Month
+            </div>
 
-    <tr>
-      <td>3</td>
-      <td>Rajan Mahatara</td>
-      <td>रु. 5,000</td>
-      <td class="paid">Paid ✅</td>
-    </tr>
+        </div>
+    </div>
 
-    <tr>
-      <td>4</td>
-      <td>Milan Mahatara</td>
-      <td>रु. 5,000</td>
-      <td class="paid">Paid ✅</td>
-    </tr>
 
-    <tr>
-      <td>5</td>
-      <td>Surya Bahadur Radhikari</td>
-      <td>रु. 5,000</td>
-      <td class="paid">Paid ✅</td>
-    </tr>
+    <!-- MEMBERS -->
+    <div class="card">
+        <h2>👥 Group Members</h2>
 
-  </table>
+        <table>
+            <tr>
+                <th>No.</th>
+                <th>Name</th>
+            </tr>
 
-  <div class="note">
-    <b>📅 मासिक हिसाब:</b>
-    <p>प्रत्येक सदस्यले प्रत्येक महिना रु. 5,000 जम्मा गर्ने।</p>
-    <p>५ जनाबाट प्रत्येक महिना जम्मा = <b>रु. 25,000</b></p>
-  </div>
+            <tr>
+                <td>1</td>
+                <td>Dipak Mahatara</td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>Dipendra Mahatara</td>
+            </tr>
+
+            <tr>
+                <td>3</td>
+                <td>Rajan Mahatara</td>
+            </tr>
+
+            <tr>
+                <td>4</td>
+                <td>Milan Mahatara</td>
+            </tr>
+
+            <tr>
+                <td>5</td>
+                <td>Surya Bahadur Radhikari</td>
+            </tr>
+        </table>
+    </div>
+
+
+    <!-- MONTH SELECTOR -->
+    <div class="card">
+        <h2>📅 Select Month</h2>
+
+        <select id="monthSelect" onchange="showMonth()">
+        </select>
+    </div>
+
+
+    <!-- MONTHLY STATUS -->
+    <div class="card">
+        <h2 id="monthTitle">Monthly Status</h2>
+
+        <table>
+
+            <tr>
+                <th>Investment</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+
+            <tr>
+                <td>SIP</td>
+                <td>Rs. 5,000</td>
+                <td id="sipStatus">Unpaid ❌</td>
+                <td>
+                    <button class="action" onclick="togglePayment('sip')">
+                        Change
+                    </button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Market Investment</td>
+                <td>Rs. 5,000</td>
+                <td id="marketStatus">Unpaid ❌</td>
+                <td>
+                    <button class="action" onclick="togglePayment('market')">
+                        Change
+                    </button>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+
+
+    <!-- SUMMARY -->
+    <div class="card">
+
+        <h2>💵 Summary</h2>
+
+        <div class="summary">
+
+            <div class="summaryBox">
+                SIP Paid
+                <strong id="sipTotal">Rs. 0</strong>
+            </div>
+
+            <div class="summaryBox">
+                Market Paid
+                <strong id="marketTotal">Rs. 0</strong>
+            </div>
+
+            <div class="summaryBox">
+                Total Paid
+                <strong id="grandTotal">Rs. 0</strong>
+            </div>
+
+        </div>
+
+        <button class="reset" onclick="resetData()">
+            Reset All Data
+        </button>
+
+    </div>
+
+
+    <!-- MARKET INFORMATION -->
+    <div class="card">
+
+        <h2>📈 Market Investment</h2>
+
+        <p>
+            Market Investment सुरु:
+            <b>September 25, 2026</b>
+        </p>
+
+        <p>
+            Monthly Market Investment:
+            <b>Rs. 5,000</b>
+        </p>
+
+    </div>
+
+
+    <!-- NOTE -->
+    <div class="card">
+
+        <h2>📝 Note</h2>
+
+        <p>
+            हाम्रो saving योजना 2024-01-01 बाट सुरु भएको हो
+            र 30 वर्षसम्म सञ्चालन हुनेछ।
+        </p>
+
+        <p>
+            SIP total:
+            <b>Rs. 5,000 प्रति महिना</b>
+        </p>
+
+        <p>
+            Market Investment total:
+            <b>Rs. 5,000 प्रति महिना</b>
+        </p>
+
+        <p>
+            Market Investment सुरु:
+            <b>September 25, 2026</b>
+        </p>
+
+    </div>
 
 </div>
+
+
+<footer>
+    © 2026 Hamro Sasto
+</footer>
+
+
+<script>
+
+const SIP_AMOUNT = 5000;
+const MARKET_AMOUNT = 5000;
+
+let payments =
+    JSON.parse(localStorage.getItem("hamroSastoPayments")) || {};
+
+
+// CREATE MONTH LIST
+function createMonths() {
+
+    const select = document.getElementById("monthSelect");
+
+    let start = new Date(2024, 0, 1);
+    let end = new Date(2053, 11, 1);
+
+    while (start <= end) {
+
+        let year = start.getFullYear();
+        let month = String(start.getMonth() + 1).padStart(2, "0");
+
+        let value = year + "-" + month;
+
+        let option = document.createElement("option");
+
+        option.value = value;
+
+        option.textContent =
+            start.toLocaleString("en-US", {
+                month: "long"
+            }) + " " + year;
+
+        select.appendChild(option);
+
+        start.setMonth(start.getMonth() + 1);
+    }
+}
+
+
+// SHOW SELECTED MONTH
+function showMonth() {
+
+    const month =
+        document.getElementById("monthSelect").value;
+
+    document.getElementById("monthTitle").textContent =
+        "📅 " + month + " Status";
+
+    let data = payments[month] || {
+        sip: false,
+        market: false
+    };
+
+    updateStatus("sipStatus", data.sip);
+
+    updateStatus("marketStatus", data.market);
+}
+
+
+// UPDATE STATUS
+function updateStatus(id, paid) {
+
+    const element = document.getElementById(id);
+
+    if (paid) {
+
+        element.textContent = "Paid ✅";
+        element.className = "paid";
+
+    } else {
+
+        element.textContent = "Unpaid ❌";
+        element.className = "unpaid";
+    }
+}
+
+
+// CHANGE PAYMENT
+function togglePayment(type) {
+
+    const month =
+        document.getElementById("monthSelect").value;
+
+    if (!payments[month]) {
+
+        payments[month] = {
+            sip: false,
+            market: false
+        };
+    }
+
+    payments[month][type] =
+        !payments[month][type];
+
+    localStorage.setItem(
+        "hamroSastoPayments",
+        JSON.stringify(payments)
+    );
+
+    showMonth();
+    calculateTotal();
+}
+
+
+// CALCULATE TOTAL
+function calculateTotal() {
+
+    let sipTotal = 0;
+    let marketTotal = 0;
+
+    for (let month in payments) {
+
+        if (payments[month].sip) {
+
+            sipTotal += SIP_AMOUNT;
+        }
+
+        if (
+            payments[month].market &&
+            month >= "2026-09"
+        ) {
+
+            marketTotal += MARKET_AMOUNT;
+        }
+    }
+
+    document.getElementById("sipTotal").textContent =
+        "Rs. " + sipTotal.toLocaleString();
+
+    document.getElementById("marketTotal").textContent =
+        "Rs. " + marketTotal.toLocaleString();
+
+    document.getElementById("grandTotal").textContent =
+        "Rs. " +
+        (sipTotal + marketTotal).toLocaleString();
+}
+
+
+// RESET DATA
+function resetData() {
+
+    let confirmReset =
+        confirm("सबै Paid/Unpaid data हटाउने हो?");
+
+    if (confirmReset) {
+
+        localStorage.removeItem(
+            "hamroSastoPayments"
+        );
+
+        payments = {};
+
+        showMonth();
+        calculateTotal();
+    }
+}
+
+
+// START
+createMonths();
+
+document.getElementById("monthSelect").value =
+    new Date().getFullYear() +
+    "-" +
+    String(new Date().getMonth() + 1).padStart(2, "0");
+
+showMonth();
+calculateTotal();
+
+</script>
 
 </body>
 </html>
