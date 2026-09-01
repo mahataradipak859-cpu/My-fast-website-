@@ -1,99 +1,1590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Brotherhood</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f3f6fa;
+  color:#17202a;
+}
+
+header{
+  background:linear-gradient(135deg,#111827,#26364a);
+  color:white;
+  padding:28px 15px;
+  text-align:center;
+}
+
+header h1{
+  margin:0;
+  font-size:30px;
+  letter-spacing:1px;
+}
+
+header p{
+  margin:8px 0 0;
+  opacity:.85;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:15px;
+}
+
+.card{
+  background:white;
+  border-radius:16px;
+  padding:18px;
+  margin-bottom:18px;
+  box-shadow:0 5px 18px rgba(0,0,0,.08);
+}
+
+.card h2{
+  margin-top:0;
+}
+
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:12px;
+}
+
+.info{
+  background:#f5f7fa;
+  padding:13px;
+  border-radius:10px;
+}
+
+.info b{
+  display:block;
+  margin-bottom:6px;
+}
+
+input,select{
+  width:100%;
+  padding:9px;
+  border:1px solid #ccd3dc;
+  border-radius:8px;
+  font-size:14px;
+}
+
+button{
+  border:0;
+  border-radius:7px;
+  padding:8px 11px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.paid{
+  background:#16a34a;
+  color:white;
+}
+
+.unpaid{
+  background:#dc2626;
+  color:white;
+}
+
+.edit{
+  background:#26364a;
+  color:white;
+}
+
+.delete{
+  background:#b91c1c;
+  color:white;
+}
+
+.add{
+  background:#15803d;
+  color:white;
+}
+
+.table-wrap{
+  overflow-x:auto;
+  width:100%;
+}
+
+table{
+  width:100%;
+  min-width:950px;
+  border-collapse:collapse;
+}
+
+th,td{
+  border:1px solid #dce1e7;
+  padding:7px;
+  text-align:center;
+  vertical-align:middle;
+}
+
+th{
+  background:#17202a;
+  color:white;
+}
+
+.amount{
+  width:90px;
+  margin-bottom:5px;
+}
+
+.status{
+  width:75px;
+  font-size:12px;
+}
+
+.summary{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:10px;
+  margin-top:15px;
+}
+
+.summary-box{
+  background:#eef4f9;
+  border-radius:10px;
+  padding:13px;
+  text-align:center;
+}
+
+.summary-box strong{
+  display:block;
+  font-size:19px;
+  margin-top:5px;
+}
+
+.note{
+  background:#fff8df;
+  border-left:5px solid #eab308;
+  padding:15px;
+  border-radius:8px;
+  line-height:1.8;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:10px;
+  margin-bottom:12px;
+}
+
+.small{
+  font-size:12px;
+  color:#667085;
+}
+
+.profit{
+  color:#15803d;
+}
+
+.loss{
+  color:#dc2626;
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  color:#667085;
+}
+
+@media(max-width:600px){
+  header h1{
+    font-size:24px;
+  }
+
+  .card{
+    padding:13px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🤝 THE BROTHERHOOD</h1>
+  <p>Saving • Investment • Financial Record</p>
+</header>
+
+<div class="container">
+
+<!-- DASHBOARD -->
+<div class="card">
+<h2>📊 Dashboard</h2>
+
+<div class="summary">
+
+<div class="summary-box">
+Total Saving
+<strong id="dSaving">Rs. 0</strong>
+</div>
+
+<div class="summary-box">
+Monthly Collection
+<strong>Rs. 25,000</strong>
+</div>
+
+<div class="summary-box">
+Saving Unpaid
+<strong id="dUnpaid">0</strong>
+</div>
+
+<div class="summary-box">
+Fine
+<strong id="dFine">Rs. 0</strong>
+</div>
+
+<div class="summary-box">
+SIP
+<strong id="dSip">Rs. 0</strong>
+</div>
+
+<div class="summary-box">
+Market
+<strong id="dMarket">Rs. 0</strong>
+</div>
+
+<div class="summary-box">
+Money Taken
+<strong id="dTaken">Rs. 0</strong>
+</div>
+
+</div>
+</div>
+
+
+<!-- GROUP DETAILS -->
+<div class="card">
+<h2>👥 Group Details</h2>
+
+<div class="info-grid">
+
+<div class="info">
+<b>Group Name</b>
+The Brotherhood
+</div>
+
+<div class="info">
+<b>Start Date</b>
+<input type="date" id="groupStart">
+</div>
+
+<div class="info">
+<b>Chairman</b>
+Dipak Mahatara
+</div>
+
+<div class="info">
+<b>Secretary</b>
+Surya Bahadur Adhikari
+</div>
+
+<div class="info">
+<b>Total Members</b>
+5
+</div>
+
+<div class="info">
+<b>Monthly Collection</b>
+Rs. 25,000
+</div>
+
+</div>
+</div>
+
+
+<!-- MEMBERS -->
+<div class="card">
+<h2>👤 Members</h2>
+
+<div class="table-wrap">
+<table>
+
+<thead>
+<tr>
+<th>S.N.</th>
+<th>Name</th>
+<th>Monthly Saving</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>1</td>
+<td>Dipak Mahatara</td>
+<td>Rs. 5,000</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Dipendra Mahatara</td>
+<td>Rs. 5,000</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Rajan Mahatara</td>
+<td>Rs. 5,000</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>Milan Mahatara</td>
+<td>Rs. 5,000</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>Surya Bahadur Adhikari</td>
+<td>Rs. 5,000</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+</div>
+
+
 <!-- SAVING -->
 <div class="card">
-  <h2>💰 Saving Record</h2>
 
-  <div class="controls">
-    <label>Select Year:</label>
-    <select id="savingYear" class="year-select" onchange="renderSaving()"></select>
-  </div>
+<h2>💰 Saving Record</h2>
 
-  <div class="table-wrap">
-    <table id="savingTable"></table>
-  </div>
+<div class="form-grid">
 
-  <div class="summary">
-    <div class="summary-box">
-      Expected
-      <strong id="savingExpected">Rs. 0</strong>
-    </div>
+<div>
+<b>Select Year</b>
+<select id="savingYear">
+<option>2024</option>
+</select>
+</div>
 
-    <div class="summary-box">
-      Collected
-      <strong id="savingCollected">Rs. 0</strong>
-    </div>
+</div>
 
-    <div class="summary-box">
-      Unpaid
-      <strong id="savingUnpaid">0</strong>
-    </div>
+<p class="small">
+हरेक महिनाको saving amount edit गर्न र Paid/Unpaid update गर्न मिल्छ।
+</p>
 
-    <div class="summary-box">
-      Fine
-      <strong id="savingFine">Rs. 0</strong>
-    </div>
-  </div>
+<div class="table-wrap">
+
+<table id="savingTable">
+
+<thead>
+<tr>
+<th>Member</th>
+<th>Jan</th>
+<th>Feb</th>
+<th>Mar</th>
+<th>Apr</th>
+<th>May</th>
+<th>Jun</th>
+<th>Jul</th>
+<th>Aug</th>
+<th>Sep</th>
+<th>Oct</th>
+<th>Nov</th>
+<th>Dec</th>
+<th>Total</th>
+</tr>
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+</div>
+
+<div class="summary">
+
+<div class="summary-box">
+Expected
+<strong id="sExpected">Rs. 0</strong>
+</div>
+
+<div class="summary-box">
+Collected
+<strong id="sCollected">Rs. 0</strong>
+</div>
+
+<div class="summary-box">
+Unpaid
+<strong id="sUnpaid">0</strong>
+</div>
+
+<div class="summary-box">
+Fine
+<strong id="sFine">Rs. 0</strong>
+</div>
+
+</div>
+
 </div>
 
 
 <!-- INVESTMENT -->
 <div class="card">
-  <h2>📈 Investment Record</h2>
 
-  <div class="info-grid">
+<h2>📈 Investment Record</h2>
 
-    <div class="info">
-      <b>SIP Start Date</b>
-      <input type="date" id="sipStart"
-             onchange="saveSettings(); renderSip();">
-    </div>
+<div class="info-grid">
 
-    <div class="info">
-      <b>SIP Monthly Amount</b>
-      <input type="number" id="sipAmount"
-             onchange="saveSettings(); renderSip();">
-    </div>
-
-    <div class="info">
-      <b>Market Start Date</b>
-      <input type="date" id="marketStart"
-             onchange="saveSettings(); renderMarket();">
-    </div>
-
-    <div class="info">
-      <b>Market Monthly Amount</b>
-      <input type="number" id="marketAmount"
-             onchange="saveSettings(); renderMarket();">
-    </div>
-
-  </div>
-
-  <br>
-
-  <div class="controls">
-    <label>Select Year:</label>
-    <select id="sipYear"
-            class="year-select"
-            onchange="renderSip()"></select>
-  </div>
-
-  <h3>SIP — 12 Months</h3>
-
-  <div class="table-wrap">
-    <table id="sipTable"></table>
-  </div>
-
-  <br>
-
-  <div class="controls">
-    <label>Select Year:</label>
-    <select id="marketYear"
-            class="year-select"
-            onchange="renderMarket()"></select>
-  </div>
-
-  <h3>Market — 12 Months</h3>
-
-  <div class="table-wrap">
-    <table id="marketTable"></table>
-  </div>
+<div class="info">
+<b>SIP Start Date</b>
+<input type="date" id="sipStart">
 </div>
+
+<div class="info">
+<b>SIP Monthly Amount</b>
+<input type="number" id="sipAmount">
+</div>
+
+<div class="info">
+<b>Market Start Date</b>
+<input type="date" id="marketStart">
+</div>
+
+<div class="info">
+<b>Market Monthly Amount</b>
+<input type="number" id="marketAmount">
+</div>
+
+</div>
+
+<br>
+
+<div>
+<b>Select Year</b>
+<select id="investmentYear">
+<option>2024</option>
+</select>
+</div>
+
+<br>
+
+<h3>SIP — 12 Months</h3>
+
+<div class="table-wrap">
+
+<table id="sipTable">
+
+<thead>
+<tr>
+<th>Investment</th>
+<th>Jan</th>
+<th>Feb</th>
+<th>Mar</th>
+<th>Apr</th>
+<th>May</th>
+<th>Jun</th>
+<th>Jul</th>
+<th>Aug</th>
+<th>Sep</th>
+<th>Oct</th>
+<th>Nov</th>
+<th>Dec</th>
+<th>Total</th>
+</tr>
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+</div>
+
+<br>
+
+<h3>Market — 12 Months</h3>
+
+<div class="table-wrap">
+
+<table id="marketTable">
+
+<thead>
+<tr>
+<th>Investment</th>
+<th>Jan</th>
+<th>Feb</th>
+<th>Mar</th>
+<th>Apr</th>
+<th>May</th>
+<th>Jun</th>
+<th>Jul</th>
+<th>Aug</th>
+<th>Sep</th>
+<th>Oct</th>
+<th>Nov</th>
+<th>Dec</th>
+<th>Total</th>
+</tr>
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+</div>
+
+<div class="summary">
+
+<div class="summary-box">
+SIP Paid
+<strong id="sipTotal">Rs. 0</strong>
+</div>
+
+<div class="summary-box">
+Market Paid
+<strong id="marketTotal">Rs. 0</strong>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- MONEY TAKEN -->
+<div class="card">
+
+<h2>💵 Member Money Taken Record</h2>
+
+<p class="small">
+समूहबाट सदस्यले पैसा उठाएको/लिएको record यहाँ राख्न सकिन्छ।
+</p>
+
+<div class="form-grid">
+
+<div>
+<b>Member</b>
+<select id="takenMember">
+
+<option>Dipak Mahatara</option>
+<option>Dipendra Mahatara</option>
+<option>Rajan Mahatara</option>
+<option>Milan Mahatara</option>
+<option>Surya Bahadur Adhikari</option>
+
+</select>
+</div>
+
+<div>
+<b>Amount</b>
+<input type="number" id="takenAmount" placeholder="Amount">
+</div>
+
+<div>
+<b>Date</b>
+<input type="date" id="takenDate">
+</div>
+
+<div>
+<b>Reason</b>
+<input type="text" id="takenReason" placeholder="Reason">
+</div>
+
+</div>
+
+<button class="add" onclick="addTaken()">
++ Add Record
+</button>
+
+<br><br>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+<tr>
+<th>S.N.</th>
+<th>Member</th>
+<th>Amount</th>
+<th>Date</th>
+<th>Reason</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody id="takenTable"></tbody>
+
+</table>
+
+</div>
+
+<div class="summary">
+
+<div class="summary-box">
+Total Money Taken
+<strong id="takenTotal">Rs. 0</strong>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- MARKET PROFIT LOSS -->
+<div class="card">
+
+<h2>📉 Market Profit / Loss</h2>
+
+<div class="info-grid">
+
+<div class="info">
+<b>Total Market Investment</b>
+<input type="number" id="marketInvested" readonly>
+</div>
+
+<div class="info">
+<b>Current Market Value</b>
+<input type="number" id="marketValue">
+</div>
+
+</div>
+
+<button class="edit" onclick="calculatePL()">
+Calculate
+</button>
+
+<div class="summary">
+
+<div class="summary-box">
+Investment
+<strong id="plInvestment">Rs. 0</strong>
+</div>
+
+<div class="summary-box">
+Current Value
+<strong id="plValue">Rs. 0</strong>
+</div>
+
+<div class="summary-box">
+Profit / Loss
+<strong id="profitLoss">Rs. 0</strong>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- RULES -->
+<div class="card">
+
+<h2>📌 Rules & Notes</h2>
+
+<div class="note">
+
+💰 <b>Saving:</b><br>
+प्रत्येक सदस्यको monthly saving record राखिनेछ।
+
+<br><br>
+
+💵 <b>Fine:</b><br>
+Monthly payment नदिएको अवस्थामा
+<b>Rs. 250</b> fine।
+
+<br><br>
+
+📈 <b>Rate:</b><br>
+Rs. 50,000 भन्दा माथि → <b>15%</b><br>
+Rs. 50,000 भन्दा कम → <b>12%</b>
+
+</div>
+
+</div>
+
+
+<!-- BACKUP -->
+<div class="card">
+
+<h2>⚙️ Data Backup</h2>
+
+<button class="edit" onclick="exportData()">
+⬇ Export Data
+</button>
+
+<button class="edit"
+onclick="document.getElementById('importFile').click()">
+⬆ Import Data
+</button>
+
+<button class="delete" onclick="resetData()">
+Reset
+</button>
+
+<input
+type="file"
+id="importFile"
+accept=".json"
+style="display:none"
+onchange="importData(event)"
+>
+
+</div>
+
+</div>
+
+
+<footer>
+© 2026 The Brotherhood • Saving & Investment Management
+</footer>
+
+
+<script>
+
+/* =========================
+   BASIC DATA
+========================= */
+
+const MEMBERS = [
+"Dipak Mahatara",
+"Dipendra Mahatara",
+"Rajan Mahatara",
+"Milan Mahatara",
+"Surya Bahadur Adhikari"
+];
+
+const MONTHS = [
+"Jan","Feb","Mar","Apr","May","Jun",
+"Jul","Aug","Sep","Oct","Nov","Dec"
+];
+
+const STORAGE = "brotherhoodData";
+
+
+/* =========================
+   LOAD DATA
+========================= */
+
+let data =
+JSON.parse(localStorage.getItem(STORAGE));
+
+if(!data){
+
+data = {
+
+settings:{
+groupStart:"2024-01-01",
+sipStart:"2024-01-01",
+marketStart:"2026-09-25",
+sipAmount:5000,
+marketAmount:5000,
+marketValue:0
+},
+
+saving:{},
+
+sip:{},
+
+market:{},
+
+taken:[]
+
+};
+
+}
+
+
+/* =========================
+   SAVE
+========================= */
+
+function save(){
+
+localStorage.setItem(
+STORAGE,
+JSON.stringify(data)
+);
+
+}
+
+
+/* =========================
+   SETTINGS
+========================= */
+
+function loadSettings(){
+
+document.getElementById("groupStart").value =
+data.settings.groupStart;
+
+document.getElementById("sipStart").value =
+data.settings.sipStart;
+
+document.getElementById("marketStart").value =
+data.settings.marketStart;
+
+document.getElementById("sipAmount").value =
+data.settings.sipAmount;
+
+document.getElementById("marketAmount").value =
+data.settings.marketAmount;
+
+document.getElementById("marketValue").value =
+data.settings.marketValue || 0;
+
+}
+
+
+/* =========================
+   SAVE SETTINGS
+========================= */
+
+function saveSettings(){
+
+data.settings.groupStart =
+document.getElementById("groupStart").value;
+
+data.settings.sipStart =
+document.getElementById("sipStart").value;
+
+data.settings.marketStart =
+document.getElementById("marketStart").value;
+
+data.settings.sipAmount =
+Number(document.getElementById("sipAmount").value) || 0;
+
+data.settings.marketAmount =
+Number(document.getElementById("marketAmount").value) || 0;
+
+data.settings.marketValue =
+Number(document.getElementById("marketValue").value) || 0;
+
+save();
+
+renderSaving();
+renderInvestment();
+}
+
+
+/* =========================
+   YEAR
+========================= */
+
+function setupYear(){
+
+let current =
+new Date().getFullYear();
+
+document.getElementById("savingYear").value =
+current;
+
+document.getElementById("investmentYear").value =
+current;
+
+}
+
+
+/* =========================
+   SAVING KEY
+========================= */
+
+function sKey(year,member,month){
+
+return year+"_"+member+"_"+month;
+
+}
+
+
+/* =========================
+   SAVING TABLE
+========================= */
+
+function renderSaving(){
+
+const year =
+Number(document.getElementById("savingYear").value);
+
+const tbody =
+document.querySelector("#savingTable tbody");
+
+tbody.innerHTML = "";
+
+MEMBERS.forEach((member,mi)=>{
+
+let row =
+`<tr>
+<td><b>${member}</b></td>`;
+
+let total = 0;
+
+MONTHS.forEach((month,monthIndex)=>{
+
+const key =
+sKey(year,mi,monthIndex);
+
+if(!data.saving[key]){
+
+data.saving[key]={
+amount:5000,
+status:"unpaid"
+};
+
+}
+
+const record =
+data.saving[key];
+
+const amount =
+Number(record.amount)||0;
+
+if(record.status==="paid"){
+total += amount;
+}
+
+const cls =
+record.status==="paid"
+?"paid":"unpaid";
+
+const text =
+record.status==="paid"
+?"Paid":"Unpaid";
+
+row += `
+<td>
+
+<input
+class="amount"
+type="number"
+min="0"
+value="${amount}"
+onchange="
+changeSavingAmount(
+'${key}',
+this.value
+)">
+
+<br>
+
+<button
+class="${cls} status"
+onclick="
+toggleSaving('${key}')
+">
+
+${text}
+
+</button>
+
+</td>
+`;
+
+});
+
+row += `
+<td>
+<b>Rs. ${total.toLocaleString()}</b>
+</td>
+</tr>
+`;
+
+tbody.innerHTML += row;
+
+});
+
+save();
+
+calculateSaving();
+
+}
+
+
+/* =========================
+   CHANGE SAVING
+========================= */
+
+function changeSavingAmount(key,value){
+
+data.saving[key].amount =
+Number(value)||0;
+
+save();
+
+calculateSaving();
+
+}
+
+
+/* =========================
+   TOGGLE SAVING
+========================= */
+
+function toggleSaving(key){
+
+if(data.saving[key].status==="paid"){
+
+data.saving[key].status="unpaid";
+
+}else{
+
+data.saving[key].status="paid";
+
+}
+
+save();
+
+renderSaving();
+
+}
+
+
+/* =========================
+   SAVING CALCULATION
+========================= */
+
+function calculateSaving(){
+
+const year =
+Number(document.getElementById("savingYear").value);
+
+let expected=0;
+let collected=0;
+let unpaid=0;
+
+MEMBERS.forEach((member,mi)=>{
+
+MONTHS.forEach((month,monthIndex)=>{
+
+const key =
+sKey(year,mi,monthIndex);
+
+const r =
+data.saving[key];
+
+if(!r)return;
+
+const amount =
+Number(r.amount)||0;
+
+expected += amount;
+
+if(r.status==="paid"){
+
+collected += amount;
+
+}
+
+if(r.status==="unpaid"){
+
+unpaid++;
+
+}
+
+});
+
+});
+
+const fine =
+unpaid*250;
+
+document.getElementById("sExpected").textContent =
+"Rs. "+expected.toLocaleString();
+
+document.getElementById("sCollected").textContent =
+"Rs. "+collected.toLocaleString();
+
+document.getElementById("sUnpaid").textContent =
+unpaid;
+
+document.getElementById("sFine").textContent =
+"Rs. "+fine.toLocaleString();
+
+updateDashboard();
+
+}
+
+
+/* =========================
+   INVESTMENT KEY
+========================= */
+
+function iKey(type,year,month){
+
+return type+"_"+year+"_"+month;
+
+}
+
+
+/* =========================
+   SIP + MARKET
+========================= */
+
+function renderInvestment(){
+
+const year =
+Number(document.getElementById("investmentYear").value);
+
+renderInvestmentTable(
+"sip",
+year,
+"#sipTable tbody",
+data.settings.sipAmount
+);
+
+renderInvestmentTable(
+"market",
+year,
+"#marketTable tbody",
+data.settings.marketAmount
+);
+
+calculateInvestment();
+
+}
+
+
+/* =========================
+   INVESTMENT TABLE
+========================= */
+
+function renderInvestmentTable(
+type,
+year,
+selector,
+defaultAmount
+){
+
+const tbody =
+document.querySelector(selector);
+
+tbody.innerHTML="";
+
+let row =
+`<tr><td><b>${
+type==="sip"?"SIP":"Market"
+}</b></td>`;
+
+let total=0;
+
+MONTHS.forEach((month,monthIndex)=>{
+
+const key =
+iKey(type,year,monthIndex);
+
+const object =
+type==="sip"
+?data.sip
+:data.market;
+
+if(!object[key]){
+
+object[key]={
+amount:defaultAmount,
+status:"unpaid"
+};
+
+}
+
+const record =
+object[key];
+
+const amount =
+Number(record.amount)||0;
+
+if(record.status==="paid"){
+
+total += amount;
+
+}
+
+const cls =
+record.status==="paid"
+?"paid":"unpaid";
+
+const text =
+record.status==="paid"
+?"Paid":"Unpaid";
+
+row += `
+<td>
+
+<input
+class="amount"
+type="number"
+min="0"
+value="${amount}"
+onchange="
+changeInvestmentAmount(
+'${type}',
+'${key}',
+this.value
+)
+">
+
+<br>
+
+<button
+class="${cls} status"
+onclick="
+toggleInvestment(
+'${type}',
+'${key}'
+)
+">
+
+${text}
+
+</button>
+
+</td>
+`;
+
+});
+
+row += `
+<td>
+<b>Rs. ${total.toLocaleString()}</b>
+</td>
+</tr>
+`;
+
+tbody.innerHTML=row;
+
+save();
+
+}
+
+
+/* =========================
+   INVESTMENT AMOUNT
+========================= */
+
+function changeInvestmentAmount(
+type,
+key,
+value
+){
+
+const object =
+type==="sip"
+?data.sip
+:data.market;
+
+object[key].amount =
+Number(value)||0;
+
+save();
+
+calculateInvestment();
+
+}
+
+
+/* =========================
+   INVESTMENT STATUS
+========================= */
+
+function toggleInvestment(type,key){
+
+const object =
+type==="sip"
+?data.sip
+:data.market;
+
+if(object[key].status==="paid"){
+
+object[key].status="unpaid";
+
+}else{
+
+object[key].status="paid";
+
+}
+
+save();
+
+renderInvestment();
+
+}
+
+
+/* =========================
+   INVESTMENT CALCULATION
+========================= */
+
+function calculateInvestment(){
+
+let sip=0;
+let market=0;
+
+Object.values(data.sip).forEach(r=>{
+
+if(r.status==="paid"){
+
+sip += Number(r.amount)||0;
+
+}
+
+});
+
+Object.values(data.market).forEach(r=>{
+
+if(r.status==="paid"){
+
+market += Number(r.amount)||0;
+
+}
+
+});
+
+document.getElementById("sipTotal").textContent =
+"Rs. "+sip.toLocaleString();
+
+document.getElementById("marketTotal").textContent =
+"Rs. "+market.toLocaleString();
+
+document.getElementById("marketInvested").value =
+market;
+
+calculatePL();
+
+updateDashboard();
+
+}
+
+
+/* =========================
+   MARKET PROFIT LOSS
+========================= */
+
+function calculatePL(){
+
+const invested =
+Number(
+document.getElementById("marketInvested").value
+)||0;
+
+const value =
+Number(
+document.getElementById("marketValue").value
+)||0;
+
+const result =
+value-invested;
+
+data.settings.marketValue=value;
+
+save();
+
+document.getElementById("plInvestment").textContent =
+"Rs. "+invested.toLocaleString();
+
+document.getElementById("plValue").textContent =
+"Rs. "+value.toLocaleString();
+
+const el =
+document.getElementById("profitLoss");
+
+if(result>=0){
+
+el.textContent =
+"Profit: Rs. "+result.toLocaleString();
+
+el.className="profit";
+
+}else{
+
+el.textContent =
+"Loss: Rs. "+Math.abs(result).toLocaleString();
+
+el.className="loss";
+
+}
+
+}
+
+
+/* =========================
+   MONEY TAKEN
+========================= */
+
+function addTaken(){
+
+const member =
+document.getElementById("takenMember").value;
+
+const amount =
+Number(
+document.getElementById("takenAmount").value
+)||0;
+
+const date =
+document.getElementById("takenDate").value;
+
+const reason =
+document.getElementById("takenReason").value;
+
+if(!amount){
+
+alert("Amount राख्नुहोस्।");
+return;
+
+}
+
+data.taken.push({
+
+member,
+amount,
+date,
+reason
+
+});
+
+save();
+
+document.getElementById("takenAmount").value="";
+document.getElementById("takenDate").value="";
+document.getElementById("takenReason").value="";
+
+renderTaken();
+
+}
+
+
+/* =========================
+   TAKEN TABLE
+========================= */
+
+function renderTaken(){
+
+const tbody =
+document.getElementById("takenTable");
+
+tbody.innerHTML="";
+
+let total=0;
+
+data.taken.forEach((r,index)=>{
+
+total += Number(r.amount)||0;
+
+tbody.innerHTML += `
+
+<tr>
+
+<td>${index+1}</td>
+
+<td>${r.member}</td>
+
+<td>
+Rs. ${Number(r.amount).toLocaleString()}
+</td>
+
+<td>${r.date || "-"}</td>
+
+<td>${r.reason || "-"}</td>
+
+<td>
+
+<button
+class="delete"
+onclick="deleteTaken(${index})">
+
+Delete
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+document.getElementById("takenTotal").textContent =
+"Rs. "+total.toLocaleString();
+
+updateDashboard();
+
+}
+
+
+/* =========================
+   DELETE TAKEN
+========================= */
+
+function deleteTaken(index){
+
+if(!confirm("यो record delete गर्ने?"))return;
+
+data.taken.splice(index,1);
+
+save();
+
+renderTaken();
+
+}
+
+
+/* =========================
+   DASHBOARD
+========================= */
+
+function updateDashboard(){
+
+let saving=0;
+let unpaid=0;
+
+Object.values(data.saving).forEach(r=>{
+
+if(r.status==="paid"){
+
+saving += Number(r.amount)||0;
+
+}
+
+if(r.status==="unpaid"){
+
+unpaid++;
+
+}
+
+});
+
+let sip=0;
+let market=0;
+
+Object.values(data.sip).forEach(r=>{
+
+if(r.status==="paid"){
+
+sip += Number(r.amount)||0;
+
+}
+
+});
+
+Object.values(data.market).forEach(r=>{
+
+if(r.status==="paid"){
+
+market += Number(r.amount)||0;
+
+}
+
+});
+
+let taken=0;
+
+data.taken.forEach(r=>{
+
+taken += Number(r.amount)||0;
+
+});
+
+document.getElementById("dSaving").textContent =
+"Rs. "+sav
