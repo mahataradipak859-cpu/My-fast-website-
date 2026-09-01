@@ -37,7 +37,827 @@ header h1{
 .card{
     background:white;
     margin:16px 0;
-    padding:20px
+    padding:20px;
+    border-radius:14px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+h2{
+    color:#173f5f;
+    margin-top:0;
+}
+
+.info{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:12px;
+}
+
+.box{
+    background:#f5f7fa;
+    padding:15px;
+    border-radius:10px;
+}
+
+.box b{
+    display:block;
+    margin-bottom:6px;
+}
+
+input,select{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    border:1px solid #bbb;
+    border-radius:7px;
+}
+
+button{
+    border:0;
+    border-radius:7px;
+    padding:8px 12px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.change{
+    background:#173f5f;
+    color:white;
+}
+
+.paid{
+    color:green;
+    font-weight:bold;
+}
+
+.unpaid{
+    color:red;
+    font-weight:bold;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:12px;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:9px;
+    text-align:center;
+}
+
+th{
+    background:#173f5f;
+    color:white;
+}
+
+.table-wrap{
+    overflow-x:auto;
+}
+
+.summary{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:12px;
+}
+
+.summary-box{
+    background:#eef4fa;
+    padding:18px;
+    border-radius:10px;
+    text-align:center;
+}
+
+.summary-box strong{
+    display:block;
+    font-size:22px;
+    margin-top:7px;
+}
+
+.note{
+    line-height:1.7;
+}
+
+.warning{
+    background:#fff4d6;
+    padding:15px;
+    border-radius:10px;
+}
+
+footer{
+    text-align:center;
+    color:#666;
+    padding:25px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🤝 THE BROTHERHOOD</h1>
+    <p>Saving & Investment Group</p>
+</header>
+
+<div class="container">
+
+<!-- GROUP DETAILS -->
+<div class="card">
+<h2>📌 Group Details</h2>
+
+<div class="info">
+
+<div class="box">
+<b>Sasto Start Date</b>
+<input type="date" id="savingStart">
+</div>
+
+<div class="box">
+<b>Adhyakshya</b>
+Dipak Mahatara
+</div>
+
+<div class="box">
+<b>Sachib</b>
+Surya Bahadur Adhikari
+</div>
+
+<div class="box">
+<b>Total Members</b>
+5 Members
+</div>
+
+<div class="box">
+<b>Monthly Collection</b>
+Rs. 25,000
+</div>
+
+</div>
+</div>
+
+
+<!-- MEMBERS -->
+<div class="card">
+<h2>👥 5 Members</h2>
+
+<div class="table-wrap">
+
+<table>
+<tr>
+<th>No.</th>
+<th>Member Name</th>
+<th>Monthly</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Dipak Mahatara</td>
+<td>Rs. 5,000</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Dipendra Mahatara</td>
+<td>Rs. 5,000</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Rajan Mahatara</td>
+<td>Rs. 5,000</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>Milan Mahatara</td>
+<td>Rs. 5,000</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>Surya Bahadur Adhikari</td>
+<td>Rs. 5,000</td>
+</tr>
+
+<tr>
+<th colspan="2">Total / Month</th>
+<th>Rs. 25,000</th>
+</tr>
+
+</table>
+
+</div>
+</div>
+
+
+<!-- SAVING -->
+<div class="card">
+<h2>💰 Monthly Saving Record</h2>
+
+<p>
+प्रत्येक सदस्यबाट मासिक <b>Rs. 5,000</b>
+</p>
+
+<div class="table-wrap">
+
+<table id="savingTable">
+<thead>
+<tr>
+<th>Member</th>
+<th>Jan</th>
+<th>Feb</th>
+<th>Mar</th>
+<th>Apr</th>
+<th>May</th>
+<th>Jun</th>
+<th>Jul</th>
+<th>Aug</th>
+<th>Sep</th>
+<th>Oct</th>
+<th>Nov</th>
+<th>Dec</th>
+</tr>
+</thead>
+
+<tbody id="savingBody"></tbody>
+
+</table>
+
+</div>
+</div>
+
+
+<!-- SAVING SUMMARY -->
+<div class="card">
+<h2>📊 Saving Summary</h2>
+
+<div class="summary">
+
+<div class="summary-box">
+Collected
+<strong id="savingTotal">Rs. 0</strong>
+</div>
+
+<div class="summary-box">
+Expected
+<strong>Rs. 300,000</strong>
+</div>
+
+<div class="summary-box">
+Fine
+<strong id="fineTotal">Rs. 0</strong>
+</div>
+
+</div>
+</div>
+
+
+<!-- INVESTMENT -->
+<div class="card">
+
+<h2>📈 Investment Side</h2>
+
+<div class="info">
+
+<div class="box">
+<b>SIP Start Date</b>
+<input type="date" id="sipStart">
+</div>
+
+<div class="box">
+<b>Market Start Date</b>
+<input type="date" id="marketStart">
+</div>
+
+</div>
+
+<br>
+
+<p>
+<b>SIP:</b> Rs. 5,000 / Month
+</p>
+
+<p>
+<b>Market Investment:</b> Rs. 5,000 / Month
+</p>
+
+</div>
+
+
+<!-- SIP -->
+<div class="card">
+
+<h2>📊 SIP — 12 Months</h2>
+
+<div class="table-wrap">
+
+<table>
+
+<tr>
+<th>Month</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+<tbody id="sipBody"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
+<!-- MARKET -->
+<div class="card">
+
+<h2>📈 Market Investment — 12 Months</h2>
+
+<div class="table-wrap">
+
+<table>
+
+<tr>
+<th>Month</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+<tbody id="marketBody"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
+<!-- INVESTMENT SUMMARY -->
+<div class="card">
+
+<h2>💵 Investment Summary</h2>
+
+<div class="summary">
+
+<div class="summary-box">
+SIP Paid
+<strong id="sipTotal">Rs. 0</strong>
+</div>
+
+<div class="summary-box">
+Market Paid
+<strong id="marketTotal">Rs. 0</strong>
+</div>
+
+<div class="summary-box">
+Investment Total
+<strong id="investmentTotal">Rs. 0</strong>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- INTEREST & FINE -->
+<div class="card">
+
+<h2>📝 Note / Rules</h2>
+
+<div class="warning note">
+
+<p>
+💰 <b>Interest / Rate:</b>
+</p>
+
+<p>
+• Rs. 50,000 भन्दा माथि भए → <b>15% को दर</b>
+</p>
+
+<p>
+• Rs. 50,000 भन्दा कम भए → <b>12% को दर</b>
+</p>
+
+<p>
+⚠️ मासिक पैसा समयमा नबुझाएमा
+<b>Rs. 250 Fine</b> लाग्नेछ।
+</p>
+
+<p>
+📌 यी नियमहरू The Brotherhood को
+saving/investment record का लागि राखिएका हुन्।
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<footer>
+© 2026 The Brotherhood | Saving & Investment Group
+</footer>
+
+
+<script>
+
+const members = [
+    "Dipak Mahatara",
+    "Dipendra Mahatara",
+    "Rajan Mahatara",
+    "Milan Mahatara",
+    "Surya Bahadur Adhikari"
+];
+
+const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+];
+
+const SAVING_AMOUNT = 5000;
+const SIP_AMOUNT = 5000;
+const MARKET_AMOUNT = 5000;
+const FINE = 250;
+
+
+/* LOAD DATA */
+
+let data = JSON.parse(
+    localStorage.getItem("brotherhoodData")
+) || {
+    saving:{},
+    sip:{},
+    market:{},
+    savingStart:"2024-01-01",
+    sipStart:"2024-01-01",
+    marketStart:"2026-09-25"
+};
+
+
+/* SAVE DATA */
+
+function saveData(){
+
+    localStorage.setItem(
+        "brotherhoodData",
+        JSON.stringify(data)
+    );
+}
+
+
+/* SAVING TABLE */
+
+function createSavingTable(){
+
+    const body =
+        document.getElementById("savingBody");
+
+    body.innerHTML = "";
+
+    members.forEach((member,memberIndex)=>{
+
+        let row = document.createElement("tr");
+
+        let name = document.createElement("td");
+
+        name.textContent = member;
+
+        row.appendChild(name);
+
+        months.forEach((month,monthIndex)=>{
+
+            let cell = document.createElement("td");
+
+            let key =
+                memberIndex + "-" + monthIndex;
+
+            let paid =
+                data.saving[key] || false;
+
+            let button =
+                document.createElement("button");
+
+            button.className =
+                paid ? "paid" : "unpaid";
+
+            button.textContent =
+                paid ? "Paid ✅" : "Unpaid ❌";
+
+            button.onclick = function(){
+
+                data.saving[key] =
+                    !data.saving[key];
+
+                saveData();
+
+                createSavingTable();
+
+                calculateSaving();
+
+            };
+
+            cell.appendChild(button);
+
+            row.appendChild(cell);
+
+        });
+
+        body.appendChild(row);
+
+    });
+
+}
+
+
+/* SAVING CALCULATION */
+
+function calculateSaving(){
+
+    let total = 0;
+    let fine = 0;
+
+    Object.keys(data.saving).forEach(key=>{
+
+        if(data.saving[key]){
+
+            total += SAVING_AMOUNT;
+
+        }else{
+
+            fine += FINE;
+
+        }
+
+    });
+
+    document.getElementById(
+        "savingTotal"
+    ).textContent =
+        "Rs. " + total.toLocaleString();
+
+    document.getElementById(
+        "fineTotal"
+    ).textContent =
+        "Rs. " + fine.toLocaleString();
+
+}
+
+
+/* INVESTMENT TABLE */
+
+function createInvestmentTable(
+    type,
+    bodyId,
+    amount
+){
+
+    const body =
+        document.getElementById(bodyId);
+
+    body.innerHTML = "";
+
+    months.forEach((month,index)=>{
+
+        let key = index;
+
+        let paid =
+            data[type][key] || false;
+
+        let row =
+            document.createElement("tr");
+
+        let monthCell =
+            document.createElement("td");
+
+        monthCell.textContent = month;
+
+        let statusCell =
+            document.createElement("td");
+
+        statusCell.textContent =
+            paid ? "Paid ✅" : "Unpaid ❌";
+
+        statusCell.className =
+            paid ? "paid" : "unpaid";
+
+        let actionCell =
+            document.createElement("td");
+
+        let button =
+            document.createElement("button");
+
+        button.className = "change";
+
+        button.textContent = "Change";
+
+        button.onclick = function(){
+
+            data[type][key] =
+                !data[type][key];
+
+            saveData();
+
+            createInvestmentTable(
+                type,
+                bodyId,
+                amount
+            );
+
+            calculateInvestment();
+
+        };
+
+        actionCell.appendChild(button);
+
+        row.appendChild(monthCell);
+
+        row.appendChild(statusCell);
+
+        row.appendChild(actionCell);
+
+        body.appendChild(row);
+
+    });
+
+}
+
+
+/* INVESTMENT TOTAL */
+
+function calculateInvestment(){
+
+    let sipTotal = 0;
+    let marketTotal = 0;
+
+    Object.keys(data.sip).forEach(key=>{
+
+        if(data.sip[key]){
+
+            sipTotal += SIP_AMOUNT;
+
+        }
+
+    });
+
+    Object.keys(data.market).forEach(key=>{
+
+        if(data.market[key]){
+
+            marketTotal += MARKET_AMOUNT;
+
+        }
+
+    });
+
+    document.getElementById(
+        "sipTotal"
+    ).textContent =
+        "Rs. " + sipTotal.toLocaleString();
+
+    document.getElementById(
+        "marketTotal"
+    ).textContent =
+        "Rs. " + marketTotal.toLocaleString();
+
+    document.getElementById(
+        "investmentTotal"
+    ).textContent =
+        "Rs. " +
+        (sipTotal + marketTotal)
+        .toLocaleString();
+
+}
+
+
+/* DATE SETTINGS */
+
+document.getElementById(
+    "savingStart"
+).value = data.savingStart;
+
+document.getElementById(
+    "sipStart"
+).value = data.sipStart;
+
+document.getElementById(
+    "marketStart"
+).value = data.marketStart;
+
+
+document.getElementById(
+    "savingStart"
+).onchange = function(){
+
+    data.savingStart = this.value;
+
+    saveData();
+
+};
+
+
+document.getElementById(
+    "sipStart"
+).onchange = function(){
+
+    data.sipStart = this.value;
+
+    saveData();
+
+};
+
+
+document.getElementById(
+    "marketStart"
+).onchange = function(){
+
+    data.marketStart = this.value;
+
+    saveData();
+
+};
+
+
+/* START */
+
+createSavingTable();<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Brotherhood</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f2f4f7;
+    color:#222;
+}
+
+header{
+    background:#173f5f;
+    color:white;
+    text-align:center;
+    padding:28px 12px;
+}
+
+header h1{
+    margin:0;
+    font-size:32px;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:15px;
+}
+
+.card{
+    background:white;
+    margin:16px 0;
+    padding:20px;
+    border-radius:14px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+h2{
+    color:#173f5f;
+    margin-top:0;
+}
+
+.info{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:12px;
+}
+
+.box{
+    background:#f5f7fa;
+    padding:15px;
+    border-radius:10px;
+}
+
+.box b{
+    display:block;
+    margin-bottom:6px;
+}
+
+input,select{
     width:100%;
     padding:10px;
     margin-top:5px;
@@ -785,4 +1605,25 @@ calculateInvestment();
 </script>
 
 </body>
-    </html>
+</html>
+
+calculateSaving();
+
+createInvestmentTable(
+    "sip",
+    "sipBody",
+    SIP_AMOUNT
+);
+
+createInvestmentTable(
+    "market",
+    "marketBody",
+    MARKET_AMOUNT
+);
+
+calculateInvestment();
+
+</script>
+
+</body>
+             </html>
