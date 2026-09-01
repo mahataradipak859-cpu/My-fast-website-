@@ -1,10 +1,144 @@
 <!DOCTYPE html>
-<html>
+<html lang="ne">
 <head>
-    <title>My Website</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Saving Group</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f4f6f8;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .summary {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .total {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+    }
+
+    th {
+      background: #222;
+      color: white;
+    }
+
+    .paid {
+      color: green;
+      font-weight: bold;
+    }
+
+    .unpaid {
+      color: red;
+      font-weight: bold;
+    }
+
+    .note {
+      margin-top: 20px;
+      background: white;
+      padding: 15px;
+      border-radius: 12px;
+    }
+  </style>
 </head>
+
 <body>
-    <h1>Welcome to My Website</h1>
-    <p>Hello! This is my first website.</p>
+
+<div class="container">
+
+  <h1>💰 हाम्रो बचत समूह</h1>
+
+  <div class="summary">
+    <p>मासिक बचत प्रति व्यक्ति</p>
+    <div class="total">रु. 5,000</div>
+
+    <p>५ जनाको मासिक कुल बचत</p>
+    <div class="total">रु. 25,000</div>
+  </div>
+
+  <table>
+    <tr>
+      <th>क्र.सं.</th>
+      <th>सदस्य</th>
+      <th>मासिक बचत</th>
+      <th>Status</th>
+    </tr>
+
+    <tr>
+      <td>1</td>
+      <td>Dipak Mahatara</td>
+      <td>रु. 5,000</td>
+      <td class="paid">Paid ✅</td>
+    </tr>
+
+    <tr>
+      <td>2</td>
+      <td>Dipendra Mahatara</td>
+      <td>रु. 5,000</td>
+      <td class="paid">Paid ✅</td>
+    </tr>
+
+    <tr>
+      <td>3</td>
+      <td>Rajan Mahatara</td>
+      <td>रु. 5,000</td>
+      <td class="paid">Paid ✅</td>
+    </tr>
+
+    <tr>
+      <td>4</td>
+      <td>Milan Mahatara</td>
+      <td>रु. 5,000</td>
+      <td class="paid">Paid ✅</td>
+    </tr>
+
+    <tr>
+      <td>5</td>
+      <td>Surya Bahadur Radhikari</td>
+      <td>रु. 5,000</td>
+      <td class="paid">Paid ✅</td>
+    </tr>
+
+  </table>
+
+  <div class="note">
+    <b>📅 मासिक हिसाब:</b>
+    <p>प्रत्येक सदस्यले प्रत्येक महिना रु. 5,000 जम्मा गर्ने।</p>
+    <p>५ जनाबाट प्रत्येक महिना जम्मा = <b>रु. 25,000</b></p>
+  </div>
+
+</div>
+
 </body>
 </html>
