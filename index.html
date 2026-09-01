@@ -4,156 +4,151 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Hamro Sasto</title>
+<title>The Brotherhood</title>
 
 <style>
-* {
-    box-sizing: border-box;
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f2f4f7;
+    color:#222;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f2f4f7;
-    color: #222;
+header{
+    background:#173f5f;
+    color:white;
+    text-align:center;
+    padding:28px 12px;
 }
 
-header {
-    background: #1f4e79;
-    color: white;
-    text-align: center;
-    padding: 25px 10px;
+header h1{
+    margin:0;
+    font-size:32px;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 30px;
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:15px;
 }
 
-.container {
-    max-width: 950px;
-    margin: auto;
-    padding: 15px;
+.card{
+    background:white;
+    margin:16px 0;
+    padding:20px;
+    border-radius:14px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
 }
 
-.card {
-    background: white;
-    margin: 15px 0;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+h2{
+    color:#173f5f;
+    margin-top:0;
 }
 
-.card h2 {
-    margin-top: 0;
-    color: #1f4e79;
+.info{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:12px;
 }
 
-.info {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-    gap: 10px;
+.box{
+    background:#f5f7fa;
+    padding:15px;
+    border-radius:10px;
 }
 
-.box {
-    background: #f5f7fa;
-    padding: 15px;
-    border-radius: 8px;
+.box b{
+    display:block;
+    margin-bottom:6px;
 }
 
-.box b {
-    display: block;
-    margin-bottom: 6px;
+input,select{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    border:1px solid #bbb;
+    border-radius:7px;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
+button{
+    border:0;
+    border-radius:7px;
+    padding:8px 12px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
+.change{
+    background:#173f5f;
+    color:white;
 }
 
-th {
-    background: #1f4e79;
-    color: white;
+.paid{
+    color:green;
+    font-weight:bold;
 }
 
-button {
-    border: none;
-    border-radius: 7px;
-    padding: 8px 12px;
-    cursor: pointer;
-    font-weight: bold;
+.unpaid{
+    color:red;
+    font-weight:bold;
 }
 
-.paid {
-    background: #d9f7df;
-    color: green;
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:12px;
 }
 
-.unpaid {
-    background: #ffe0e0;
-    color: red;
+th,td{
+    border:1px solid #ddd;
+    padding:9px;
+    text-align:center;
 }
 
-.action {
-    background: #1f4e79;
-    color: white;
+th{
+    background:#173f5f;
+    color:white;
 }
 
-.reset {
-    background: #777;
-    color: white;
-    margin-top: 10px;
+.table-wrap{
+    overflow-x:auto;
 }
 
-.summary {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 12px;
+.summary{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:12px;
 }
 
-.summaryBox {
-    padding: 18px;
-    background: #eef4fa;
-    border-radius: 10px;
-    text-align: center;
+.summary-box{
+    background:#eef4fa;
+    padding:18px;
+    border-radius:10px;
+    text-align:center;
 }
 
-.summaryBox strong {
-    display: block;
-    font-size: 22px;
-    margin-top: 5px;
+.summary-box strong{
+    display:block;
+    font-size:22px;
+    margin-top:7px;
 }
 
-select {
-    width: 100%;
-    padding: 10px;
-    border-radius: 7px;
-    border: 1px solid #bbb;
-    margin-top: 5px;
+.note{
+    line-height:1.7;
 }
 
-footer {
-    text-align: center;
-    color: #666;
-    padding: 25px;
+.warning{
+    background:#fff4d6;
+    padding:15px;
+    border-radius:10px;
 }
 
-@media(max-width:600px) {
-    th, td {
-        font-size: 13px;
-        padding: 7px;
-    }
-
-    header h1 {
-        font-size: 25px;
-    }
+footer{
+    text-align:center;
+    color:#666;
+    padding:25px;
 }
 </style>
 </head>
@@ -161,383 +156,660 @@ footer {
 <body>
 
 <header>
-    <h1>💰 Hamro Sasto</h1>
+    <h1>🤝 THE BROTHERHOOD</h1>
     <p>Saving & Investment Group</p>
 </header>
 
 <div class="container">
 
-    <!-- GROUP INFORMATION -->
-    <div class="card">
-        <h2>📌 Group Information</h2>
+<!-- GROUP DETAILS -->
+<div class="card">
+<h2>📌 Group Details</h2>
 
-        <div class="info">
+<div class="info">
 
-            <div class="box">
-                <b>Start Date</b>
-                2024-01-01
-            </div>
+<div class="box">
+<b>Sasto Start Date</b>
+<input type="date" id="savingStart">
+</div>
 
-            <div class="box">
-                <b>Duration</b>
-                30 Years
-            </div>
+<div class="box">
+<b>Adhyakshya</b>
+Dipak Mahatara
+</div>
 
-            <div class="box">
-                <b>SIP</b>
-                Rs. 5,000 / Month
-            </div>
+<div class="box">
+<b>Sachib</b>
+Surya Bahadur Adhikari
+</div>
 
-            <div class="box">
-                <b>Market</b>
-                Rs. 5,000 / Month
-            </div>
+<div class="box">
+<b>Total Members</b>
+5 Members
+</div>
 
-        </div>
-    </div>
+<div class="box">
+<b>Monthly Collection</b>
+Rs. 25,000
+</div>
 
-
-    <!-- MEMBERS -->
-    <div class="card">
-        <h2>👥 Group Members</h2>
-
-        <table>
-            <tr>
-                <th>No.</th>
-                <th>Name</th>
-            </tr>
-
-            <tr>
-                <td>1</td>
-                <td>Dipak Mahatara</td>
-            </tr>
-
-            <tr>
-                <td>2</td>
-                <td>Dipendra Mahatara</td>
-            </tr>
-
-            <tr>
-                <td>3</td>
-                <td>Rajan Mahatara</td>
-            </tr>
-
-            <tr>
-                <td>4</td>
-                <td>Milan Mahatara</td>
-            </tr>
-
-            <tr>
-                <td>5</td>
-                <td>Surya Bahadur Radhikari</td>
-            </tr>
-        </table>
-    </div>
+</div>
+</div>
 
 
-    <!-- MONTH SELECTOR -->
-    <div class="card">
-        <h2>📅 Select Month</h2>
+<!-- MEMBERS -->
+<div class="card">
+<h2>👥 5 Members</h2>
 
-        <select id="monthSelect" onchange="showMonth()">
-        </select>
-    </div>
+<div class="table-wrap">
 
+<table>
+<tr>
+<th>No.</th>
+<th>Member Name</th>
+<th>Monthly</th>
+</tr>
 
-    <!-- MONTHLY STATUS -->
-    <div class="card">
-        <h2 id="monthTitle">Monthly Status</h2>
+<tr>
+<td>1</td>
+<td>Dipak Mahatara</td>
+<td>Rs. 5,000</td>
+</tr>
 
-        <table>
+<tr>
+<td>2</td>
+<td>Dipendra Mahatara</td>
+<td>Rs. 5,000</td>
+</tr>
 
-            <tr>
-                <th>Investment</th>
-                <th>Amount</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
+<tr>
+<td>3</td>
+<td>Rajan Mahatara</td>
+<td>Rs. 5,000</td>
+</tr>
 
-            <tr>
-                <td>SIP</td>
-                <td>Rs. 5,000</td>
-                <td id="sipStatus">Unpaid ❌</td>
-                <td>
-                    <button class="action" onclick="togglePayment('sip')">
-                        Change
-                    </button>
-                </td>
-            </tr>
+<tr>
+<td>4</td>
+<td>Milan Mahatara</td>
+<td>Rs. 5,000</td>
+</tr>
 
-            <tr>
-                <td>Market Investment</td>
-                <td>Rs. 5,000</td>
-                <td id="marketStatus">Unpaid ❌</td>
-                <td>
-                    <button class="action" onclick="togglePayment('market')">
-                        Change
-                    </button>
-                </td>
-            </tr>
+<tr>
+<td>5</td>
+<td>Surya Bahadur Adhikari</td>
+<td>Rs. 5,000</td>
+</tr>
 
-        </table>
-    </div>
+<tr>
+<th colspan="2">Total / Month</th>
+<th>Rs. 25,000</th>
+</tr>
 
+</table>
 
-    <!-- SUMMARY -->
-    <div class="card">
-
-        <h2>💵 Summary</h2>
-
-        <div class="summary">
-
-            <div class="summaryBox">
-                SIP Paid
-                <strong id="sipTotal">Rs. 0</strong>
-            </div>
-
-            <div class="summaryBox">
-                Market Paid
-                <strong id="marketTotal">Rs. 0</strong>
-            </div>
-
-            <div class="summaryBox">
-                Total Paid
-                <strong id="grandTotal">Rs. 0</strong>
-            </div>
-
-        </div>
-
-        <button class="reset" onclick="resetData()">
-            Reset All Data
-        </button>
-
-    </div>
+</div>
+</div>
 
 
-    <!-- MARKET INFORMATION -->
-    <div class="card">
+<!-- SAVING -->
+<div class="card">
+<h2>💰 Monthly Saving Record</h2>
 
-        <h2>📈 Market Investment</h2>
+<p>
+प्रत्येक सदस्यबाट मासिक <b>Rs. 5,000</b>
+</p>
 
-        <p>
-            Market Investment सुरु:
-            <b>September 25, 2026</b>
-        </p>
+<div class="table-wrap">
 
-        <p>
-            Monthly Market Investment:
-            <b>Rs. 5,000</b>
-        </p>
+<table id="savingTable">
+<thead>
+<tr>
+<th>Member</th>
+<th>Jan</th>
+<th>Feb</th>
+<th>Mar</th>
+<th>Apr</th>
+<th>May</th>
+<th>Jun</th>
+<th>Jul</th>
+<th>Aug</th>
+<th>Sep</th>
+<th>Oct</th>
+<th>Nov</th>
+<th>Dec</th>
+</tr>
+</thead>
 
-    </div>
+<tbody id="savingBody"></tbody>
+
+</table>
+
+</div>
+</div>
 
 
-    <!-- NOTE -->
-    <div class="card">
+<!-- SAVING SUMMARY -->
+<div class="card">
+<h2>📊 Saving Summary</h2>
 
-        <h2>📝 Note</h2>
+<div class="summary">
 
-        <p>
-            हाम्रो saving योजना 2024-01-01 बाट सुरु भएको हो
-            र 30 वर्षसम्म सञ्चालन हुनेछ।
-        </p>
+<div class="summary-box">
+Collected
+<strong id="savingTotal">Rs. 0</strong>
+</div>
 
-        <p>
-            SIP total:
-            <b>Rs. 5,000 प्रति महिना</b>
-        </p>
+<div class="summary-box">
+Expected
+<strong>Rs. 300,000</strong>
+</div>
 
-        <p>
-            Market Investment total:
-            <b>Rs. 5,000 प्रति महिना</b>
-        </p>
+<div class="summary-box">
+Fine
+<strong id="fineTotal">Rs. 0</strong>
+</div>
 
-        <p>
-            Market Investment सुरु:
-            <b>September 25, 2026</b>
-        </p>
+</div>
+</div>
 
-    </div>
+
+<!-- INVESTMENT -->
+<div class="card">
+
+<h2>📈 Investment Side</h2>
+
+<div class="info">
+
+<div class="box">
+<b>SIP Start Date</b>
+<input type="date" id="sipStart">
+</div>
+
+<div class="box">
+<b>Market Start Date</b>
+<input type="date" id="marketStart">
+</div>
+
+</div>
+
+<br>
+
+<p>
+<b>SIP:</b> Rs. 5,000 / Month
+</p>
+
+<p>
+<b>Market Investment:</b> Rs. 5,000 / Month
+</p>
+
+</div>
+
+
+<!-- SIP -->
+<div class="card">
+
+<h2>📊 SIP — 12 Months</h2>
+
+<div class="table-wrap">
+
+<table>
+
+<tr>
+<th>Month</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+<tbody id="sipBody"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
+<!-- MARKET -->
+<div class="card">
+
+<h2>📈 Market Investment — 12 Months</h2>
+
+<div class="table-wrap">
+
+<table>
+
+<tr>
+<th>Month</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+<tbody id="marketBody"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
+<!-- INVESTMENT SUMMARY -->
+<div class="card">
+
+<h2>💵 Investment Summary</h2>
+
+<div class="summary">
+
+<div class="summary-box">
+SIP Paid
+<strong id="sipTotal">Rs. 0</strong>
+</div>
+
+<div class="summary-box">
+Market Paid
+<strong id="marketTotal">Rs. 0</strong>
+</div>
+
+<div class="summary-box">
+Investment Total
+<strong id="investmentTotal">Rs. 0</strong>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- INTEREST & FINE -->
+<div class="card">
+
+<h2>📝 Note / Rules</h2>
+
+<div class="warning note">
+
+<p>
+💰 <b>Interest / Rate:</b>
+</p>
+
+<p>
+• Rs. 50,000 भन्दा माथि भए → <b>15% को दर</b>
+</p>
+
+<p>
+• Rs. 50,000 भन्दा कम भए → <b>12% को दर</b>
+</p>
+
+<p>
+⚠️ मासिक पैसा समयमा नबुझाएमा
+<b>Rs. 250 Fine</b> लाग्नेछ।
+</p>
+
+<p>
+📌 यी नियमहरू The Brotherhood को
+saving/investment record का लागि राखिएका हुन्।
+</p>
+
+</div>
+
+</div>
 
 </div>
 
 
 <footer>
-    © 2026 Hamro Sasto
+© 2026 The Brotherhood | Saving & Investment Group
 </footer>
 
 
 <script>
 
+const members = [
+    "Dipak Mahatara",
+    "Dipendra Mahatara",
+    "Rajan Mahatara",
+    "Milan Mahatara",
+    "Surya Bahadur Adhikari"
+];
+
+const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+];
+
+const SAVING_AMOUNT = 5000;
 const SIP_AMOUNT = 5000;
 const MARKET_AMOUNT = 5000;
-
-let payments =
-    JSON.parse(localStorage.getItem("hamroSastoPayments")) || {};
+const FINE = 250;
 
 
-// CREATE MONTH LIST
-function createMonths() {
+/* LOAD DATA */
 
-    const select = document.getElementById("monthSelect");
-
-    let start = new Date(2024, 0, 1);
-    let end = new Date(2053, 11, 1);
-
-    while (start <= end) {
-
-        let year = start.getFullYear();
-        let month = String(start.getMonth() + 1).padStart(2, "0");
-
-        let value = year + "-" + month;
-
-        let option = document.createElement("option");
-
-        option.value = value;
-
-        option.textContent =
-            start.toLocaleString("en-US", {
-                month: "long"
-            }) + " " + year;
-
-        select.appendChild(option);
-
-        start.setMonth(start.getMonth() + 1);
-    }
-}
+let data = JSON.parse(
+    localStorage.getItem("brotherhoodData")
+) || {
+    saving:{},
+    sip:{},
+    market:{},
+    savingStart:"2024-01-01",
+    sipStart:"2024-01-01",
+    marketStart:"2026-09-25"
+};
 
 
-// SHOW SELECTED MONTH
-function showMonth() {
+/* SAVE DATA */
 
-    const month =
-        document.getElementById("monthSelect").value;
-
-    document.getElementById("monthTitle").textContent =
-        "📅 " + month + " Status";
-
-    let data = payments[month] || {
-        sip: false,
-        market: false
-    };
-
-    updateStatus("sipStatus", data.sip);
-
-    updateStatus("marketStatus", data.market);
-}
-
-
-// UPDATE STATUS
-function updateStatus(id, paid) {
-
-    const element = document.getElementById(id);
-
-    if (paid) {
-
-        element.textContent = "Paid ✅";
-        element.className = "paid";
-
-    } else {
-
-        element.textContent = "Unpaid ❌";
-        element.className = "unpaid";
-    }
-}
-
-
-// CHANGE PAYMENT
-function togglePayment(type) {
-
-    const month =
-        document.getElementById("monthSelect").value;
-
-    if (!payments[month]) {
-
-        payments[month] = {
-            sip: false,
-            market: false
-        };
-    }
-
-    payments[month][type] =
-        !payments[month][type];
+function saveData(){
 
     localStorage.setItem(
-        "hamroSastoPayments",
-        JSON.stringify(payments)
+        "brotherhoodData",
+        JSON.stringify(data)
     );
-
-    showMonth();
-    calculateTotal();
 }
 
 
-// CALCULATE TOTAL
-function calculateTotal() {
+/* SAVING TABLE */
+
+function createSavingTable(){
+
+    const body =
+        document.getElementById("savingBody");
+
+    body.innerHTML = "";
+
+    members.forEach((member,memberIndex)=>{
+
+        let row = document.createElement("tr");
+
+        let name = document.createElement("td");
+
+        name.textContent = member;
+
+        row.appendChild(name);
+
+        months.forEach((month,monthIndex)=>{
+
+            let cell = document.createElement("td");
+
+            let key =
+                memberIndex + "-" + monthIndex;
+
+            let paid =
+                data.saving[key] || false;
+
+            let button =
+                document.createElement("button");
+
+            button.className =
+                paid ? "paid" : "unpaid";
+
+            button.textContent =
+                paid ? "Paid ✅" : "Unpaid ❌";
+
+            button.onclick = function(){
+
+                data.saving[key] =
+                    !data.saving[key];
+
+                saveData();
+
+                createSavingTable();
+
+                calculateSaving();
+
+            };
+
+            cell.appendChild(button);
+
+            row.appendChild(cell);
+
+        });
+
+        body.appendChild(row);
+
+    });
+
+}
+
+
+/* SAVING CALCULATION */
+
+function calculateSaving(){
+
+    let total = 0;
+    let fine = 0;
+
+    Object.keys(data.saving).forEach(key=>{
+
+        if(data.saving[key]){
+
+            total += SAVING_AMOUNT;
+
+        }else{
+
+            fine += FINE;
+
+        }
+
+    });
+
+    document.getElementById(
+        "savingTotal"
+    ).textContent =
+        "Rs. " + total.toLocaleString();
+
+    document.getElementById(
+        "fineTotal"
+    ).textContent =
+        "Rs. " + fine.toLocaleString();
+
+}
+
+
+/* INVESTMENT TABLE */
+
+function createInvestmentTable(
+    type,
+    bodyId,
+    amount
+){
+
+    const body =
+        document.getElementById(bodyId);
+
+    body.innerHTML = "";
+
+    months.forEach((month,index)=>{
+
+        let key = index;
+
+        let paid =
+            data[type][key] || false;
+
+        let row =
+            document.createElement("tr");
+
+        let monthCell =
+            document.createElement("td");
+
+        monthCell.textContent = month;
+
+        let statusCell =
+            document.createElement("td");
+
+        statusCell.textContent =
+            paid ? "Paid ✅" : "Unpaid ❌";
+
+        statusCell.className =
+            paid ? "paid" : "unpaid";
+
+        let actionCell =
+            document.createElement("td");
+
+        let button =
+            document.createElement("button");
+
+        button.className = "change";
+
+        button.textContent = "Change";
+
+        button.onclick = function(){
+
+            data[type][key] =
+                !data[type][key];
+
+            saveData();
+
+            createInvestmentTable(
+                type,
+                bodyId,
+                amount
+            );
+
+            calculateInvestment();
+
+        };
+
+        actionCell.appendChild(button);
+
+        row.appendChild(monthCell);
+
+        row.appendChild(statusCell);
+
+        row.appendChild(actionCell);
+
+        body.appendChild(row);
+
+    });
+
+}
+
+
+/* INVESTMENT TOTAL */
+
+function calculateInvestment(){
 
     let sipTotal = 0;
     let marketTotal = 0;
 
-    for (let month in payments) {
+    Object.keys(data.sip).forEach(key=>{
 
-        if (payments[month].sip) {
+        if(data.sip[key]){
 
             sipTotal += SIP_AMOUNT;
+
         }
 
-        if (
-            payments[month].market &&
-            month >= "2026-09"
-        ) {
+    });
+
+    Object.keys(data.market).forEach(key=>{
+
+        if(data.market[key]){
 
             marketTotal += MARKET_AMOUNT;
-        }
-    }
 
-    document.getElementById("sipTotal").textContent =
+        }
+
+    });
+
+    document.getElementById(
+        "sipTotal"
+    ).textContent =
         "Rs. " + sipTotal.toLocaleString();
 
-    document.getElementById("marketTotal").textContent =
+    document.getElementById(
+        "marketTotal"
+    ).textContent =
         "Rs. " + marketTotal.toLocaleString();
 
-    document.getElementById("grandTotal").textContent =
+    document.getElementById(
+        "investmentTotal"
+    ).textContent =
         "Rs. " +
-        (sipTotal + marketTotal).toLocaleString();
+        (sipTotal + marketTotal)
+        .toLocaleString();
+
 }
 
 
-// RESET DATA
-function resetData() {
+/* DATE SETTINGS */
 
-    let confirmReset =
-        confirm("सबै Paid/Unpaid data हटाउने हो?");
+document.getElementById(
+    "savingStart"
+).value = data.savingStart;
 
-    if (confirmReset) {
+document.getElementById(
+    "sipStart"
+).value = data.sipStart;
 
-        localStorage.removeItem(
-            "hamroSastoPayments"
-        );
-
-        payments = {};
-
-        showMonth();
-        calculateTotal();
-    }
-}
+document.getElementById(
+    "marketStart"
+).value = data.marketStart;
 
 
-// START
-createMonths();
+document.getElementById(
+    "savingStart"
+).onchange = function(){
 
-document.getElementById("monthSelect").value =
-    new Date().getFullYear() +
-    "-" +
-    String(new Date().getMonth() + 1).padStart(2, "0");
+    data.savingStart = this.value;
 
-showMonth();
-calculateTotal();
+    saveData();
+
+};
+
+
+document.getElementById(
+    "sipStart"
+).onchange = function(){
+
+    data.sipStart = this.value;
+
+    saveData();
+
+};
+
+
+document.getElementById(
+    "marketStart"
+).onchange = function(){
+
+    data.marketStart = this.value;
+
+    saveData();
+
+};
+
+
+/* START */
+
+createSavingTable();
+
+calculateSaving();
+
+createInvestmentTable(
+    "sip",
+    "sipBody",
+    SIP_AMOUNT
+);
+
+createInvestmentTable(
+    "market",
+    "marketBody",
+    MARKET_AMOUNT
+);
+
+calculateInvestment();
 
 </script>
 
 </body>
-</html>
+    </html>
