@@ -7,148 +7,233 @@
 <title>The Brotherhood</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#f2f4f7;
-    color:#222;
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f3f6fa;
+  color:#17202a;
 }
 
 header{
-    background:#173f5f;
-    color:white;
-    text-align:center;
-    padding:28px 12px;
+  background:linear-gradient(135deg,#111827,#26364a);
+  color:white;
+  padding:28px 15px;
+  text-align:center;
 }
 
 header h1{
-    margin:0;
-    font-size:32px;
+  margin:0;
+  font-size:30px;
+  letter-spacing:1px;
+}
+
+header p{
+  margin:8px 0 0;
+  opacity:.85;
 }
 
 .container{
-    max-width:1100px;
-    margin:auto;
-    padding:15px;
+  max-width:1200px;
+  margin:auto;
+  padding:15px;
 }
 
 .card{
-    background:white;
-    margin:16px 0;
-    padding:20px;
-    border-radius:14px;
-    box-shadow:0 2px 10px rgba(0,0,0,.08);
+  background:white;
+  border-radius:16px;
+  padding:18px;
+  margin-bottom:18px;
+  box-shadow:0 5px 18px rgba(0,0,0,.08);
 }
 
-h2{
-    color:#173f5f;
-    margin-top:0;
+.card h2{
+  margin-top:0;
+  color:#17202a;
+}
+
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:12px;
 }
 
 .info{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:12px;
+  background:#f5f7fa;
+  padding:13px;
+  border-radius:10px;
 }
 
-.box{
-    background:#f5f7fa;
-    padding:15px;
-    border-radius:10px;
-}
-
-.box b{
-    display:block;
-    margin-bottom:6px;
+.info b{
+  display:block;
+  margin-bottom:5px;
 }
 
 input,select{
-    width:100%;
-    padding:10px;
-    margin-top:5px;
-    border:1px solid #bbb;
-    border-radius:7px;
+  width:100%;
+  padding:9px;
+  border:1px solid #ccd3dc;
+  border-radius:8px;
+  font-size:14px;
 }
 
 button{
-    border:0;
-    border-radius:7px;
-    padding:8px 12px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.change{
-    background:#173f5f;
-    color:white;
+  border:0;
+  border-radius:7px;
+  padding:7px 10px;
+  cursor:pointer;
+  font-weight:bold;
 }
 
 .paid{
-    color:green;
-    font-weight:bold;
+  background:#16a34a;
+  color:white;
 }
 
 .unpaid{
-    color:red;
-    font-weight:bold;
+  background:#dc2626;
+  color:white;
 }
 
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:12px;
+.not-started{
+  background:#9ca3af;
+  color:white;
+  cursor:not-allowed;
 }
 
-th,td{
-    border:1px solid #ddd;
-    padding:9px;
-    text-align:center;
+.controls{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
 }
 
-th{
-    background:#173f5f;
-    color:white;
+.controls label{
+  font-weight:bold;
+}
+
+.year-select{
+  max-width:180px;
 }
 
 .table-wrap{
-    overflow-x:auto;
+  overflow-x:auto;
+  width:100%;
+}
+
+table{
+  width:100%;
+  min-width:900px;
+  border-collapse:collapse;
+}
+
+th,td{
+  border:1px solid #dce1e7;
+  padding:7px;
+  text-align:center;
+  vertical-align:middle;
+}
+
+th{
+  background:#17202a;
+  color:white;
+}
+
+td:first-child,
+th:first-child{
+  position:sticky;
+  left:0;
+  z-index:2;
+  background:#eef2f6;
+}
+
+th:first-child{
+  background:#17202a;
+}
+
+.amount-input{
+  width:95px;
+  margin-bottom:5px;
+}
+
+.status-btn{
+  width:78px;
+  font-size:12px;
 }
 
 .summary{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:12px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:10px;
+  margin-top:15px;
 }
 
 .summary-box{
-    background:#eef4fa;
-    padding:18px;
-    border-radius:10px;
-    text-align:center;
+  background:#eef4f9;
+  border-radius:10px;
+  padding:13px;
+  text-align:center;
 }
 
 .summary-box strong{
-    display:block;
-    font-size:22px;
-    margin-top:7px;
+  display:block;
+  font-size:20px;
+  margin-top:5px;
 }
 
 .note{
-    line-height:1.7;
+  background:#fff8df;
+  border-left:5px solid #eab308;
+  padding:15px;
+  border-radius:8px;
+  line-height:1.8;
 }
 
-.warning{
-    background:#fff4d6;
-    padding:15px;
-    border-radius:10px;
+.profit{
+  color:#15803d;
+}
+
+.loss{
+  color:#dc2626;
+}
+
+.small{
+  font-size:12px;
+  color:#667085;
 }
 
 footer{
-    text-align:center;
-    color:#666;
-    padding:25px;
+  text-align:center;
+  padding:25px;
+  color:#667085;
+}
+
+.action-buttons{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.action-buttons button{
+  background:#26364a;
+  color:white;
+}
+
+@media(max-width:600px){
+  header h1{
+    font-size:24px;
+  }
+
+  .card{
+    padding:13px;
+  }
+
+  .info-grid{
+    grid-template-columns:1fr 1fr;
+  }
 }
 </style>
 </head>
@@ -156,660 +241,1913 @@ footer{
 <body>
 
 <header>
-    <h1>🤝 THE BROTHERHOOD</h1>
-    <p>Saving & Investment Group</p>
+  <h1>🤝 THE BROTHERHOOD</h1>
+  <p>Saving • Investment • Financial Record</p>
 </header>
 
 <div class="container">
 
+<!-- DASHBOARD -->
+<div class="card">
+  <h2>📊 Dashboard</h2>
+
+  <div class="summary">
+    <div class="summary-box">
+      Total Saving
+      <strong id="dashSaving">Rs. 0</strong>
+    </div>
+
+    <div class="summary-box">
+      Monthly Collection
+      <strong>Rs. 25,000</strong>
+    </div>
+
+    <div class="summary-box">
+      Saving Unpaid
+      <strong id="dashUnpaid">0</strong>
+    </div>
+
+    <div class="summary-box">
+      Fine
+      <strong id="dashFine">Rs. 0</strong>
+    </div>
+
+    <div class="summary-box">
+      SIP
+      <strong id="dashSip">Rs. 0</strong>
+    </div>
+
+    <div class="summary-box">
+      Market
+      <strong id="dashMarket">Rs. 0</strong>
+    </div>
+
+    <div class="summary-box">
+      Total Investment
+      <strong id="dashInvestment">Rs. 0</strong>
+    </div>
+  </div>
+</div>
+
+
 <!-- GROUP DETAILS -->
 <div class="card">
-<h2>📌 Group Details</h2>
+  <h2>👥 Group Details</h2>
 
-<div class="info">
+  <div class="info-grid">
 
-<div class="box">
-<b>Sasto Start Date</b>
-<input type="date" id="savingStart">
-</div>
+    <div class="info">
+      <b>Group Name</b>
+      The Brotherhood
+    </div>
 
-<div class="box">
-<b>Adhyakshya</b>
-Dipak Mahatara
-</div>
+    <div class="info">
+      <b>Start Date</b>
+      <input type="date" id="groupStart">
+    </div>
 
-<div class="box">
-<b>Sachib</b>
-Surya Bahadur Adhikari
-</div>
+    <div class="info">
+      <b>Duration</b>
+      30 Years
+    </div>
 
-<div class="box">
-<b>Total Members</b>
-5 Members
-</div>
+    <div class="info">
+      <b>Chairman</b>
+      Dipak Mahatara
+    </div>
 
-<div class="box">
-<b>Monthly Collection</b>
-Rs. 25,000
-</div>
+    <div class="info">
+      <b>Secretary</b>
+      Surya Bahadur Adhikari
+    </div>
 
-</div>
+    <div class="info">
+      <b>Total Members</b>
+      5
+    </div>
+
+    <div class="info">
+      <b>Monthly Collection</b>
+      Rs. 25,000
+    </div>
+
+  </div>
 </div>
 
 
 <!-- MEMBERS -->
 <div class="card">
-<h2>👥 5 Members</h2>
+  <h2>👤 Members</h2>
 
-<div class="table-wrap">
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>S.N.</th>
+          <th>Name</th>
+          <th>Monthly Saving</th>
+        </tr>
+      </thead>
 
-<table>
-<tr>
-<th>No.</th>
-<th>Member Name</th>
-<th>Monthly</th>
-</tr>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Dipak Mahatara</td>
+          <td>Rs. 5,000</td>
+        </tr>
 
-<tr>
-<td>1</td>
-<td>Dipak Mahatara</td>
-<td>Rs. 5,000</td>
-</tr>
+        <tr>
+          <td>2</td>
+          <td>Dipendra Mahatara</td>
+          <td>Rs. 5,000</td>
+        </tr>
 
-<tr>
-<td>2</td>
-<td>Dipendra Mahatara</td>
-<td>Rs. 5,000</td>
-</tr>
+        <tr>
+          <td>3</td>
+          <td>Rajan Mahatara</td>
+          <td>Rs. 5,000</td>
+        </tr>
 
-<tr>
-<td>3</td>
-<td>Rajan Mahatara</td>
-<td>Rs. 5,000</td>
-</tr>
+        <tr>
+          <td>4</td>
+          <td>Milan Mahatara</td>
+          <td>Rs. 5,000</td>
+        </tr>
 
-<tr>
-<td>4</td>
-<td>Milan Mahatara</td>
-<td>Rs. 5,000</td>
-</tr>
-
-<tr>
-<td>5</td>
-<td>Surya Bahadur Adhikari</td>
-<td>Rs. 5,000</td>
-</tr>
-
-<tr>
-<th colspan="2">Total / Month</th>
-<th>Rs. 25,000</th>
-</tr>
-
-</table>
-
-</div>
+        <tr>
+          <td>5</td>
+          <td>Surya Bahadur Adhikari</td>
+          <td>Rs. 5,000</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 
 <!-- SAVING -->
 <div class="card">
-<h2>💰 Monthly Saving Record</h2>
+  <h2>💰 Saving Record</h2>
 
-<p>
-प्रत्येक सदस्यबाट मासिक <b>Rs. 5,000</b>
-</p>
+  <div class="controls">
+    <label>Select Year:</label>
 
-<div class="table-wrap">
+    <select id="savingYear"
+            class="year-select"
+            onchange="renderSaving()">
+    </select>
+  </div>
 
-<table id="savingTable">
-<thead>
-<tr>
-<th>Member</th>
-<th>Jan</th>
-<th>Feb</th>
-<th>Mar</th>
-<th>Apr</th>
-<th>May</th>
-<th>Jun</th>
-<th>Jul</th>
-<th>Aug</th>
-<th>Sep</th>
-<th>Oct</th>
-<th>Nov</th>
-<th>Dec</th>
-</tr>
-</thead>
+  <p class="small">
+    प्रत्येक सदस्यको प्रत्येक महिनाको रकम change गर्न सकिन्छ।
+    Status मा click गर्दा Paid / Unpaid परिवर्तन हुन्छ।
+  </p>
 
-<tbody id="savingBody"></tbody>
+  <div class="table-wrap">
+    <table id="savingTable"></table>
+  </div>
 
-</table>
+  <div class="summary">
 
-</div>
-</div>
+    <div class="summary-box">
+      Expected
+      <strong id="savingExpected">Rs. 0</strong>
+    </div>
 
+    <div class="summary-box">
+      Collected
+      <strong id="savingCollected">Rs. 0</strong>
+    </div>
 
-<!-- SAVING SUMMARY -->
-<div class="card">
-<h2>📊 Saving Summary</h2>
+    <div class="summary-box">
+      Unpaid
+      <strong id="savingUnpaid">0</strong>
+    </div>
 
-<div class="summary">
+    <div class="summary-box">
+      Fine
+      <strong id="savingFine">Rs. 0</strong>
+    </div>
 
-<div class="summary-box">
-Collected
-<strong id="savingTotal">Rs. 0</strong>
-</div>
-
-<div class="summary-box">
-Expected
-<strong>Rs. 300,000</strong>
-</div>
-
-<div class="summary-box">
-Fine
-<strong id="fineTotal">Rs. 0</strong>
-</div>
-
-</div>
-</div>
-
-
-<!-- INVESTMENT -->
-<div class="card">
-
-<h2>📈 Investment Side</h2>
-
-<div class="info">
-
-<div class="box">
-<b>SIP Start Date</b>
-<input type="date" id="sipStart">
-</div>
-
-<div class="box">
-<b>Market Start Date</b>
-<input type="date" id="marketStart">
-</div>
-
-</div>
-
-<br>
-
-<p>
-<b>SIP:</b> Rs. 5,000 / Month
-</p>
-
-<p>
-<b>Market Investment:</b> Rs. 5,000 / Month
-</p>
-
+  </div>
 </div>
 
 
 <!-- SIP -->
 <div class="card">
+  <h2>📈 SIP Investment</h2>
 
-<h2>📊 SIP — 12 Months</h2>
+  <div class="info-grid">
 
-<div class="table-wrap">
+    <div class="info">
+      <b>SIP Start Date</b>
+      <input type="date"
+             id="sipStart"
+             onchange="saveSettings(); renderSip();">
+    </div>
 
-<table>
+    <div class="info">
+      <b>Monthly SIP Amount</b>
+      <input type="number"
+             id="sipAmount"
+             min="0"
+             onchange="saveSettings(); renderSip();">
+    </div>
 
-<tr>
-<th>Month</th>
-<th>Status</th>
-<th>Action</th>
-</tr>
+  </div>
 
-<tbody id="sipBody"></tbody>
+  <br>
 
-</table>
+  <div class="controls">
+    <label>Select Year:</label>
 
-</div>
+    <select id="sipYear"
+            class="year-select"
+            onchange="renderSip()">
+    </select>
+  </div>
 
+  <div class="table-wrap">
+    <table id="sipTable"></table>
+  </div>
+
+  <div class="summary">
+    <div class="summary-box">
+      SIP Paid
+      <strong id="sipTotal">Rs. 0</strong>
+    </div>
+
+    <div class="summary-box">
+      Unpaid
+      <strong id="sipUnpaid">0</strong>
+    </div>
+  </div>
 </div>
 
 
 <!-- MARKET -->
 <div class="card">
+  <h2>📊 Market Investment</h2>
 
-<h2>📈 Market Investment — 12 Months</h2>
+  <div class="info-grid">
 
-<div class="table-wrap">
+    <div class="info">
+      <b>Market Start Date</b>
+      <input type="date"
+             id="marketStart"
+             onchange="saveSettings(); renderMarket();">
+    </div>
 
-<table>
+    <div class="info">
+      <b>Monthly Market Amount</b>
+      <input type="number"
+             id="marketAmount"
+             min="0"
+             onchange="saveSettings(); renderMarket();">
+    </div>
 
-<tr>
-<th>Month</th>
-<th>Status</th>
-<th>Action</th>
-</tr>
+  </div>
 
-<tbody id="marketBody"></tbody>
+  <br>
 
-</table>
+  <div class="controls">
+    <label>Select Year:</label>
 
+    <select id="marketYear"
+            class="year-select"
+            onchange="renderMarket()">
+    </select>
+  </div>
+
+  <div class="table-wrap">
+    <table id="marketTable"></table>
+  </div>
+
+  <div class="summary">
+    <div class="summary-box">
+      Market Paid
+      <strong id="marketTotal">Rs. 0</strong>
+    </div>
+
+    <div class="summary-box">
+      Unpaid
+      <strong id="marketUnpaid">0</strong>
+    </div>
+  </div>
 </div>
 
-</div>
 
-
-<!-- INVESTMENT SUMMARY -->
+<!-- MARKET PROFIT LOSS -->
 <div class="card">
+  <h2>📉 Market Profit / Loss</h2>
 
-<h2>💵 Investment Summary</h2>
+  <div class="info-grid">
 
-<div class="summary">
+    <div class="info">
+      <b>Total Market Investment</b>
+      <input type="number"
+             id="marketInvested"
+             readonly>
+    </div>
 
-<div class="summary-box">
-SIP Paid
-<strong id="sipTotal">Rs. 0</strong>
+    <div class="info">
+      <b>Current Market Value</b>
+      <input type="number"
+             id="marketValue"
+             min="0"
+             onchange="calculateMarketPL()">
+    </div>
+
+  </div>
+
+  <div class="summary">
+
+    <div class="summary-box">
+      Investment
+      <strong id="plInvestment">Rs. 0</strong>
+    </div>
+
+    <div class="summary-box">
+      Current Value
+      <strong id="plValue">Rs. 0</strong>
+    </div>
+
+    <div class="summary-box">
+      Profit / Loss
+      <strong id="profitLoss">Rs. 0</strong>
+    </div>
+
+  </div>
 </div>
 
-<div class="summary-box">
-Market Paid
-<strong id="marketTotal">Rs. 0</strong>
-</div>
 
-<div class="summary-box">
-Investment Total
-<strong id="investmentTotal">Rs. 0</strong>
-</div>
-
-</div>
-
-</div>
-
-
-<!-- INTEREST & FINE -->
+<!-- RULES -->
 <div class="card">
+  <h2>📌 Rules & Notes</h2>
 
-<h2>📝 Note / Rules</h2>
+  <div class="note">
 
-<div class="warning note">
+    💰 <b>Saving:</b><br>
+    प्रत्येक सदस्यले monthly saving record अनुसार रकम जम्मा गर्ने।
 
-<p>
-💰 <b>Interest / Rate:</b>
-</p>
+    <br><br>
 
-<p>
-• Rs. 50,000 भन्दा माथि भए → <b>15% को दर</b>
-</p>
+    💵 <b>Fine:</b><br>
+    Monthly payment नदिएको अवस्थामा
+    <b>Rs. 250</b> fine लाग्नेछ।
 
-<p>
-• Rs. 50,000 भन्दा कम भए → <b>12% को दर</b>
-</p>
+    <br><br>
 
-<p>
-⚠️ मासिक पैसा समयमा नबुझाएमा
-<b>Rs. 250 Fine</b> लाग्नेछ।
-</p>
+    📈 <b>Rate:</b><br>
+    Rs. 50,000 भन्दा माथि → <b>15%</b> को दर<br>
+    Rs. 50,000 भन्दा कम → <b>12%</b> को दर
 
-<p>
-📌 यी नियमहरू The Brotherhood को
-saving/investment record का लागि राखिएका हुन्।
-</p>
+    <br><br>
 
+    📅 <b>Duration:</b><br>
+    Group record 30 years सम्म राखिएको छ।
+    (2024–2053)
+
+  </div>
+</div>
+
+
+<!-- DATA TOOLS -->
+<div class="card">
+  <h2>⚙️ Data Backup</h2>
+
+  <p class="small">
+    यो website को data यही browser मा सुरक्षित हुन्छ।
+    फोन change गर्दा backup राख्नु राम्रो हुन्छ।
+  </p>
+
+  <div class="action-buttons">
+    <button onclick="exportData()">⬇ Export Data</button>
+
+    <button onclick="document.getElementById('importFile').click()">
+      ⬆ Import Data
+    </button>
+
+    <button onclick="resetData()">Reset Data</button>
+  </div>
+
+  <input type="file"
+         id="importFile"
+         accept=".json"
+         style="display:none"
+         onchange="importData(event)">
 </div>
 
 </div>
-
-</div>
-
 
 <footer>
-© 2026 The Brotherhood | Saving & Investment Group
+  © 2026 The Brotherhood • Saving & Investment Management
 </footer>
 
 
 <script>
 
-const members = [
-    "Dipak Mahatara",
-    "Dipendra Mahatara",
-    "Rajan Mahatara",
-    "Milan Mahatara",
-    "Surya Bahadur Adhikari"
+/* =========================
+   BASIC DATA
+========================= */
+
+const MEMBERS = [
+  "Dipak Mahatara",
+  "Dipendra Mahatara",
+  "Rajan Mahatara",
+  "Milan Mahatara",
+  "Surya Bahadur Adhikari"
 ];
 
-const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
+const MONTHS = [
+  "Jan","Feb","Mar","Apr","May","Jun",
+  "Jul","Aug","Sep","Oct","Nov","Dec"
 ];
 
-const SAVING_AMOUNT = 5000;
-const SIP_AMOUNT = 5000;
-const MARKET_AMOUNT = 5000;
-const FINE = 250;
+const START_YEAR = 2024;
+const END_YEAR = 2053;
+
+const STORAGE_KEY = "brotherhoodData";
 
 
-/* LOAD DATA */
+/* =========================
+   DEFAULT DATA
+========================= */
 
 let data = JSON.parse(
-    localStorage.getItem("brotherhoodData")
-) || {
+  localStorage.getItem(STORAGE_KEY) || "null"
+);
+
+if(!data){
+
+  data = {
+    settings:{
+      groupStart:"2024-01-01",
+      sipStart:"2024-01-01",
+      marketStart:"2026-09-25",
+      sipAmount:5000,
+      marketAmount:5000,
+      marketValue:0
+    },
+
     saving:{},
+
     sip:{},
-    market:{},
-    savingStart:"2024-01-01",
-    sipStart:"2024-01-01",
-    marketStart:"2026-09-25"
-};
+
+    market:{}
+  };
+}
 
 
-/* SAVE DATA */
+/* =========================
+   SAVE DATA
+========================= */
 
 function saveData(){
 
-    localStorage.setItem(
-        "brotherhoodData",
-        JSON.stringify(data)
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(data)
+  );
+
+  updateDashboard();
+}
+
+
+/* =========================
+   SAVE SETTINGS
+========================= */
+
+function saveSettings(){
+
+  data.settings.groupStart =
+    document.getElementById("groupStart").value;
+
+  data.settings.sipStart =
+    document.getElementById("sipStart").value;
+
+  data.settings.marketStart =
+    document.getElementById("marketStart").value;
+
+  data.settings.sipAmount =
+    Number(document.getElementById("sipAmount").value) || 0;
+
+  data.settings.marketAmount =
+    Number(document.getElementById("marketAmount").value) || 0;
+
+  data.settings.marketValue =
+    Number(document.getElementById("marketValue").value) || 0;
+
+  saveData();
+
+  renderSaving();
+  renderSip();
+  renderMarket();
+  calculateMarketPL();
+}
+
+
+/* =========================
+   YEAR DROPDOWNS
+========================= */
+
+function createYearSelectors(){
+
+  const selectors = [
+    document.getElementById("savingYear"),
+    document.getElementById("sipYear"),
+    document.getElementById("marketYear")
+  ];
+
+  selectors.forEach(select=>{
+
+    select.innerHTML = "";
+
+    for(let year=START_YEAR; year<=END_YEAR; year++){
+
+      const option =
+        document.createElement("option");
+
+      option.value = year;
+      option.textContent = year;
+
+      select.appendChild(option);
+    }
+
+  });
+
+  const currentYear = new Date().getFullYear();
+
+  const selectedYear =
+    currentYear >= START_YEAR &&
+    currentYear <= END_YEAR
+      ? currentYear
+      : START_YEAR;
+
+  document.getElementById("savingYear").value = selectedYear;
+  document.getElementById("sipYear").value = selectedYear;
+  document.getElementById("marketYear").value = selectedYear;
+}
+
+
+/* =========================
+   DATE HELPERS
+========================= */
+
+function monthDate(year,monthIndex){
+
+  return new Date(
+    year,
+    monthIndex,
+    1
+  );
+}
+
+
+function dateFromInput(value){
+
+  if(!value) return null;
+
+  const parts = value.split("-");
+
+  return new Date(
+    Number(parts[0]),
+    Number(parts[1])-1,
+    Number(parts[2])
+  );
+}
+
+
+function monthStarted(year,monthIndex,startDate){
+
+  const d = monthDate(year,monthIndex);
+
+  const s = dateFromInput(startDate);
+
+  if(!s) return true;
+
+  return d >=
+    new Date(
+      s.getFullYear(),
+      s.getMonth(),
+      1
     );
 }
 
 
-/* SAVING TABLE */
+/* =========================
+   SAVING KEY
+========================= */
 
-function createSavingTable(){
+function savingKey(year,memberIndex,monthIndex){
 
-    const body =
-        document.getElementById("savingBody");
-
-    body.innerHTML = "";
-
-    members.forEach((member,memberIndex)=>{
-
-        let row = document.createElement("tr");
-
-        let name = document.createElement("td");
-
-        name.textContent = member;
-
-        row.appendChild(name);
-
-        months.forEach((month,monthIndex)=>{
-
-            let cell = document.createElement("td");
-
-            let key =
-                memberIndex + "-" + monthIndex;
-
-            let paid =
-                data.saving[key] || false;
-
-            let button =
-                document.createElement("button");
-
-            button.className =
-                paid ? "paid" : "unpaid";
-
-            button.textContent =
-                paid ? "Paid ✅" : "Unpaid ❌";
-
-            button.onclick = function(){
-
-                data.saving[key] =
-                    !data.saving[key];
-
-                saveData();
-
-                createSavingTable();
-
-                calculateSaving();
-
-            };
-
-            cell.appendChild(button);
-
-            row.appendChild(cell);
-
-        });
-
-        body.appendChild(row);
-
-    });
-
+  return year + "_" +
+         memberIndex + "_" +
+         monthIndex;
 }
 
 
-/* SAVING CALCULATION */
+/* =========================
+   SAVING TABLE
+========================= */
+
+function renderSaving(){
+
+  const year =
+    Number(
+      document.getElementById("savingYear").value
+    );
+
+  const table =
+    document.getElementById("savingTable");
+
+  let html = `
+    <thead>
+      <tr>
+        <th>Member</th>
+  `;
+
+  MONTHS.forEach(month=>{
+    html += `<th>${month}</th>`;
+  });
+
+  html += `
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+  `;
+
+  MEMBERS.forEach((member,memberIndex)=>{
+
+    let memberTotal = 0;
+
+    html += `
+      <tr>
+        <td><b>${member}</b></td>
+    `;
+
+    MONTHS.forEach((month,monthIndex)=>{
+
+      const key =
+        savingKey(
+          year,
+          memberIndex,
+          monthIndex
+        );
+
+      if(!data.saving[key]){
+
+        data.saving[key] = {
+          amount:5000,
+          status:"none"
+        };
+
+      }
+
+      const record =
+        data.saving[key];
+
+      const started =
+        monthStarted(
+          year,
+          monthIndex,
+          data.settings.groupStart
+        );
+
+      if(record.status === "paid"){
+        memberTotal += Number(record.amount) || 0;
+      }
+
+      if(!started){
+
+        html += `
+          <td>
+            <button class="status-btn not-started"
+                    disabled>
+              Not Started
+            </button>
+          </td>
+        `;
+
+      }else{
+
+        let cls = "unpaid";
+        let text = "Unpaid";
+
+        if(record.status === "paid"){
+          cls = "paid";
+          text = "Paid";
+        }
+
+        html += `
+          <td>
+
+            <input
+              class="amount-input"
+              type="number"
+              min="0"
+              value="${record.amount}"
+              onchange="
+                updateSavingAmount(
+                  '${key}',
+                  this.value
+                )
+              "
+            >
+
+            <br>
+
+            <button
+              class="status-btn ${cls}"
+              onclick="
+                toggleSaving(
+                  '${key}'
+                )
+              ">
+              ${text}
+            </button>
+
+          </td>
+        `;
+      }
+
+    });
+
+    html += `
+        <td>
+          <b>Rs. ${memberTotal.toLocaleString()}</b>
+        </td>
+      </tr>
+    `;
+
+  });
+
+  html += `
+    </tbody>
+  `;
+
+  table.innerHTML = html;
+
+  calculateSaving();
+}
+
+
+/* =========================
+   UPDATE SAVING AMOUNT
+========================= */
+
+function updateSavingAmount(key,value){
+
+  if(!data.saving[key]){
+    data.saving[key] = {
+      amount:0,
+      status:"none"
+    };
+  }
+
+  data.saving[key].amount =
+    Number(value) || 0;
+
+  saveData();
+  calculateSaving();
+}
+
+
+/* =========================
+   TOGGLE SAVING
+========================= */
+
+function toggleSaving(key){
+
+  if(!data.saving[key]){
+    data.saving[key] = {
+      amount:5000,
+      status:"none"
+    };
+  }
+
+  if(data.saving[key].status === "paid"){
+
+    data.saving[key].status = "unpaid";
+
+  }else{
+
+    data.saving[key].status = "paid";
+
+  }
+
+  saveData();
+  renderSaving();
+}
+
+
+/* =========================
+   SAVING CALCULATION
+========================= */
 
 function calculateSaving(){
 
-    let total = 0;
-    let fine = 0;
+  const year =
+    Number(
+      document.getElementById("savingYear").value
+    );
 
-    Object.keys(data.saving).forEach(key=>{
+  let expected = 0;
+  let collected = 0;
+  let unpaid = 0;
 
-        if(data.saving[key]){
+  MEMBERS.forEach((member,memberIndex)=>{
 
-            total += SAVING_AMOUNT;
+    MONTHS.forEach((month,monthIndex)=>{
 
-        }else{
+      if(
+        !monthStarted(
+          year,
+          monthIndex,
+          data.settings.groupStart
+        )
+      ){
+        return;
+      }
 
-            fine += FINE;
+      const key =
+        savingKey(
+          year,
+          memberIndex,
+          monthIndex
+        );
 
-        }
+      const record =
+        data.saving[key];
+
+      if(!record) return;
+
+      const amount =
+        Number(record.amount) || 0;
+
+      expected += amount;
+
+      if(record.status === "paid"){
+
+        collected += amount;
+
+      }
+
+      if(record.status === "unpaid"){
+
+        unpaid++;
+
+      }
 
     });
 
-    document.getElementById(
-        "savingTotal"
-    ).textContent =
-        "Rs. " + total.toLocaleString();
+  });
 
-    document.getElementById(
-        "fineTotal"
-    ).textContent =
-        "Rs. " + fine.toLocaleString();
+  const fine =
+    unpaid * 250;
 
+  document.getElementById("savingExpected")
+    .textContent =
+    "Rs. " + expected.toLocaleString();
+
+  document.getElementById("savingCollected")
+    .textContent =
+    "Rs. " + collected.toLocaleString();
+
+  document.getElementById("savingUnpaid")
+    .textContent =
+    unpaid;
+
+  document.getElementById("savingFine")
+    .textContent =
+    "Rs. " + fine.toLocaleString();
+
+  updateDashboard();
 }
 
 
-/* INVESTMENT TABLE */
+/* =========================
+   INVESTMENT KEY
+========================= */
 
-function createInvestmentTable(
-    type,
-    bodyId,
-    amount
+function investmentKey(
+  type,
+  year,
+  monthIndex
 ){
 
-    const body =
-        document.getElementById(bodyId);
-
-    body.innerHTML = "";
-
-    months.forEach((month,index)=>{
-
-        let key = index;
-
-        let paid =
-            data[type][key] || false;
-
-        let row =
-            document.createElement("tr");
-
-        let monthCell =
-            document.createElement("td");
-
-        monthCell.textContent = month;
-
-        let statusCell =
-            document.createElement("td");
-
-        statusCell.textContent =
-            paid ? "Paid ✅" : "Unpaid ❌";
-
-        statusCell.className =
-            paid ? "paid" : "unpaid";
-
-        let actionCell =
-            document.createElement("td");
-
-        let button =
-            document.createElement("button");
-
-        button.className = "change";
-
-        button.textContent = "Change";
-
-        button.onclick = function(){
-
-            data[type][key] =
-                !data[type][key];
-
-            saveData();
-
-            createInvestmentTable(
-                type,
-                bodyId,
-                amount
-            );
-
-            calculateInvestment();
-
-        };
-
-        actionCell.appendChild(button);
-
-        row.appendChild(monthCell);
-
-        row.appendChild(statusCell);
-
-        row.appendChild(actionCell);
-
-        body.appendChild(row);
-
-    });
-
+  return type + "_" +
+         year + "_" +
+         monthIndex;
 }
 
 
-/* INVESTMENT TOTAL */
+/* =========================
+   SIP TABLE
+========================= */
+
+function renderSip(){
+
+  const year =
+    Number(
+      document.getElementById("sipYear").value
+    );
+
+  const table =
+    document.getElementById("sipTable");
+
+  const amount =
+    Number(data.settings.sipAmount) || 0;
+
+  let html = `
+    <thead>
+      <tr>
+        <th>Investment</th>
+  `;
+
+  MONTHS.forEach(month=>{
+    html += `<th>${month}</th>`;
+  });
+
+  html += `
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>SIP</b></td>
+  `;
+
+  let total = 0;
+
+  MONTHS.forEach((month,monthIndex)=>{
+
+    const key =
+      investmentKey(
+        "sip",
+        year,
+        monthIndex
+      );
+
+    if(!data.sip[key]){
+
+      data.sip[key] = {
+        amount:amount,
+        status:"none"
+      };
+
+    }
+
+    const record =
+      data.sip[key];
+
+    if(
+      record.status === "paid"
+    ){
+      total += Number(record.amount) || 0;
+    }
+
+    const started =
+      monthStarted(
+        year,
+        monthIndex,
+        data.settings.sipStart
+      );
+
+    if(!started){
+
+      html += `
+        <td>
+          <button class="status-btn not-started"
+                  disabled>
+            Not Started
+          </button>
+        </td>
+      `;
+
+    }else{
+
+      const cls =
+        record.status === "paid"
+          ? "paid"
+          : "unpaid";
+
+      const text =
+        record.status === "paid"
+          ? "Paid"
+          : "Unpaid";
+
+      html += `
+        <td>
+
+          <input
+            class="amount-input"
+            type="number"
+            min="0"
+            value="${record.amount}"
+            onchange="
+              updateInvestmentAmount(
+                'sip',
+                '${key}',
+                this.value
+              )
+            "
+          >
+
+          <br>
+
+          <button
+            class="status-btn ${cls}"
+            onclick="
+              toggleInvestment(
+                'sip',
+                '${key}'
+              )
+            ">
+            ${text}
+          </button>
+
+        </td>
+      `;
+
+    }
+
+  });
+
+  html += `
+        <td>
+          <b>Rs. ${total.toLocaleString()}</b>
+        </td>
+      </tr>
+    </tbody>
+  `;
+
+  table.innerHTML = html;
+
+  calculateInvestment();
+}
+
+
+/* =========================
+   MARKET TABLE
+========================= */
+
+function renderMarket(){
+
+  const year =
+    Number(
+      document.getElementById("marketYear").value
+    );
+
+  const table =
+    document.getElementById("marketTable");
+
+  const amount =
+    Number(data.settings.marketAmount) || 0;
+
+  let html = `
+    <thead>
+      <tr>
+        <th>Investment</th>
+  `;
+
+  MONTHS.forEach(month=>{
+    html += `<th>${month}</th>`;
+  });
+
+  html += `
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>Market</b></td>
+  `;
+
+  let total = 0;
+
+  MONTHS.forEach((month,monthIndex)=>{
+
+    const key =
+      investmentKey(
+        "market",
+        year,
+        monthIndex
+      );
+
+    if(!data.market[key]){
+
+      data.market[key] = {
+        amount:amount,
+        status:"none"
+      };
+
+    }
+
+    const record =
+      data.market[key];
+
+    if(
+      record.status === "paid"
+    ){
+      total += Number(record.amount) || 0;
+    }
+
+    const started =
+      monthStarted(
+        year,
+        monthIndex,
+        data.settings.marketStart
+      );
+
+    if(!started){
+
+      html += `
+        <td>
+          <button class="status-btn not-started"
+                  disabled>
+            Not Started
+          </button>
+        </td>
+      `;
+
+    }else{
+
+      const cls =
+        record.status === "paid"
+          ? "paid"
+          : "unpaid";
+
+      const text =
+        record.status === "paid"
+          ? "Paid"
+          : "Unpaid";
+
+      html += `
+        <td>
+
+          <input
+            class="amount-input"
+            type="number"
+            min="0"
+            value="${record.amount}"
+            onchange="
+              updateInvestmentAmount(
+                'market',
+                '${key}',
+                this.value
+              )
+            "
+          >
+
+          <br>
+
+          <button
+            class="status-btn ${cls}"
+            onclick="
+              toggleInvestment(
+                'market',
+                '${key}'
+              )
+            ">
+            ${text}
+          </button>
+
+        </td>
+      `;
+
+    }
+
+  });
+
+  html += `
+        <td>
+          <b>Rs. ${total.toLocaleString()}</b>
+        </td>
+      </tr>
+    </tbody>
+  `;
+
+  table.innerHTML = html;
+
+  calculateInvestment();
+}
+
+
+/* =========================
+   INVESTMENT AMOUNT
+========================= */
+
+function updateInvestmentAmount(
+  type,
+  key,
+  value
+){
+
+  if(type === "sip"){
+
+    if(!data.sip[key]){
+      data.sip[key] = {
+        amount:0,
+        status:"none"
+      };
+    }
+
+    data.sip[key].amount =
+      Number(value) || 0;
+
+  }else{
+
+    if(!data.market[key]){
+      data.market[key] = {
+        amount:0,
+        status:"none"
+      };
+    }
+
+    data.market[key].amount =
+      Number(value) || 0;
+  }
+
+  saveData();
+
+  calculateInvestment();
+}
+
+
+/* =========================
+   TOGGLE INVESTMENT
+========================= */
+
+function toggleInvestment(
+  type,
+  key
+){
+
+  const object =
+    type === "sip"
+      ? data.sip
+      : data.market;
+
+  if(!object[key]){
+
+    object[key] = {
+      amount:
+        type === "sip"
+          ? data.settings.sipAmount
+          : data.settings.marketAmount,
+      status:"none"
+    };
+
+  }
+
+  if(object[key].status === "paid"){
+
+    object[key].status = "unpaid";
+
+  }else{
+
+    object[key].status = "paid";
+
+  }
+
+  saveData();
+
+  if(type === "sip"){
+    renderSip();
+  }else{
+    renderMarket();
+  }
+}
+
+
+/* =========================
+   INVESTMENT CALCULATION
+========================= */
 
 function calculateInvestment(){
 
-    let sipTotal = 0;
-    let marketTotal = 0;
+  let sipTotal = 0;
+  let marketTotal = 0;
 
-    Object.keys(data.sip).forEach(key=>{
+  let sipUnpaid = 0;
+  let marketUnpaid = 0;
 
-        if(data.sip[key]){
+  for(let year=START_YEAR;
+      year<=END_YEAR;
+      year++){
 
-            sipTotal += SIP_AMOUNT;
+    MONTHS.forEach((month,monthIndex)=>{
 
-        }
+      const sipKey =
+        investmentKey(
+          "sip",
+          year,
+          monthIndex
+        );
+
+      const marketKey =
+        investmentKey(
+          "market",
+          year,
+          monthIndex
+        );
+
+      const sipRecord =
+        data.sip[sipKey];
+
+      const marketRecord =
+        data.market[marketKey];
+
+
+      if(
+        sipRecord &&
+        sipRecord.status === "paid" &&
+        monthStarted(
+          year,
+          monthIndex,
+          data.settings.sipStart
+        )
+      ){
+
+        sipTotal +=
+          Number(sipRecord.amount) || 0;
+
+      }
+
+
+      if(
+        sipRecord &&
+        sipRecord.status === "unpaid" &&
+        monthStarted(
+          year,
+          monthIndex,
+          data.settings.sipStart
+        )
+      ){
+
+        sipUnpaid++;
+
+      }
+
+
+      if(
+        marketRecord &&
+        marketRecord.status === "paid" &&
+        monthStarted(
+          year,
+          monthIndex,
+          data.settings.marketStart
+        )
+      ){
+
+        marketTotal +=
+          Number(marketRecord.amount) || 0;
+
+      }
+
+
+      if(
+        marketRecord &&
+        marketRecord.status === "unpaid" &&
+        monthStarted(
+          year,
+          monthIndex,
+          data.settings.marketStart
+        )
+      ){
+
+        marketUnpaid++;
+
+      }
 
     });
 
-    Object.keys(data.market).forEach(key=>{
+  }
 
-        if(data.market[key]){
 
-            marketTotal += MARKET_AMOUNT;
+  document.getElementById("sipTotal")
+    .textContent =
+    "Rs. " + sipTotal.toLocaleString();
+
+  document.getElementById("sipUnpaid")
+    .textContent =
+    sipUnpaid;
+
+
+  document.getElementById("marketTotal")
+    .textContent =
+    "Rs. " + marketTotal.toLocaleString();
+
+  document.getElementById("marketUnpaid")
+    .textContent =
+    marketUnpaid;
+
+
+  document.getElementById("marketInvested")
+    .value =
+    marketTotal;
+
+
+  calculateMarketPL();
+
+  updateDashboard();
+}
+
+
+/* =========================
+   MARKET PROFIT / LOSS
+========================= */
+
+function calculateMarketPL(){
+
+  const invested =
+    Number(
+      document.getElementById("marketInvested").value
+    ) || 0;
+
+  const value =
+    Number(
+      document.getElementById("marketValue").value
+    ) || 0;
+
+  const result =
+    value - invested;
+
+
+  document.getElementById("plInvestment")
+    .textContent =
+    "Rs. " + invested.toLocaleString();
+
+  document.getElementById("plValue")
+    .textContent =
+    "Rs. " + value.toLocaleString();
+
+
+  const resultElement =
+    document.getElementById("profitLoss");
+
+  resultElement.textContent =
+    (result >= 0 ? "Profit: Rs. " : "Loss: Rs. ")
+    + Math.abs(result).toLocaleString();
+
+
+  resultElement.className =
+    result >= 0
+      ? "profit"
+      : "loss";
+
+  data.settings.marketValue = value;
+
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(data)
+  );
+}
+
+
+/* =========================
+   30 YEAR TOTAL SAVING
+========================= */
+
+function totalSaving(){
+
+  let total = 0;
+
+  for(let year=START_YEAR;
+      year<=END_YEAR;
+      year++){
+
+    MEMBERS.forEach((member,memberIndex)=>{
+
+      MONTHS.forEach((month,monthIndex)=>{
+
+        if(
+          !monthStarted(
+            year,
+            monthIndex,
+            data.settings.groupStart
+          )
+        ){
+          return;
+        }
+
+        const key =
+          savingKey(
+            year,
+            memberIndex,
+            monthIndex
+          );
+
+        const record =
+          data.saving[key];
+
+        if(
+          record &&
+          record.status === "paid"
+        ){
+
+          total +=
+            Number(record.amount) || 0;
 
         }
 
+      });
+
     });
 
-    document.getElementById(
-        "sipTotal"
-    ).textContent =
-        "Rs. " + sipTotal.toLocaleString();
+  }
 
-    document.getElementById(
-        "marketTotal"
-    ).textContent =
-        "Rs. " + marketTotal.toLocaleString();
+  return total;
+}
 
-    document.getElementById(
-        "investmentTotal"
-    ).textContent =
-        "Rs. " +
-        (sipTotal + marketTotal)
-        .toLocaleString();
+
+/* =========================
+   TOTAL FINE
+========================= */
+
+function totalFine(){
+
+  let count = 0;
+
+  for(let year=START_YEAR;
+      year<=END_YEAR;
+      year++){
+
+    MEMBERS.forEach((member,memberIndex)=>{
+
+      MONTHS.forEach((month,monthIndex)=>{
+
+        if(
+          !monthStarted(
+            year,
+            monthIndex,
+            data.settings.groupStart
+          )
+        ){
+          return;
+        }
+
+        const key =
+          savingKey(
+            year,
+            memberIndex,
+            monthIndex
+          );
+
+        const record =
+          data.saving[key];
+
+        if(
+          record &&
+          record.status === "unpaid"
+        ){
+          count++;
+        }
+
+      });
+
+    });
+
+  }
+
+  return count * 250;
+}
+
+
+/* =========================
+   TOTAL INVESTMENT
+========================= */
+
+function totalInvestments(){
+
+  let sip = 0;
+  let market = 0;
+
+  for(let year=START_YEAR;
+      year<=END_YEAR;
+      year++){
+
+    MONTHS.forEach((month,monthIndex)=>{
+
+      const sipKey =
+        investmentKey(
+          "sip",
+          year,
+          monthIndex
+        );
+
+      const marketKey =
+        investmentKey(
+          "market",
+          year,
+          monthIndex
+        );
+
+
+      const s =
+        data.sip[sipKey];
+
+      const m =
+        data.market[marketKey];
+
+
+      if(
+        s &&
+        s.status === "paid" &&
+        monthStarted(
+          year,
+          monthIndex,
+          data.settings.sipStart
+        )
+      ){
+
+        sip +=
+          Number(s.amount) || 0;
+
+      }
+
+
+      if(
+        m &&
+        m.status === "paid" &&
+        monthStarted(
+          year,
+          monthIndex,
+          data.settings.marketStart
+        )
+      ){
+
+        market +=
+          Number(m.amount) || 0;
+
+      }
+
+    });
+
+  }
+
+  return {
+    sip,
+    market
+  };
+}
+
+
+/* =========================
+   DASHBOARD
+========================= */
+
+function updateDashboard(){
+
+  const saving =
+    totalSaving();
+
+  const fine =
+    totalFine();
+
+  const investment =
+    totalInvestments();
+
+  let unpaid = 0;
+
+  for(let year=START_YEAR;
+      year<=END_YEAR;
+      year++){
+
+    MEMBERS.forEach((member,memberIndex)=>{
+
+      MONTHS.forEach((month,monthIndex)=>{
+
+        const key =
+          savingKey(
+            year,
+            memberIndex,
+            monthIndex
+          );
+
+        const record =
+          data.saving[key];
+
+        if(
+          record &&
+          record.status === "unpaid"
+        ){
+
+          unpaid++;
+
+        }
+
+      });
+
+    });
+
+  }
+
+
+  document.getElementById("dashSaving")
+    .textContent =
+    "Rs. " + saving.toLocaleString();
+
+  document.getElementById("dashFine")
+    .textContent =
+    "Rs. " + fine.toLocaleString();
+
+  document.getElementById("dashUnpaid")
+    .textContent =
+    unpaid;
+
+  document.getElementById("dashSip")
+    .textContent =
+    "Rs. " + investment.sip.toLocaleString();
+
+  document.getElementById("dashMarket")
+    .textContent =
+    "Rs. " + investment.market.toLocaleString();
+
+  document.getElementById("dashInvestment")
+    .textContent =
+    "Rs. " +
+    (
+      investment.sip +
+      investment.market
+    ).toLocaleString();
 
 }
 
 
-/* DATE SETTINGS */
+/* =========================
+   EXPORT DATA
+========================= */
 
-document.getElementById(
-    "savingStart"
-).value = data.savingStart;
+function exportData(){
 
-document.getElementById(
-    "sipStart"
-).value = data.sipStart;
+  const json =
+    JSON.stringify(
+      data,
+      null,
+      2
+    );
 
-document.getElementById(
-    "marketStart"
-).value = data.marketStart;
+  const blob =
+    new Blob(
+      [json],
+      {
+        type:"application/json"
+      }
+    );
 
+  const url =
+    URL.createObjectURL(blob);
 
-document.getElementById(
-    "savingStart"
-).onchange = function(){
+  const a =
+    document.createElement("a");
 
-    data.savingStart = this.value;
+  a.href = url;
 
-    saveData();
+  a.download =
+    "The-Brotherhood-Backup.json";
 
-};
+  a.click();
 
-
-document.getElementById(
-    "sipStart"
-).onchange = function(){
-
-    data.sipStart = this.value;
-
-    saveData();
-
-};
-
-
-document.getElementById(
-    "marketStart"
-).onchange = function(){
-
-    data.marketStart = this.value;
-
-    saveData();
-
-};
+  URL.revokeObjectURL(url);
+}
 
 
-/* START */
+/* =========================
+   IMPORT DATA
+========================= */
 
-createSavingTable();
+function importData(event){
 
-calculateSaving();
+  const file =
+    event.target.files[0];
 
-createInvestmentTable(
-    "sip",
-    "sipBody",
-    SIP_AMOUNT
-);
+  if(!file) return;
 
-createInvestmentTable(
-    "market",
-    "marketBody",
-    MARKET_AMOUNT
-);
+  const reader =
+    new FileReader();
+
+  reader.onload =
+    function(e){
+
+      try{
+
+        const imported =
+          JSON.parse(e.target.result);
+
+        if(
+          !imported.settings ||
+          !imported.saving ||
+          !imported.sip ||
+          !imported.market
+        ){
+
+          alert("Invalid backup file.");
+          return;
+
+        }
+
+        data = imported;
+
+        saveData();
+
+        loadSettings();
+
+        renderSaving();
+        renderSip();
+        renderMarket();
+        calculateMarketPL();
+
+        alert("Data imported successfully.");
+
+      }catch(error){
+
+        alert("Backup file गलत छ।");
+
+      }
+
+    };
+
+  reader.readAsText(file);
+}
+
+
+/* =========================
+   RESET DATA
+========================= */
+
+function resetData(){
+
+  const confirmReset =
+    confirm(
+      "सबै record reset गर्ने हो?"
+    );
+
+  if(!confirmReset) return;
+
+  localStorage.removeItem(
+    STORAGE_KEY
+  );
+
+  location.reload();
+}
+
+
+/* =========================
+   LOAD SETTINGS
+========================= */
+
+function loadSettings(){
+
+  document.getElementById("groupStart")
+    .value =
+    data.settings.groupStart;
+
+  document.getElementById("sipStart")
+    .value =
+    data.settings.sipStart;
+
+  document.getElementById("marketStart")
+    .value =
+    data.settings.marketStart;
+
+  document.getElementById("sipAmount")
+    .value =
+    data.settings.sipAmount;
+
+  document.getElementById("marketAmount")
+    .value =
+    data.settings.marketAmount;
+
+  document.getElementById("marketValue")
+    .value =
+    data.settings.marketValue || 0;
+}
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+createYearSelectors();
+
+loadSettings();
+
+renderSaving();
+
+renderSip();
+
+renderMarket();
 
 calculateInvestment();
+
+calculateMarketPL();
+
+updateDashboard();
 
 </script>
 
 </body>
-  </html>
+</html>
