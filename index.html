@@ -1,7 +1,11 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>The Brotherhood</title><style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Brotherhood</title>
+
+<style>
 *{
   box-sizing:border-box;
 }
@@ -13,22 +17,66 @@ body{
   color:#222;
 }
 
+/* =========================
+   PREMIUM HEADER DESIGN
+========================= */
+
 .header{
-  background:linear-gradient(135deg,#111827,#374151);
+  position:relative;
+  background:
+    radial-gradient(circle at 50% 20%,rgba(255,255,255,.12),transparent 35%),
+    linear-gradient(135deg,#020617,#111827 45%,#374151);
   color:white;
   text-align:center;
-  padding:30px 15px;
+  padding:42px 20px 38px;
+  overflow:hidden;
+  border-bottom:4px solid #111827;
+}
+
+.header:before{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:50%;
+  top:-120px;
+  left:-70px;
+}
+
+.header:after{
+  content:"";
+  position:absolute;
+  width:260px;
+  height:260px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:50%;
+  bottom:-170px;
+  right:-80px;
 }
 
 .header h1{
+  position:relative;
+  z-index:2;
   margin:0;
-  font-size:30px;
+  font-size:38px;
+  font-weight:900;
+  letter-spacing:4px;
+  text-shadow:0 3px 12px rgba(0,0,0,.5);
 }
 
 .header p{
-  margin:8px 0 0;
-  opacity:.8;
+  position:relative;
+  z-index:2;
+  margin:10px 0 0;
+  font-size:14px;
+  letter-spacing:2px;
+  opacity:.85;
 }
+
+/* =========================
+   FOUND DETAILS PREMIUM
+========================= */
 
 .container{
   max-width:1200px;
@@ -47,6 +95,102 @@ body{
 .card h2{
   margin-top:0;
 }
+
+/* Found Details special layout */
+
+.found-card{
+  position:relative;
+  overflow:hidden;
+  padding:0;
+}
+
+.found-top{
+  position:relative;
+  padding:28px 25px;
+  background:linear-gradient(135deg,#111827,#1f2937);
+  color:white;
+  text-align:center;
+}
+
+.found-top h2{
+  margin:0;
+  font-size:25px;
+  letter-spacing:1px;
+}
+
+.found-name{
+  margin-top:8px;
+  font-size:27px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.found-content{
+  padding:20px;
+}
+
+.found-grid{
+  display:grid;
+  grid-template-columns:1fr 1.5fr 1fr;
+  gap:15px;
+  align-items:stretch;
+}
+
+.found-info{
+  background:#f8fafc;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:16px;
+}
+
+.found-info b{
+  display:block;
+  font-size:12px;
+  color:#6b7280;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  margin-bottom:7px;
+}
+
+.found-info span{
+  font-size:16px;
+  font-weight:bold;
+}
+
+.start-date{
+  text-align:right;
+}
+
+.leaders{
+  grid-column:1 / -1;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+.leader-box{
+  background:linear-gradient(135deg,#f8fafc,#eef2f7);
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:17px;
+  text-align:center;
+}
+
+.leader-title{
+  font-size:12px;
+  color:#6b7280;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  margin-bottom:7px;
+}
+
+.leader-name{
+  font-size:18px;
+  font-weight:800;
+  color:#111827;
+}
+
+/* ========================= */
 
 .info-grid{
   display:grid;
@@ -147,39 +291,134 @@ input[type="date"]{
 .remaining{
   font-weight:bold;
 }
-</style></head><body><div class="header">
+
+/* Mobile */
+@media(max-width:700px){
+
+  .header{
+    padding:32px 15px;
+  }
+
+  .header h1{
+    font-size:27px;
+    letter-spacing:2px;
+  }
+
+  .header p{
+    font-size:11px;
+  }
+
+  .container{
+    padding:12px;
+  }
+
+  .found-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .leaders{
+    grid-column:1 / -1;
+    grid-template-columns:1fr;
+  }
+
+  .start-date{
+    text-align:left;
+  }
+
+  .found-name{
+    font-size:22px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
   <h1>🤝 THE BROTHERHOOD</h1>
-  <p>Saving • Investment • Financial Record</p>
-</div><div class="container"><div class="card">
-<h2>🏢 Found Details</h2><div class="info-grid"><div class="info">
-<b>Name</b>
-The Brotherhood
-</div><div class="info">
-<b>Start Date</b>
-2024-01-01
-</div><div class="info">
-<b>Chairman</b>
-Dipak Mahatara
-</div><div class="info">
-<b>Secretary</b>
-Surya Bahadur Adhikari
-</div><div class="info">
-<b>Monthly Saving</b>
-Rs. 5,000 / Member
-</div><div class="info">
-<b>Monthly Collection</b>
-Rs. 25,000
-</div></div>
-</div><div class="card">
-<h2>👥 Members (5)</h2><div class="member-list">
+  <p>SAVING • INVESTMENT • FINANCIAL RECORD</p>
+</div>
+
+<div class="container">
+
+<!-- GROUP DETAILS -->
+
+<div class="card found-card">
+
+  <div class="found-top">
+    <h2>🏢 FOUND DETAILS</h2>
+    <div class="found-name">THE BROTHERHOOD</div>
+  </div>
+
+  <div class="found-content">
+
+    <div class="found-grid">
+
+      <div class="found-info">
+        <b>Monthly Saving</b>
+        <span>Rs. 5,000 / Member</span>
+      </div>
+
+      <div class="found-info">
+        <b>Monthly Collection</b>
+        <span>Rs. 25,000</span>
+      </div>
+
+      <div class="found-info start-date">
+        <b>Start Date</b>
+        <span>2024-01-01</span>
+      </div>
+
+      <div class="leaders">
+
+        <div class="leader-box">
+          <div class="leader-title">👑 Chairman</div>
+          <div class="leader-name">Dipak Mahatara</div>
+        </div>
+
+        <div class="leader-box">
+          <div class="leader-title">📋 Secretary</div>
+          <div class="leader-name">Surya Bahadur Adhikari</div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- MEMBERS -->
+
+<div class="card">
+<h2>👥 Members (5)</h2>
+
+<div class="member-list">
 1. Dipak Mahatara<br>
 2. Dipendra Mahatara<br>
 3. Rajan Mahatara<br>
 4. Milan Mahatara<br>
 5. Surya Bahadur Adhikari
-</div></div><div class="card"><h2>💰 Monthly Saving Record</h2><p>
+</div>
+
+</div>
+
+<!-- MONTHLY SAVING -->
+
+<div class="card">
+
+<h2>💰 Monthly Saving Record</h2>
+
+<p>
 प्रत्येक सदस्यले प्रत्येक महिना <b>Rs. 5,000</b> जम्मा गर्नुपर्नेछ।
-</p><div class="table-wrap"><table id="savingTable"><thead>
+</p>
+
+<div class="table-wrap">
+
+<table id="savingTable">
+
+<thead>
 <tr>
 <th>Member</th>
 <th>Jan</th>
@@ -195,19 +434,53 @@ Rs. 25,000
 <th>Nov</th>
 <th>Dec</th>
 </tr>
-</thead><tbody></tbody></table></div><br><div class="info-grid"><div class="info">
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+</div>
+
+<br>
+
+<div class="info-grid">
+
+<div class="info">
 <b>Total Collected</b>
 <span id="totalCollected">Rs. 0</span>
-</div><div class="info">
+</div>
+
+<div class="info">
 <b>Total Unpaid</b>
 <span id="totalUnpaid">0</span>
-</div><div class="info">
+</div>
+
+<div class="info">
 <b>Total Fine</b>
 <span id="totalFine">Rs. 0</span>
-</div></div></div><div class="card"><h2>📊 Investment Record</h2><p>
+</div>
+
+</div>
+
+</div>
+
+<!-- INVESTMENT -->
+
+<div class="card">
+
+<h2>📊 Investment Record</h2>
+
+<p>
 प्रत्येक महिनाको <b>SIP = Rs. 5,000</b> र
 <b>Stock Market = Rs. 5,000</b> लगानी गर्ने।
-</p><div class="table-wrap"><table id="investmentTable"><thead>
+</p>
+
+<div class="table-wrap">
+
+<table id="investmentTable">
+
+<thead>
 <tr>
 <th>Investment</th>
 <th>Jan</th>
@@ -223,19 +496,53 @@ Rs. 25,000
 <th>Nov</th>
 <th>Dec</th>
 </tr>
-</thead><tbody></tbody></table></div><br><div class="info-grid"><div class="info">
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+</div>
+
+<br>
+
+<div class="info-grid">
+
+<div class="info">
 <b>Total SIP</b>
 <span id="totalSIP">Rs. 0</span>
-</div><div class="info">
+</div>
+
+<div class="info">
 <b>Total Stock Market</b>
 <span id="totalStock">Rs. 0</span>
-</div><div class="info">
+</div>
+
+<div class="info">
 <b>Grand Total Investment</b>
 <span id="grandInvestment">Rs. 0</span>
-</div></div></div><div class="card"><h2>💳 Loan Record</h2><p>
+</div>
+
+</div>
+
+</div>
+
+<!-- LOAN -->
+
+<div class="card">
+
+<h2>💳 Loan Record</h2>
+
+<p>
 Rs. 50,000 भन्दा बढी ऋणमा <b>1.5% Monthly Interest</b> र
 Rs. 50,000 वा कम ऋणमा <b>1.2% Monthly Interest</b> लाग्नेछ।
-</p><div class="table-wrap"><table id="loanTable"><thead>
+</p>
+
+<div class="table-wrap">
+
+<table id="loanTable">
+
+<thead>
 <tr>
 <th>Member</th>
 <th>Loan Date</th>
@@ -247,24 +554,62 @@ Rs. 50,000 वा कम ऋणमा <b>1.2% Monthly Interest</b> लाग्�
 <th>Interest Paid</th>
 <th>Remaining</th>
 </tr>
-</thead><tbody></tbody></table></div><br><div class="info-grid"><div class="info">
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+</div>
+
+<br>
+
+<div class="info-grid">
+
+<div class="info">
 <b>Total Loan</b>
 <span id="totalLoan">Rs. 0</span>
-</div><div class="info">
+</div>
+
+<div class="info">
 <b>Total Interest</b>
 <span id="totalInterest">Rs. 0</span>
-</div><div class="info">
+</div>
+
+<div class="info">
 <b>Total Paid</b>
 <span id="totalLoanPaid">Rs. 0</span>
-</div><div class="info">
+</div>
+
+<div class="info">
 <b>Total Interest Paid</b>
 <span id="totalInterestPaid">Rs. 0</span>
-</div><div class="info">
+</div>
+
+<div class="info">
 <b>Total Remaining</b>
 <span id="totalRemaining">Rs. 0</span>
-</div></div></div><!-- 5 YEAR SUMMARY --><div class="card"><h2>📅 5 Years Total & Profit</h2><p>
+</div>
+
+</div>
+
+</div>
+
+<!-- 5 YEAR SUMMARY -->
+
+<div class="card">
+
+<h2>📅 5 Years Total & Profit</h2>
+
+<p>
 प्रत्येक वर्षको Saving, Fine, SIP, Stock Market, Loan, Interest र Profit यहाँ automatic हिसाब हुनेछ।
-</p><div class="table-wrap"><table id="yearTable"><thead>
+</p>
+
+<div class="table-wrap">
+
+<table id="yearTable">
+
+<thead>
 <tr>
 <th>Year</th>
 <th>Saving</th>
@@ -277,7 +622,11 @@ Rs. 50,000 वा कम ऋणमा <b>1.2% Monthly Interest</b> लाग्�
 <th>Profit</th>
 <th>Total Amount</th>
 </tr>
-</thead><tbody><tr>
+</thead>
+
+<tbody>
+
+<tr>
 <td><b>Year 1</b></td>
 <td id="y1Saving">Rs. 0</td>
 <td id="y1Fine">Rs. 0</td>
@@ -288,7 +637,9 @@ Rs. 50,000 वा कम ऋणमा <b>1.2% Monthly Interest</b> लाग्�
 <td id="y1Interest">Rs. 0</td>
 <td id="y1Profit">Rs. 0</td>
 <td id="y1Total"><b>Rs. 0</b></td>
-</tr><tr>
+</tr>
+
+<tr>
 <td><b>Year 2</b></td>
 <td id="y2Saving">Rs. 0</td>
 <td id="y2Fine">Rs. 0</td>
@@ -299,7 +650,9 @@ Rs. 50,000 वा कम ऋणमा <b>1.2% Monthly Interest</b> लाग्�
 <td id="y2Interest">Rs. 0</td>
 <td id="y2Profit">Rs. 0</td>
 <td id="y2Total"><b>Rs. 0</b></td>
-</tr><tr>
+</tr>
+
+<tr>
 <td><b>Year 3</b></td>
 <td id="y3Saving">Rs. 0</td>
 <td id="y3Fine">Rs. 0</td>
@@ -310,7 +663,9 @@ Rs. 50,000 वा कम ऋणमा <b>1.2% Monthly Interest</b> लाग्�
 <td id="y3Interest">Rs. 0</td>
 <td id="y3Profit">Rs. 0</td>
 <td id="y3Total"><b>Rs. 0</b></td>
-</tr><tr>
+</tr>
+
+<tr>
 <td><b>Year 4</b></td>
 <td id="y4Saving">Rs. 0</td>
 <td id="y4Fine">Rs. 0</td>
@@ -321,7 +676,9 @@ Rs. 50,000 वा कम ऋणमा <b>1.2% Monthly Interest</b> लाग्�
 <td id="y4Interest">Rs. 0</td>
 <td id="y4Profit">Rs. 0</td>
 <td id="y4Total"><b>Rs. 0</b></td>
-</tr><tr>
+</tr>
+
+<tr>
 <td><b>Year 5</b></td>
 <td id="y5Saving">Rs. 0</td>
 <td id="y5Fine">Rs. 0</td>
@@ -332,7 +689,9 @@ Rs. 50,000 वा कम ऋणमा <b>1.2% Monthly Interest</b> लाग्�
 <td id="y5Interest">Rs. 0</td>
 <td id="y5Profit">Rs. 0</td>
 <td id="y5Total"><b>Rs. 0</b></td>
-</tr><tr>
+</tr>
+
+<tr>
 <th>5 YEAR TOTAL</th>
 <th id="fiveSaving">Rs. 0</th>
 <th id="fiveFine">Rs. 0</th>
@@ -343,9 +702,22 @@ Rs. 50,000 वा कम ऋणमा <b>1.2% Monthly Interest</b> लाग्�
 <th id="fiveInterest">Rs. 0</th>
 <th id="fiveProfit">Rs. 0</th>
 <th id="fiveTotal">Rs. 0</th>
-</tr></tbody></table></div></div></div><div class="footer">
+</tr>
+
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
 The Brotherhood © 2026
-</div><script>
+</div>
+
+<script>
 
 const members = [
 "Dipak Mahatara",
@@ -960,13 +1332,6 @@ getValue("totalLoan");
 const interest =
 getValue("totalInterest");
 
-
-/*
-Current monthly table is one year's record.
-Year 1 automatically receives current data.
-Years 2-5 remain ready for future records.
-*/
-
 const years = [
 {
 saving:saving,
@@ -1108,5 +1473,7 @@ money(fiveTotal);
 
 updateFiveYear();
 
-</script></body>
+</script>
+
+</body>
 </html>
