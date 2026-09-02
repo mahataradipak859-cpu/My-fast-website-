@@ -322,6 +322,60 @@ Rs. 25,000
 
 </div>
 
+
+<!-- LOAN RECORD -->
+
+<div class="card">
+
+<h2>💳 Loan Record</h2>
+
+<p>
+सदस्यहरूले लिएको ऋणको विवरण यहाँ Update गर्न सकिन्छ।
+</p>
+
+<div class="table-wrap">
+
+<table id="loanTable">
+
+<thead>
+<tr>
+<th>Member</th>
+<th>Loan Date</th>
+<th>Loan Amount</th>
+<th>Paid Amount</th>
+<th>Remaining</th>
+</tr>
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+</div>
+
+<br>
+
+<div class="info-grid">
+
+<div class="info">
+<b>Total Loan</b>
+<span id="totalLoan">Rs. 0</span>
+</div>
+
+<div class="info">
+<b>Total Paid</b>
+<span id="totalLoanPaid">Rs. 0</span>
+</div>
+
+<div class="info">
+<b>Total Remaining</b>
+<span id="totalRemaining">Rs. 0</span>
+</div>
+
+</div>
+
+</div>
+
 </div>
 
 <div class="footer">
@@ -675,6 +729,219 @@ JSON.stringify(investmentData)
 /* Start investment */
 
 renderInvestment();
+
+
+
+/* =========================
+   LOAN SYSTEM
+========================= */
+
+let loanData =
+JSON.parse(localStorage.getItem("brotherhoodLoan")) || {};
+
+
+function renderLoan(){
+
+const tbody =
+document.querySelector("#loanTable tbody");
+
+tbody.innerHTML = "";
+
+let totalLoan = 0;
+let totalPaid = 0;
+let totalRemaining = 0;
+
+
+members.forEach((member,memberIndex)=>{
+
+const key = memberIndex;
+
+
+/* Default data */
+
+if(!loanData[key]){
+
+loanData[key] = {
+date:"",
+loan:0,
+paid:0
+};
+
+}
+
+
+/* Row */
+
+let row =
+document.createElement("tr");
+
+
+/* Member */
+
+let nameCell =
+document.createElement("td");
+
+nameCell.innerHTML =
+"<b>"+member+"</b>";
+
+row.appendChild(nameCell);
+
+
+/* Loan Date */
+
+let dateCell =
+document.createElement("td");
+
+let dateInput =
+document.createElement("input");
+
+dateInput.type="date";
+
+dateInput.value =
+loanData[key].date;
+
+dateInput.onchange=function(){
+
+loanData[key].date =
+this.value;
+
+saveLoan();
+
+};
+
+dateCell.appendChild(dateInput);
+
+row.appendChild(dateCell);
+
+
+/* Loan Amount */
+
+let loanCell =
+document.createElement("td");
+
+let loanInput =
+document.createElement("input");
+
+loanInput.type="number";
+loanInput.min="0";
+loanInput.placeholder="Amount";
+
+loanInput.value =
+loanData[key].loan || "";
+
+loanInput.onchange=function(){
+
+loanData[key].loan =
+Number(this.value) || 0;
+
+saveLoan();
+renderLoan();
+
+};
+
+loanCell.appendChild(loanInput);
+
+row.appendChild(loanCell);
+
+
+/* Paid Amount */
+
+let paidCell =
+document.createElement("td");
+
+let paidInput =
+document.createElement("input");
+
+paidInput.type="number";
+paidInput.min="0";
+paidInput.placeholder="Paid";
+
+paidInput.value =
+loanData[key].paid || "";
+
+paidInput.onchange=function(){
+
+loanData[key].paid =
+Number(this.value) || 0;
+
+saveLoan();
+renderLoan();
+
+};
+
+paidCell.appendChild(paidInput);
+
+row.appendChild(paidCell);
+
+
+/* Remaining */
+
+let remainingCell =
+document.createElement("td");
+
+let remaining =
+Math.max(
+0,
+loanData[key].loan - loanData[key].paid
+);
+
+remainingCell.innerHTML =
+"<b>Rs. "+
+remaining.toLocaleString()+
+"</b>";
+
+row.appendChild(remainingCell);
+
+
+/* Totals */
+
+totalLoan +=
+loanData[key].loan;
+
+totalPaid +=
+loanData[key].paid;
+
+totalRemaining +=
+remaining;
+
+
+tbody.appendChild(row);
+
+});
+
+
+/* Display totals */
+
+document.getElementById("totalLoan").innerText =
+"Rs. "+totalLoan.toLocaleString();
+
+document.getElementById("totalLoanPaid").innerText =
+"Rs. "+totalPaid.toLocaleString();
+
+document.getElementById("totalRemaining").innerText =
+"Rs. "+totalRemaining.toLocaleString();
+
+
+saveLoan();
+
+}
+
+
+/* Save loan data */
+
+function saveLoan(){
+
+localStorage.setItem(
+"brotherhoodLoan",
+JSON.stringify(loanData)
+);
+
+}
+
+
+/* Start loan */
+
+renderLoan();
 
 </script>
 
