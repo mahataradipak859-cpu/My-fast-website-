@@ -129,6 +129,29 @@ td:first-child{
   padding:20px;
   color:#666;
 }
+
+input{
+  padding:7px;
+  border:1px solid #ccc;
+  border-radius:6px;
+  width:110px;
+}
+
+input[type="date"]{
+  width:135px;
+}
+
+.rate{
+  font-weight:bold;
+}
+
+.interest{
+  font-size:12px;
+}
+
+.remaining{
+  font-weight:bold;
+}
 </style>
 </head>
 
@@ -330,7 +353,8 @@ Rs. 25,000
 <h2>💳 Loan Record</h2>
 
 <p>
-सदस्यहरूले लिएको ऋणको विवरण यहाँ Update गर्न सकिन्छ।
+Rs. 50,000 भन्दा बढी ऋणमा <b>1.5% Monthly Interest</b> र
+Rs. 50,000 वा कम ऋणमा <b>1.2% Monthly Interest</b> लाग्नेछ।
 </p>
 
 <div class="table-wrap">
@@ -342,7 +366,11 @@ Rs. 25,000
 <th>Member</th>
 <th>Loan Date</th>
 <th>Loan Amount</th>
+<th>Rate</th>
+<th>Months</th>
+<th>Interest</th>
 <th>Paid Amount</th>
+<th>Interest Paid</th>
 <th>Remaining</th>
 </tr>
 </thead>
@@ -363,8 +391,18 @@ Rs. 25,000
 </div>
 
 <div class="info">
+<b>Total Interest</b>
+<span id="totalInterest">Rs. 0</span>
+</div>
+
+<div class="info">
 <b>Total Paid</b>
 <span id="totalLoanPaid">Rs. 0</span>
+</div>
+
+<div class="info">
+<b>Total Interest Paid</b>
+<span id="totalInterestPaid">Rs. 0</span>
 </div>
 
 <div class="info">
@@ -402,13 +440,13 @@ const MONTHLY_AMOUNT = 5000;
 const FINE_AMOUNT = 250;
 
 
-/* Saved data */
+/* =========================
+   SAVING SYSTEM
+========================= */
 
 let savingData =
 JSON.parse(localStorage.getItem("brotherhoodSaving")) || {};
 
-
-/* Create table */
 
 function renderSaving(){
 
@@ -419,7 +457,6 @@ tbody.innerHTML = "";
 
 let collected = 0;
 let unpaid = 0;
-
 
 members.forEach((member,memberIndex)=>{
 
@@ -432,14 +469,10 @@ nameCell.innerHTML =
 
 row.appendChild(nameCell);
 
-
 months.forEach((month,monthIndex)=>{
 
 const key =
 memberIndex+"-"+monthIndex;
-
-
-/* Default unpaid */
 
 if(!savingData[key]){
 savingData[key] = {
@@ -447,24 +480,19 @@ status:"unpaid"
 };
 }
 
-
 const cell =
 document.createElement("td");
-
 
 const amount =
 document.createElement("div");
 
 amount.className="amount";
-
 amount.innerText="Rs. 5,000";
-
 
 const button =
 document.createElement("button");
 
 button.className="pay-btn";
-
 
 if(savingData[key].status==="paid"){
 
@@ -482,26 +510,18 @@ unpaid++;
 
 }
 
-
-/* Click button */
-
 button.onclick=function(){
 
 if(savingData[key].status==="paid"){
-
 savingData[key].status="unpaid";
-
 }else{
-
 savingData[key].status="paid";
-
 }
 
 saveData();
 renderSaving();
 
 };
-
 
 cell.appendChild(amount);
 cell.appendChild(button);
@@ -510,36 +530,26 @@ row.appendChild(cell);
 
 });
 
-
 tbody.appendChild(row);
 
 });
 
-
-/* Automatic calculation */
-
 const fine =
 unpaid * FINE_AMOUNT;
-
 
 document.getElementById("totalCollected").innerText =
 "Rs. "+collected.toLocaleString();
 
-
 document.getElementById("totalUnpaid").innerText =
 unpaid;
 
-
 document.getElementById("totalFine").innerText =
 "Rs. "+fine.toLocaleString();
-
 
 saveData();
 
 }
 
-
-/* Save data */
 
 function saveData(){
 
@@ -550,11 +560,7 @@ JSON.stringify(savingData)
 
 }
 
-
-/* Start */
-
 renderSaving();
-
 
 
 /* =========================
@@ -573,14 +579,9 @@ const investmentMonths = [
 
 const INVESTMENT_AMOUNT = 5000;
 
-
-/* Saved investment data */
-
 let investmentData =
 JSON.parse(localStorage.getItem("brotherhoodInvestment")) || {};
 
-
-/* Create investment table */
 
 function renderInvestment(){
 
@@ -591,7 +592,6 @@ tbody.innerHTML = "";
 
 let totalSIP = 0;
 let totalStock = 0;
-
 
 investments.forEach((investment,investmentIndex)=>{
 
@@ -604,12 +604,10 @@ nameCell.innerHTML =
 
 row.appendChild(nameCell);
 
-
 investmentMonths.forEach((month,monthIndex)=>{
 
 const key =
 investmentIndex+"-"+monthIndex;
-
 
 if(!investmentData[key]){
 investmentData[key] = {
@@ -617,39 +615,29 @@ status:"unpaid"
 };
 }
 
-
 const cell =
 document.createElement("td");
-
 
 const amount =
 document.createElement("div");
 
 amount.className="amount";
-
 amount.innerText="Rs. 5,000";
-
 
 const button =
 document.createElement("button");
 
 button.className="pay-btn";
 
-
 if(investmentData[key].status==="paid"){
 
 button.classList.add("paid");
 button.innerText="Done";
 
-
 if(investmentIndex===0){
-
 totalSIP += INVESTMENT_AMOUNT;
-
 }else{
-
 totalStock += INVESTMENT_AMOUNT;
-
 }
 
 }else{
@@ -659,26 +647,18 @@ button.innerText="Update";
 
 }
 
-
-/* Update button */
-
 button.onclick=function(){
 
 if(investmentData[key].status==="paid"){
-
 investmentData[key].status="unpaid";
-
 }else{
-
 investmentData[key].status="paid";
-
 }
 
 saveInvestment();
 renderInvestment();
 
 };
-
 
 cell.appendChild(amount);
 cell.appendChild(button);
@@ -687,34 +667,26 @@ row.appendChild(cell);
 
 });
 
-
 tbody.appendChild(row);
 
 });
 
-
 const grandTotal =
 totalSIP + totalStock;
-
 
 document.getElementById("totalSIP").innerText =
 "Rs. "+totalSIP.toLocaleString();
 
-
 document.getElementById("totalStock").innerText =
 "Rs. "+totalStock.toLocaleString();
 
-
 document.getElementById("grandInvestment").innerText =
 "Rs. "+grandTotal.toLocaleString();
-
 
 saveInvestment();
 
 }
 
-
-/* Save investment data */
 
 function saveInvestment(){
 
@@ -725,11 +697,7 @@ JSON.stringify(investmentData)
 
 }
 
-
-/* Start investment */
-
 renderInvestment();
-
 
 
 /* =========================
@@ -740,6 +708,35 @@ let loanData =
 JSON.parse(localStorage.getItem("brotherhoodLoan")) || {};
 
 
+/* Calculate completed months */
+
+function calculateMonths(loanDate){
+
+if(!loanDate){
+return 0;
+}
+
+const start =
+new Date(loanDate);
+
+const today =
+new Date();
+
+let months =
+(today.getFullYear() - start.getFullYear()) * 12 +
+(today.getMonth() - start.getMonth());
+
+if(today.getDate() < start.getDate()){
+months--;
+}
+
+return Math.max(0,months);
+
+}
+
+
+/* Render loan */
+
 function renderLoan(){
 
 const tbody =
@@ -748,7 +745,9 @@ document.querySelector("#loanTable tbody");
 tbody.innerHTML = "";
 
 let totalLoan = 0;
+let totalInterest = 0;
 let totalPaid = 0;
+let totalInterestPaid = 0;
 let totalRemaining = 0;
 
 
@@ -757,26 +756,24 @@ members.forEach((member,memberIndex)=>{
 const key = memberIndex;
 
 
-/* Default data */
+/* Default */
 
 if(!loanData[key]){
 
 loanData[key] = {
 date:"",
 loan:0,
-paid:0
+paid:0,
+interestPaid:0
 };
 
 }
 
 
-/* Row */
+/* Member */
 
 let row =
 document.createElement("tr");
-
-
-/* Member */
 
 let nameCell =
 document.createElement("td");
@@ -796,9 +793,8 @@ let dateInput =
 document.createElement("input");
 
 dateInput.type="date";
-
 dateInput.value =
-loanData[key].date;
+loanData[key].date || "";
 
 dateInput.onchange=function(){
 
@@ -806,11 +802,11 @@ loanData[key].date =
 this.value;
 
 saveLoan();
+renderLoan();
 
 };
 
 dateCell.appendChild(dateInput);
-
 row.appendChild(dateCell);
 
 
@@ -840,8 +836,58 @@ renderLoan();
 };
 
 loanCell.appendChild(loanInput);
-
 row.appendChild(loanCell);
+
+
+/* Interest Rate */
+
+let loanAmount =
+Number(loanData[key].loan) || 0;
+
+let rate =
+loanAmount > 50000 ? 1.5 : 1.2;
+
+let rateCell =
+document.createElement("td");
+
+rateCell.className="rate";
+
+rateCell.innerText =
+rate+"% / month";
+
+row.appendChild(rateCell);
+
+
+/* Months */
+
+let monthsCell =
+document.createElement("td");
+
+let loanMonths =
+calculateMonths(loanData[key].date);
+
+monthsCell.innerText =
+loanMonths;
+
+row.appendChild(monthsCell);
+
+
+/* Interest */
+
+let interest =
+loanAmount *
+(rate / 100) *
+loanMonths;
+
+let interestCell =
+document.createElement("td");
+
+interestCell.className="interest";
+
+interestCell.innerText =
+"Rs. "+Math.round(interest).toLocaleString();
+
+row.appendChild(interestCell);
 
 
 /* Paid Amount */
@@ -870,25 +916,65 @@ renderLoan();
 };
 
 paidCell.appendChild(paidInput);
-
 row.appendChild(paidCell);
+
+
+/* Interest Paid */
+
+let interestPaidCell =
+document.createElement("td");
+
+let interestPaidInput =
+document.createElement("input");
+
+interestPaidInput.type="number";
+interestPaidInput.min="0";
+interestPaidInput.placeholder="Interest Paid";
+
+interestPaidInput.value =
+loanData[key].interestPaid || "";
+
+interestPaidInput.onchange=function(){
+
+loanData[key].interestPaid =
+Number(this.value) || 0;
+
+saveLoan();
+renderLoan();
+
+};
+
+interestPaidCell.appendChild(
+interestPaidInput
+);
+
+row.appendChild(interestPaidCell);
 
 
 /* Remaining */
 
+let principalRemaining =
+Math.max(
+0,
+loanAmount - (Number(loanData[key].paid) || 0)
+);
+
+let interestRemaining =
+Math.max(
+0,
+interest - (Number(loanData[key].interestPaid) || 0)
+);
+
+let remaining =
+principalRemaining + interestRemaining;
+
 let remainingCell =
 document.createElement("td");
 
-let remaining =
-Math.max(
-0,
-loanData[key].loan - loanData[key].paid
-);
+remainingCell.className="remaining";
 
 remainingCell.innerHTML =
-"<b>Rs. "+
-remaining.toLocaleString()+
-"</b>";
+"Rs. "+Math.round(remaining).toLocaleString();
 
 row.appendChild(remainingCell);
 
@@ -896,10 +982,16 @@ row.appendChild(remainingCell);
 /* Totals */
 
 totalLoan +=
-loanData[key].loan;
+loanAmount;
+
+totalInterest +=
+interest;
 
 totalPaid +=
-loanData[key].paid;
+Number(loanData[key].paid) || 0;
+
+totalInterestPaid +=
+Number(loanData[key].interestPaid) || 0;
 
 totalRemaining +=
 remaining;
@@ -910,16 +1002,22 @@ tbody.appendChild(row);
 });
 
 
-/* Display totals */
+/* Summary */
 
 document.getElementById("totalLoan").innerText =
-"Rs. "+totalLoan.toLocaleString();
+"Rs. "+Math.round(totalLoan).toLocaleString();
+
+document.getElementById("totalInterest").innerText =
+"Rs. "+Math.round(totalInterest).toLocaleString();
 
 document.getElementById("totalLoanPaid").innerText =
-"Rs. "+totalPaid.toLocaleString();
+"Rs. "+Math.round(totalPaid).toLocaleString();
+
+document.getElementById("totalInterestPaid").innerText =
+"Rs. "+Math.round(totalInterestPaid).toLocaleString();
 
 document.getElementById("totalRemaining").innerText =
-"Rs. "+totalRemaining.toLocaleString();
+"Rs. "+Math.round(totalRemaining).toLocaleString();
 
 
 saveLoan();
@@ -927,7 +1025,7 @@ saveLoan();
 }
 
 
-/* Save loan data */
+/* Save loan */
 
 function saveLoan(){
 
@@ -939,7 +1037,7 @@ JSON.stringify(loanData)
 }
 
 
-/* Start loan */
+/* Start */
 
 renderLoan();
 
