@@ -602,7 +602,7 @@ Rs. 50,000 वा कम ऋणमा <b>1.2% Monthly Interest</b> लाग्�
 <h2>📅 5 Years Total & Profit</h2>
 
 <p>
-प्रत्येक वर्षको Saving, Fine, SIP, Stock Market, Loan, Interest र Profit यहाँ automatic हिसाब हुनेछ।
+प्रत्येक वर्षको Saving, Fine, SIP, Stock Market, Loan, Interest र Profit यहाँ amount आफैं लेख्न मिल्नेछ र तल automatic हिसाब हुनेछ।
 </p>
 
 <div class="table-wrap">
@@ -628,65 +628,65 @@ Rs. 50,000 वा कम ऋणमा <b>1.2% Monthly Interest</b> लाग्�
 
 <tr>
 <td><b>Year 1</b></td>
-<td id="y1Saving">Rs. 0</td>
-<td id="y1Fine">Rs. 0</td>
-<td id="y1SIP">Rs. 0</td>
-<td id="y1Stock">Rs. 0</td>
+<td><input type="number" id="y1Saving" placeholder="Amount"></td>
+<td><input type="number" id="y1Fine" placeholder="Amount"></td>
+<td><input type="number" id="y1SIP" placeholder="Amount"></td>
+<td><input type="number" id="y1Stock" placeholder="Amount"></td>
 <td id="y1Investment">Rs. 0</td>
-<td id="y1Loan">Rs. 0</td>
-<td id="y1Interest">Rs. 0</td>
+<td><input type="number" id="y1Loan" placeholder="Amount"></td>
+<td><input type="number" id="y1Interest" placeholder="Amount"></td>
 <td id="y1Profit">Rs. 0</td>
 <td id="y1Total"><b>Rs. 0</b></td>
 </tr>
 
 <tr>
 <td><b>Year 2</b></td>
-<td id="y2Saving">Rs. 0</td>
-<td id="y2Fine">Rs. 0</td>
-<td id="y2SIP">Rs. 0</td>
-<td id="y2Stock">Rs. 0</td>
+<td><input type="number" id="y2Saving" placeholder="Amount"></td>
+<td><input type="number" id="y2Fine" placeholder="Amount"></td>
+<td><input type="number" id="y2SIP" placeholder="Amount"></td>
+<td><input type="number" id="y2Stock" placeholder="Amount"></td>
 <td id="y2Investment">Rs. 0</td>
-<td id="y2Loan">Rs. 0</td>
-<td id="y2Interest">Rs. 0</td>
+<td><input type="number" id="y2Loan" placeholder="Amount"></td>
+<td><input type="number" id="y2Interest" placeholder="Amount"></td>
 <td id="y2Profit">Rs. 0</td>
 <td id="y2Total"><b>Rs. 0</b></td>
 </tr>
 
 <tr>
 <td><b>Year 3</b></td>
-<td id="y3Saving">Rs. 0</td>
-<td id="y3Fine">Rs. 0</td>
-<td id="y3SIP">Rs. 0</td>
-<td id="y3Stock">Rs. 0</td>
+<td><input type="number" id="y3Saving" placeholder="Amount"></td>
+<td><input type="number" id="y3Fine" placeholder="Amount"></td>
+<td><input type="number" id="y3SIP" placeholder="Amount"></td>
+<td><input type="number" id="y3Stock" placeholder="Amount"></td>
 <td id="y3Investment">Rs. 0</td>
-<td id="y3Loan">Rs. 0</td>
-<td id="y3Interest">Rs. 0</td>
+<td><input type="number" id="y3Loan" placeholder="Amount"></td>
+<td><input type="number" id="y3Interest" placeholder="Amount"></td>
 <td id="y3Profit">Rs. 0</td>
 <td id="y3Total"><b>Rs. 0</b></td>
 </tr>
 
 <tr>
 <td><b>Year 4</b></td>
-<td id="y4Saving">Rs. 0</td>
-<td id="y4Fine">Rs. 0</td>
-<td id="y4SIP">Rs. 0</td>
-<td id="y4Stock">Rs. 0</td>
+<td><input type="number" id="y4Saving" placeholder="Amount"></td>
+<td><input type="number" id="y4Fine" placeholder="Amount"></td>
+<td><input type="number" id="y4SIP" placeholder="Amount"></td>
+<td><input type="number" id="y4Stock" placeholder="Amount"></td>
 <td id="y4Investment">Rs. 0</td>
-<td id="y4Loan">Rs. 0</td>
-<td id="y4Interest">Rs. 0</td>
+<td><input type="number" id="y4Loan" placeholder="Amount"></td>
+<td><input type="number" id="y4Interest" placeholder="Amount"></td>
 <td id="y4Profit">Rs. 0</td>
 <td id="y4Total"><b>Rs. 0</b></td>
 </tr>
 
 <tr>
 <td><b>Year 5</b></td>
-<td id="y5Saving">Rs. 0</td>
-<td id="y5Fine">Rs. 0</td>
-<td id="y5SIP">Rs. 0</td>
-<td id="y5Stock">Rs. 0</td>
+<td><input type="number" id="y5Saving" placeholder="Amount"></td>
+<td><input type="number" id="y5Fine" placeholder="Amount"></td>
+<td><input type="number" id="y5SIP" placeholder="Amount"></td>
+<td><input type="number" id="y5Stock" placeholder="Amount"></td>
 <td id="y5Investment">Rs. 0</td>
-<td id="y5Loan">Rs. 0</td>
-<td id="y5Interest">Rs. 0</td>
+<td><input type="number" id="y5Loan" placeholder="Amount"></td>
+<td><input type="number" id="y5Interest" placeholder="Amount"></td>
 <td id="y5Profit">Rs. 0</td>
 <td id="y5Total"><b>Rs. 0</b></td>
 </tr>
@@ -1254,226 +1254,4 @@ document.getElementById("totalLoan").innerText =
 "Rs. "+Math.round(totalLoan).toLocaleString();
 
 document.getElementById("totalInterest").innerText =
-"Rs. "+Math.round(totalInterest).toLocaleString();
-
-document.getElementById("totalLoanPaid").innerText =
-"Rs. "+Math.round(totalPaid).toLocaleString();
-
-document.getElementById("totalInterestPaid").innerText =
-"Rs. "+Math.round(totalInterestPaid).toLocaleString();
-
-document.getElementById("totalRemaining").innerText =
-"Rs. "+Math.round(totalRemaining).toLocaleString();
-
-saveLoan();
-
-updateFiveYear();
-
-}
-
-function saveLoan(){
-
-localStorage.setItem(
-"brotherhoodLoan",
-JSON.stringify(loanData)
-);
-
-}
-
-renderLoan();
-
-
-/* 5 YEAR TOTAL SYSTEM */
-
-function getValue(id){
-
-const el =
-document.getElementById(id);
-
-if(!el){
-return 0;
-}
-
-return Number(
-el.innerText
-.replace(/Rs\./g,"")
-.replace(/,/g,"")
-.trim()
-) || 0;
-
-}
-
-function money(value){
-
-return "Rs. "+Math.round(value).toLocaleString();
-
-}
-
-function updateFiveYear(){
-
-const saving =
-getValue("totalCollected");
-
-const fine =
-getValue("totalFine");
-
-const sip =
-getValue("totalSIP");
-
-const stock =
-getValue("totalStock");
-
-const investment =
-getValue("grandInvestment");
-
-const loan =
-getValue("totalLoan");
-
-const interest =
-getValue("totalInterest");
-
-const years = [
-{
-saving:saving,
-fine:fine,
-sip:sip,
-stock:stock,
-loan:loan,
-interest:interest
-},
-{
-saving:0,
-fine:0,
-sip:0,
-stock:0,
-loan:0,
-interest:0
-},
-{
-saving:0,
-fine:0,
-sip:0,
-stock:0,
-loan:0,
-interest:0
-},
-{
-saving:0,
-fine:0,
-sip:0,
-stock:0,
-loan:0,
-interest:0
-},
-{
-saving:0,
-fine:0,
-sip:0,
-stock:0,
-loan:0,
-interest:0
-}
-];
-
-let fiveSaving = 0;
-let fiveFine = 0;
-let fiveSIP = 0;
-let fiveStock = 0;
-let fiveInvestment = 0;
-let fiveLoan = 0;
-let fiveInterest = 0;
-let fiveProfit = 0;
-let fiveTotal = 0;
-
-years.forEach((year,index)=>{
-
-const yearInvestment =
-year.sip + year.stock;
-
-const profit =
-year.fine + year.interest;
-
-const total =
-year.saving +
-year.fine +
-yearInvestment +
-year.loan +
-year.interest;
-
-const n =
-index + 1;
-
-document.getElementById("y"+n+"Saving").innerText =
-money(year.saving);
-
-document.getElementById("y"+n+"Fine").innerText =
-money(year.fine);
-
-document.getElementById("y"+n+"SIP").innerText =
-money(year.sip);
-
-document.getElementById("y"+n+"Stock").innerText =
-money(year.stock);
-
-document.getElementById("y"+n+"Investment").innerText =
-money(yearInvestment);
-
-document.getElementById("y"+n+"Loan").innerText =
-money(year.loan);
-
-document.getElementById("y"+n+"Interest").innerText =
-money(year.interest);
-
-document.getElementById("y"+n+"Profit").innerText =
-money(profit);
-
-document.getElementById("y"+n+"Total").innerText =
-money(total);
-
-fiveSaving += year.saving;
-fiveFine += year.fine;
-fiveSIP += year.sip;
-fiveStock += year.stock;
-fiveInvestment += yearInvestment;
-fiveLoan += year.loan;
-fiveInterest += year.interest;
-fiveProfit += profit;
-fiveTotal += total;
-
-});
-
-document.getElementById("fiveSaving").innerText =
-money(fiveSaving);
-
-document.getElementById("fiveFine").innerText =
-money(fiveFine);
-
-document.getElementById("fiveSIP").innerText =
-money(fiveSIP);
-
-document.getElementById("fiveStock").innerText =
-money(fiveStock);
-
-document.getElementById("fiveInvestment").innerText =
-money(fiveInvestment);
-
-document.getElementById("fiveLoan").innerText =
-money(fiveLoan);
-
-document.getElementById("fiveInterest").innerText =
-money(fiveInterest);
-
-document.getElementById("fiveProfit").innerText =
-money(fiveProfit);
-
-document.getElementById("fiveTotal").innerText =
-money(fiveTotal);
-
-}
-
-updateFiveYear();
-
-</script>
-
-</body>
-</html>
+"Rs. "+Math.round(totalInterest).toLo
