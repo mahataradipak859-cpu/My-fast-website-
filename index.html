@@ -120,20 +120,6 @@ td:first-child{
   color:#555;
 }
 
-.fine{
-  font-size:11px;
-  margin-top:4px;
-  color:#dc2626;
-  font-weight:bold;
-}
-
-.no-fine{
-  font-size:11px;
-  margin-top:4px;
-  color:#16a34a;
-  font-weight:bold;
-}
-
 .member-list{
   line-height:1.9;
 }
@@ -165,55 +151,6 @@ input[type="date"]{
 
 .remaining{
   font-weight:bold;
-}
-
-/* OVERALL SUMMARY */
-
-.overall-summary{
-  background:linear-gradient(135deg,#111827,#374151);
-  color:white;
-  border-radius:15px;
-  padding:20px;
-  margin-bottom:20px;
-  box-shadow:0 3px 12px rgba(0,0,0,.12);
-}
-
-.overall-summary h2{
-  margin-top:0;
-  text-align:center;
-}
-
-.overall-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:12px;
-}
-
-.overall-box{
-  background:rgba(255,255,255,.1);
-  border:1px solid rgba(255,255,255,.15);
-  padding:15px;
-  border-radius:10px;
-}
-
-.overall-box b{
-  display:block;
-  margin-bottom:7px;
-}
-
-.overall-box span{
-  font-size:20px;
-  font-weight:bold;
-}
-
-.grand-total{
-  grid-column:1/-1;
-  text-align:center;
-  background:rgba(255,255,255,.18);
-}
-
-.grand-total span{
-  font-size:26px;
 }
 </style>
 </head>
@@ -292,7 +229,6 @@ Rs. 25,000
 
 <p>
 प्रत्येक सदस्यले प्रत्येक महिना <b>Rs. 5,000</b> जम्मा गर्नुपर्नेछ।
-समयमा जम्मा नगरेमा <b>Rs. 250 Fine</b> लाग्नेछ।
 </p>
 
 <div class="table-wrap">
@@ -481,54 +417,64 @@ Rs. 50,000 वा कम ऋणमा <b>1.2% Monthly Interest</b> लाग्�
 
 <!-- OVERALL TOTAL -->
 
-<div class="overall-summary">
+<div class="card">
 
-<h2>📊 Overall Total Summary</h2>
+<h2>💰 Overall Total Amount</h2>
 
-<div class="overall-grid">
+<div class="info-grid">
 
-<div class="overall-box">
-<b>💰 Total Saving</b>
+<div class="info">
+<b>Total Saving Collected</b>
 <span id="overallSaving">Rs. 0</span>
 </div>
 
-<div class="overall-box">
-<b>⚠️ Total Fine</b>
+<div class="info">
+<b>Total Fine</b>
 <span id="overallFine">Rs. 0</span>
 </div>
 
-<div class="overall-box">
-<b>📈 Total SIP</b>
+<div class="info">
+<b>Total SIP</b>
 <span id="overallSIP">Rs. 0</span>
 </div>
 
-<div class="overall-box">
-<b>📊 Total Stock Market</b>
+<div class="info">
+<b>Total Stock Market</b>
 <span id="overallStock">Rs. 0</span>
 </div>
 
-<div class="overall-box">
-<b>💳 Total Loan</b>
+<div class="info">
+<b>Grand Total Investment</b>
+<span id="overallInvestment">Rs. 0</span>
+</div>
+
+<div class="info">
+<b>Total Loan</b>
 <span id="overallLoan">Rs. 0</span>
 </div>
 
-<div class="overall-box">
-<b>📅 Total Interest</b>
+<div class="info">
+<b>Total Interest</b>
 <span id="overallInterest">Rs. 0</span>
 </div>
 
-<div class="overall-box">
-<b>💵 Loan Paid</b>
+<div class="info">
+<b>Total Loan Paid</b>
 <span id="overallPaid">Rs. 0</span>
 </div>
 
-<div class="overall-box">
-<b>🧾 Loan Remaining</b>
+<div class="info">
+<b>Total Interest Paid</b>
+<span id="overallInterestPaid">Rs. 0</span>
+</div>
+
+<div class="info">
+<b>Total Remaining Loan</b>
 <span id="overallRemaining">Rs. 0</span>
 </div>
 
-<div class="overall-box grand-total">
-<b>🏦 Grand Total</b>
+<div class="info">
+<b>🔥 Overall Total</b>
 <span id="overallGrandTotal">Rs. 0</span>
 </div>
 
@@ -569,9 +515,6 @@ const FINE_AMOUNT = 250;
 let savingData =
 JSON.parse(localStorage.getItem("brotherhoodSaving")) || {};
 
-let currentSavingTotal = 0;
-let currentFineTotal = 0;
-
 
 function renderSaving(){
 
@@ -582,7 +525,6 @@ tbody.innerHTML = "";
 
 let collected = 0;
 let unpaid = 0;
-let totalFine = 0;
 
 members.forEach((member,memberIndex)=>{
 
@@ -620,10 +562,6 @@ document.createElement("button");
 
 button.className="pay-btn";
 
-const fineText =
-document.createElement("div");
-
-
 if(savingData[key].status==="paid"){
 
 button.classList.add("paid");
@@ -631,20 +569,12 @@ button.innerText="Paid";
 
 collected += MONTHLY_AMOUNT;
 
-fineText.className="no-fine";
-fineText.innerText="Fine: Rs. 0";
-
 }else{
 
 button.classList.add("unpaid");
 button.innerText="Unpaid";
 
 unpaid++;
-
-totalFine += FINE_AMOUNT;
-
-fineText.className="fine";
-fineText.innerText="Fine: Rs. 250";
 
 }
 
@@ -663,7 +593,6 @@ renderSaving();
 
 cell.appendChild(amount);
 cell.appendChild(button);
-cell.appendChild(fineText);
 
 row.appendChild(cell);
 
@@ -673,8 +602,8 @@ tbody.appendChild(row);
 
 });
 
-currentSavingTotal = collected;
-currentFineTotal = totalFine;
+const fine =
+unpaid * FINE_AMOUNT;
 
 document.getElementById("totalCollected").innerText =
 "Rs. "+collected.toLocaleString();
@@ -683,11 +612,11 @@ document.getElementById("totalUnpaid").innerText =
 unpaid;
 
 document.getElementById("totalFine").innerText =
-"Rs. "+totalFine.toLocaleString();
+"Rs. "+fine.toLocaleString();
 
 saveData();
 
-updateOverall();
+updateOverallTotal();
 
 }
 
@@ -722,9 +651,6 @@ const INVESTMENT_AMOUNT = 5000;
 
 let investmentData =
 JSON.parse(localStorage.getItem("brotherhoodInvestment")) || {};
-
-let currentSIPTotal = 0;
-let currentStockTotal = 0;
 
 
 function renderInvestment(){
@@ -815,9 +741,6 @@ tbody.appendChild(row);
 
 });
 
-currentSIPTotal = totalSIP;
-currentStockTotal = totalStock;
-
 const grandTotal =
 totalSIP + totalStock;
 
@@ -832,7 +755,7 @@ document.getElementById("grandInvestment").innerText =
 
 saveInvestment();
 
-updateOverall();
+updateOverallTotal();
 
 }
 
@@ -856,11 +779,8 @@ renderInvestment();
 let loanData =
 JSON.parse(localStorage.getItem("brotherhoodLoan")) || {};
 
-let currentLoanTotal = 0;
-let currentInterestTotal = 0;
-let currentPaidTotal = 0;
-let currentRemainingTotal = 0;
 
+/* Calculate completed months */
 
 function calculateMonths(loanDate){
 
@@ -887,6 +807,8 @@ return Math.max(0,months);
 }
 
 
+/* Render loan */
+
 function renderLoan(){
 
 const tbody =
@@ -905,6 +827,9 @@ members.forEach((member,memberIndex)=>{
 
 const key = memberIndex;
 
+
+/* Default */
+
 if(!loanData[key]){
 
 loanData[key] = {
@@ -917,9 +842,10 @@ interestPaid:0
 }
 
 
+/* Member */
+
 let row =
 document.createElement("tr");
-
 
 let nameCell =
 document.createElement("td");
@@ -939,7 +865,6 @@ let dateInput =
 document.createElement("input");
 
 dateInput.type="date";
-
 dateInput.value =
 loanData[key].date || "";
 
@@ -986,7 +911,7 @@ loanCell.appendChild(loanInput);
 row.appendChild(loanCell);
 
 
-/* Rate */
+/* Interest Rate */
 
 let loanAmount =
 Number(loanData[key].loan) || 0;
@@ -1149,11 +1074,7 @@ tbody.appendChild(row);
 });
 
 
-currentLoanTotal = totalLoan;
-currentInterestTotal = totalInterest;
-currentPaidTotal = totalPaid;
-currentRemainingTotal = totalRemaining;
-
+/* Summary */
 
 document.getElementById("totalLoan").innerText =
 "Rs. "+Math.round(totalLoan).toLocaleString();
@@ -1173,10 +1094,12 @@ document.getElementById("totalRemaining").innerText =
 
 saveLoan();
 
-updateOverall();
+updateOverallTotal();
 
 }
 
+
+/* Save loan */
 
 function saveLoan(){
 
@@ -1188,68 +1111,117 @@ JSON.stringify(loanData)
 }
 
 
-/* =========================
-   OVERALL TOTAL SYSTEM
-========================= */
-
-function updateOverall(){
-
-const investmentTotal =
-currentSIPTotal + currentStockTotal;
-
-
-/* Individual totals */
-
-document.getElementById("overallSaving").innerText =
-"Rs. "+currentSavingTotal.toLocaleString();
-
-document.getElementById("overallFine").innerText =
-"Rs. "+currentFineTotal.toLocaleString();
-
-document.getElementById("overallSIP").innerText =
-"Rs. "+currentSIPTotal.toLocaleString();
-
-document.getElementById("overallStock").innerText =
-"Rs. "+currentStockTotal.toLocaleString();
-
-document.getElementById("overallLoan").innerText =
-"Rs. "+Math.round(currentLoanTotal).toLocaleString();
-
-document.getElementById("overallInterest").innerText =
-"Rs. "+Math.round(currentInterestTotal).toLocaleString();
-
-document.getElementById("overallPaid").innerText =
-"Rs. "+Math.round(currentPaidTotal).toLocaleString();
-
-document.getElementById("overallRemaining").innerText =
-"Rs. "+Math.round(currentRemainingTotal).toLocaleString();
-
-
-/*
-Grand Total:
-Saving + Fine + Investment
-+ Loan + Interest
-*/
-
-const grandTotal =
-currentSavingTotal +
-currentFineTotal +
-investmentTotal +
-currentLoanTotal +
-currentInterestTotal;
-
-
-document.getElementById("overallGrandTotal").innerText =
-"Rs. "+Math.round(grandTotal).toLocaleString();
-
-}
-
-
 /* Start */
 
 renderLoan();
 
-updateOverall();
+
+/* =========================
+   OVERALL TOTAL SYSTEM
+========================= */
+
+function getNumber(id){
+
+const element =
+document.getElementById(id);
+
+if(!element){
+return 0;
+}
+
+return Number(
+element.innerText
+.replace(/Rs\./g,"")
+.replace(/,/g,"")
+.trim()
+) || 0;
+
+}
+
+
+function updateOverallTotal(){
+
+const saving =
+getNumber("totalCollected");
+
+const fine =
+getNumber("totalFine");
+
+const sip =
+getNumber("totalSIP");
+
+const stock =
+getNumber("totalStock");
+
+const investment =
+getNumber("grandInvestment");
+
+const loan =
+getNumber("totalLoan");
+
+const interest =
+getNumber("totalInterest");
+
+const paid =
+getNumber("totalLoanPaid");
+
+const interestPaid =
+getNumber("totalInterestPaid");
+
+const remaining =
+getNumber("totalRemaining");
+
+
+document.getElementById("overallSaving").innerText =
+"Rs. "+saving.toLocaleString();
+
+document.getElementById("overallFine").innerText =
+"Rs. "+fine.toLocaleString();
+
+document.getElementById("overallSIP").innerText =
+"Rs. "+sip.toLocaleString();
+
+document.getElementById("overallStock").innerText =
+"Rs. "+stock.toLocaleString();
+
+document.getElementById("overallInvestment").innerText =
+"Rs. "+investment.toLocaleString();
+
+document.getElementById("overallLoan").innerText =
+"Rs. "+loan.toLocaleString();
+
+document.getElementById("overallInterest").innerText =
+"Rs. "+interest.toLocaleString();
+
+document.getElementById("overallPaid").innerText =
+"Rs. "+paid.toLocaleString();
+
+document.getElementById("overallInterestPaid").innerText =
+"Rs. "+interestPaid.toLocaleString();
+
+document.getElementById("overallRemaining").innerText =
+"Rs. "+remaining.toLocaleString();
+
+
+/* Overall recorded total */
+
+const overallGrandTotal =
+saving +
+fine +
+investment +
+loan +
+interest;
+
+
+document.getElementById("overallGrandTotal").innerText =
+"Rs. "+Math.round(overallGrandTotal).toLocaleString();
+
+}
+
+
+/* First calculation */
+
+updateOverallTotal();
 
 </script>
 
