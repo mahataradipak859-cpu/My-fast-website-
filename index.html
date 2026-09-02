@@ -259,6 +259,69 @@ Rs. 25,000
 
 </div>
 
+
+<!-- INVESTMENT -->
+
+<div class="card">
+
+<h2>📊 Investment Record</h2>
+
+<p>
+प्रत्येक महिनाको <b>SIP = Rs. 5,000</b> र
+<b>Stock Market = Rs. 5,000</b> लगानी गर्ने।
+</p>
+
+<div class="table-wrap">
+
+<table id="investmentTable">
+
+<thead>
+<tr>
+<th>Investment</th>
+<th>Jan</th>
+<th>Feb</th>
+<th>Mar</th>
+<th>Apr</th>
+<th>May</th>
+<th>Jun</th>
+<th>Jul</th>
+<th>Aug</th>
+<th>Sep</th>
+<th>Oct</th>
+<th>Nov</th>
+<th>Dec</th>
+</tr>
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+</div>
+
+<br>
+
+<div class="info-grid">
+
+<div class="info">
+<b>Total SIP</b>
+<span id="totalSIP">Rs. 0</span>
+</div>
+
+<div class="info">
+<b>Total Stock Market</b>
+<span id="totalStock">Rs. 0</span>
+</div>
+
+<div class="info">
+<b>Grand Total Investment</b>
+<span id="grandInvestment">Rs. 0</span>
+</div>
+
+</div>
+
+</div>
+
 </div>
 
 <div class="footer">
@@ -437,6 +500,181 @@ JSON.stringify(savingData)
 /* Start */
 
 renderSaving();
+
+
+
+/* =========================
+   INVESTMENT SYSTEM
+========================= */
+
+const investments = [
+"SIP",
+"Stock Market"
+];
+
+const investmentMonths = [
+"Jan","Feb","Mar","Apr","May","Jun",
+"Jul","Aug","Sep","Oct","Nov","Dec"
+];
+
+const INVESTMENT_AMOUNT = 5000;
+
+
+/* Saved investment data */
+
+let investmentData =
+JSON.parse(localStorage.getItem("brotherhoodInvestment")) || {};
+
+
+/* Create investment table */
+
+function renderInvestment(){
+
+const tbody =
+document.querySelector("#investmentTable tbody");
+
+tbody.innerHTML = "";
+
+let totalSIP = 0;
+let totalStock = 0;
+
+
+investments.forEach((investment,investmentIndex)=>{
+
+let row = document.createElement("tr");
+
+let nameCell = document.createElement("td");
+
+nameCell.innerHTML =
+"<b>"+(investmentIndex + 1)+". "+investment+"</b>";
+
+row.appendChild(nameCell);
+
+
+investmentMonths.forEach((month,monthIndex)=>{
+
+const key =
+investmentIndex+"-"+monthIndex;
+
+
+if(!investmentData[key]){
+investmentData[key] = {
+status:"unpaid"
+};
+}
+
+
+const cell =
+document.createElement("td");
+
+
+const amount =
+document.createElement("div");
+
+amount.className="amount";
+
+amount.innerText="Rs. 5,000";
+
+
+const button =
+document.createElement("button");
+
+button.className="pay-btn";
+
+
+if(investmentData[key].status==="paid"){
+
+button.classList.add("paid");
+button.innerText="Done";
+
+
+if(investmentIndex===0){
+
+totalSIP += INVESTMENT_AMOUNT;
+
+}else{
+
+totalStock += INVESTMENT_AMOUNT;
+
+}
+
+}else{
+
+button.classList.add("unpaid");
+button.innerText="Update";
+
+}
+
+
+/* Update button */
+
+button.onclick=function(){
+
+if(investmentData[key].status==="paid"){
+
+investmentData[key].status="unpaid";
+
+}else{
+
+investmentData[key].status="paid";
+
+}
+
+saveInvestment();
+renderInvestment();
+
+};
+
+
+cell.appendChild(amount);
+cell.appendChild(button);
+
+row.appendChild(cell);
+
+});
+
+
+tbody.appendChild(row);
+
+});
+
+
+const grandTotal =
+totalSIP + totalStock;
+
+
+document.getElementById("totalSIP").innerText =
+"Rs. "+totalSIP.toLocaleString();
+
+
+document.getElementById("totalStock").innerText =
+"Rs. "+totalStock.toLocaleString();
+
+
+document.getElementById("grandInvestment").innerText =
+"Rs. "+grandTotal.toLocaleString();
+
+
+saveInvestment();
+
+}
+
+
+/* Save investment data */
+
+function saveInvestment(){
+
+localStorage.setItem(
+"brotherhoodInvestment",
+JSON.stringify(investmentData)
+);
+
+}
+
+
+/* Start investment */
+
+renderInvestment();
 
 </script>
 
