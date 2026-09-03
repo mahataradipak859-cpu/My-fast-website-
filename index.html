@@ -216,7 +216,7 @@ body{
 table{
   width:100%;
   border-collapse:collapse;
-  min-width:1000px;
+  min-width:1100px;
 }
 
 th,td{
@@ -292,6 +292,12 @@ input[type="date"]{
   font-weight:bold;
 }
 
+.member-total {
+  font-weight: bold;
+  background-color: #f1f5f9;
+  color: #0f172a;
+}
+
 /* Mobile */
 @media(max-width:700px){
 
@@ -341,8 +347,6 @@ input[type="date"]{
 
 <div class="container">
 
-<!-- GROUP DETAILS -->
-
 <div class="card found-card">
 
   <div class="found-top">
@@ -389,8 +393,6 @@ input[type="date"]{
 
 </div>
 
-<!-- MEMBERS -->
-
 <div class="card">
 <h2>👥 Members (5)</h2>
 
@@ -403,8 +405,6 @@ input[type="date"]{
 </div>
 
 </div>
-
-<!-- MONTHLY SAVING -->
 
 <div class="card">
 
@@ -433,6 +433,7 @@ input[type="date"]{
 <th>Oct</th>
 <th>Nov</th>
 <th>Dec</th>
+<th>Total Saved</th>
 </tr>
 </thead>
 
@@ -465,8 +466,6 @@ input[type="date"]{
 
 </div>
 
-<!-- INVESTMENT -->
-
 <div class="card">
 
 <h2>📊 Investment Record</h2>
@@ -495,6 +494,7 @@ input[type="date"]{
 <th>Oct</th>
 <th>Nov</th>
 <th>Dec</th>
+<th>Total Invested</th>
 </tr>
 </thead>
 
@@ -527,8 +527,6 @@ input[type="date"]{
 
 </div>
 
-<!-- LOAN -->
-
 <div class="card">
 
 <h2>💳 Loan Record</h2>
@@ -552,7 +550,7 @@ Rs. 50,000 वा कम ऋणमा <b>1.2% Monthly Interest</b> लाग्�
 <th>Interest</th>
 <th>Paid Amount</th>
 <th>Interest Paid</th>
-<th>Remaining</th>
+<th>Remaining Total</th>
 </tr>
 </thead>
 
@@ -594,8 +592,6 @@ Rs. 50,000 वा कम ऋणमा <b>1.2% Monthly Interest</b> लाग्�
 </div>
 
 </div>
-
-<!-- 5 YEAR SUMMARY -->
 
 <div class="card">
 
@@ -756,102 +752,78 @@ members.forEach((member,memberIndex)=>{
 let row = document.createElement("tr");
 
 let nameCell = document.createElement("td");
-
-nameCell.innerHTML =
-"<b>"+member+"</b>";
-
+nameCell.innerHTML = "<b>"+member+"</b>";
 row.appendChild(nameCell);
+
+let memberSavedAmount = 0;
 
 months.forEach((month,monthIndex)=>{
 
-const key =
-memberIndex+"-"+monthIndex;
+const key = memberIndex+"-"+monthIndex;
 
 if(!savingData[key]){
-savingData[key] = {
-status:"unpaid"
-};
+  savingData[key] = { status:"unpaid" };
 }
 
-const cell =
-document.createElement("td");
-
-const amount =
-document.createElement("div");
+const cell = document.createElement("td");
+const amount = document.createElement("div");
 
 amount.className="amount";
 amount.innerText="Rs. 5,000";
 
-const button =
-document.createElement("button");
-
+const button = document.createElement("button");
 button.className="pay-btn";
 
 if(savingData[key].status==="paid"){
-
-button.classList.add("paid");
-button.innerText="Paid";
-
-collected += MONTHLY_AMOUNT;
-
+  button.classList.add("paid");
+  button.innerText="Paid";
+  collected += MONTHLY_AMOUNT;
+  memberSavedAmount += MONTHLY_AMOUNT;
 }else{
-
-button.classList.add("unpaid");
-button.innerText="Unpaid";
-
-unpaid++;
-
+  button.classList.add("unpaid");
+  button.innerText="Unpaid";
+  unpaid++;
 }
 
 button.onclick=function(){
-
-if(savingData[key].status==="paid"){
-savingData[key].status="unpaid";
-}else{
-savingData[key].status="paid";
-}
-
-saveData();
-renderSaving();
-
+  if(savingData[key].status==="paid"){
+    savingData[key].status="unpaid";
+  }else{
+    savingData[key].status="paid";
+  }
+  saveData();
+  renderSaving();
 };
 
 cell.appendChild(amount);
 cell.appendChild(button);
-
 row.appendChild(cell);
 
 });
+
+// Added Member Total Column
+let totalCell = document.createElement("td");
+totalCell.className = "member-total";
+totalCell.innerText = "Rs. " + memberSavedAmount.toLocaleString();
+row.appendChild(totalCell);
 
 tbody.appendChild(row);
 
 });
 
-const fine =
-unpaid * FINE_AMOUNT;
+const fine = unpaid * FINE_AMOUNT;
 
-document.getElementById("totalCollected").innerText =
-"Rs. "+collected.toLocaleString();
-
-document.getElementById("totalUnpaid").innerText =
-unpaid;
-
-document.getElementById("totalFine").innerText =
-"Rs. "+fine.toLocaleString();
+document.getElementById("totalCollected").innerText = "Rs. "+collected.toLocaleString();
+document.getElementById("totalUnpaid").innerText = unpaid;
+document.getElementById("totalFine").innerText = "Rs. "+fine.toLocaleString();
 
 saveData();
-
 updateFiveYear();
 
 }
 
 function saveData(){
-
-localStorage.setItem(
-"brotherhoodSaving",
-JSON.stringify(savingData)
-);
-
+  localStorage.setItem("brotherhoodSaving", JSON.stringify(savingData));
 }
 
 
@@ -874,9 +846,7 @@ JSON.parse(localStorage.getItem("brotherhoodInvestment")) || {};
 
 function renderInvestment(){
 
-const tbody =
-document.querySelector("#investmentTable tbody");
-
+const tbody = document.querySelector("#investmentTable tbody");
 tbody.innerHTML = "";
 
 let totalSIP = 0;
@@ -887,141 +857,107 @@ investments.forEach((investment,investmentIndex)=>{
 let row = document.createElement("tr");
 
 let nameCell = document.createElement("td");
-
-nameCell.innerHTML =
-"<b>"+(investmentIndex + 1)+". "+investment+"</b>";
-
+nameCell.innerHTML = "<b>"+(investmentIndex + 1)+". "+investment+"</b>";
 row.appendChild(nameCell);
+
+let rowTotalInvested = 0;
 
 investmentMonths.forEach((month,monthIndex)=>{
 
-const key =
-investmentIndex+"-"+monthIndex;
+const key = investmentIndex+"-"+monthIndex;
 
 if(!investmentData[key]){
-investmentData[key] = {
-status:"unpaid"
-};
+  investmentData[key] = { status:"unpaid" };
 }
 
-const cell =
-document.createElement("td");
-
-const amount =
-document.createElement("div");
+const cell = document.createElement("td");
+const amount = document.createElement("div");
 
 amount.className="amount";
 amount.innerText="Rs. 5,000";
 
-const button =
-document.createElement("button");
-
+const button = document.createElement("button");
 button.className="pay-btn";
 
 if(investmentData[key].status==="paid"){
+  button.classList.add("paid");
+  button.innerText="Done";
 
-button.classList.add("paid");
-button.innerText="Done";
+  rowTotalInvested += INVESTMENT_AMOUNT;
 
-if(investmentIndex===0){
-totalSIP += INVESTMENT_AMOUNT;
+  if(investmentIndex===0){
+    totalSIP += INVESTMENT_AMOUNT;
+  }else{
+    totalStock += INVESTMENT_AMOUNT;
+  }
+
 }else{
-totalStock += INVESTMENT_AMOUNT;
-}
-
-}else{
-
-button.classList.add("unpaid");
-button.innerText="Update";
-
+  button.classList.add("unpaid");
+  button.innerText="Update";
 }
 
 button.onclick=function(){
-
-if(investmentData[key].status==="paid"){
-investmentData[key].status="unpaid";
-}else{
-investmentData[key].status="paid";
-}
-
-saveInvestment();
-renderInvestment();
-
+  if(investmentData[key].status==="paid"){
+    investmentData[key].status="unpaid";
+  }else{
+    investmentData[key].status="paid";
+  }
+  saveInvestment();
+  renderInvestment();
 };
 
 cell.appendChild(amount);
 cell.appendChild(button);
-
 row.appendChild(cell);
 
 });
+
+// Added Investment Total Column
+let totalCell = document.createElement("td");
+totalCell.className = "member-total";
+totalCell.innerText = "Rs. " + rowTotalInvested.toLocaleString();
+row.appendChild(totalCell);
 
 tbody.appendChild(row);
 
 });
 
-const grandTotal =
-totalSIP + totalStock;
+const grandTotal = totalSIP + totalStock;
 
-document.getElementById("totalSIP").innerText =
-"Rs. "+totalSIP.toLocaleString();
-
-document.getElementById("totalStock").innerText =
-"Rs. "+totalStock.toLocaleString();
-
-document.getElementById("grandInvestment").innerText =
-"Rs. "+grandTotal.toLocaleString();
+document.getElementById("totalSIP").innerText = "Rs. "+totalSIP.toLocaleString();
+document.getElementById("totalStock").innerText = "Rs. "+totalStock.toLocaleString();
+document.getElementById("grandInvestment").innerText = "Rs. "+grandTotal.toLocaleString();
 
 saveInvestment();
-
 updateFiveYear();
 
 }
 
 function saveInvestment(){
-
-localStorage.setItem(
-"brotherhoodInvestment",
-JSON.stringify(investmentData)
-);
-
+  localStorage.setItem("brotherhoodInvestment", JSON.stringify(investmentData));
 }
 
 
 /* LOAN SYSTEM */
 
-let loanData =
-JSON.parse(localStorage.getItem("brotherhoodLoan")) || {};
+let loanData = JSON.parse(localStorage.getItem("brotherhoodLoan")) || {};
 
 function calculateMonths(loanDate){
+  if(!loanDate) return 0;
 
-if(!loanDate){
-return 0;
-}
+  const start = new Date(loanDate);
+  const today = new Date();
 
-const start =
-new Date(loanDate);
-
-const today =
-new Date();
-
-let months =
-(today.getFullYear() - start.getFullYear()) * 12 +
-(today.getMonth() - start.getMonth());
-
-if(today.getDate() < start.getDate()){
-months--;
-}
-
-return Math.max(0,months);
-
+  let months = (today.getFullYear() - start.getFullYear()) * 12 + (today.getMonth() - start.getMonth());
+  if(today.getDate() < start.getDate()){
+    months--;
+  }
+  return Math.max(0,months);
 }
 
 function renderLoan(){
 
-const tbody =
-document.querySelector("#loanTable tbody");
-
+const tbody = document.querySelector("#loanTable tbody");
 tbody.innerHTML = "";
 
 let totalLoan = 0;
@@ -1035,272 +971,138 @@ members.forEach((member,memberIndex)=>{
 const key = memberIndex;
 
 if(!loanData[key]){
-
-loanData[key] = {
-date:"",
-loan:0,
-paid:0,
-interestPaid:0
-};
-
+  loanData[key] = { date:"", loan:0, paid:0, interestPaid:0 };
 }
 
-let row =
-document.createElement("tr");
+let row = document.createElement("tr");
 
-let nameCell =
-document.createElement("td");
-
-nameCell.innerHTML =
-"<b>"+member+"</b>";
-
+let nameCell = document.createElement("td");
+nameCell.innerHTML = "<b>"+member+"</b>";
 row.appendChild(nameCell);
 
-let dateCell =
-document.createElement("td");
-
-let dateInput =
-document.createElement("input");
-
+let dateCell = document.createElement("td");
+let dateInput = document.createElement("input");
 dateInput.type="date";
-dateInput.value =
-loanData[key].date || "";
+dateInput.value = loanData[key].date || "";
 
 dateInput.onchange=function(){
-
-loanData[key].date =
-this.value;
-
-saveLoan();
-renderLoan();
-
+  loanData[key].date = this.value;
+  saveLoan();
+  renderLoan();
 };
-
 dateCell.appendChild(dateInput);
 row.appendChild(dateCell);
 
-let loanCell =
-document.createElement("td");
-
-let loanInput =
-document.createElement("input");
-
+let loanCell = document.createElement("td");
+let loanInput = document.createElement("input");
 loanInput.type="number";
 loanInput.min="0";
 loanInput.placeholder="Amount";
-
-loanInput.value =
-loanData[key].loan || "";
+loanInput.value = loanData[key].loan || "";
 
 loanInput.onchange=function(){
-
-loanData[key].loan =
-Number(this.value) || 0;
-
-saveLoan();
-renderLoan();
-
+  loanData[key].loan = Number(this.value) || 0;
+  saveLoan();
+  renderLoan();
 };
-
 loanCell.appendChild(loanInput);
 row.appendChild(loanCell);
 
-let loanAmount =
-Number(loanData[key].loan) || 0;
+let loanAmount = Number(loanData[key].loan) || 0;
+let rate = loanAmount > 50000 ? 1.5 : 1.2;
 
-let rate =
-loanAmount > 50000 ? 1.5 : 1.2;
-
-let rateCell =
-document.createElement("td");
-
+let rateCell = document.createElement("td");
 rateCell.className="rate";
-
-rateCell.innerText =
-rate+"% / month";
-
+rateCell.innerText = rate+"% / month";
 row.appendChild(rateCell);
 
-let monthsCell =
-document.createElement("td");
-
-let loanMonths =
-calculateMonths(loanData[key].date);
-
-monthsCell.innerText =
-loanMonths;
-
+let monthsCell = document.createElement("td");
+let loanMonths = calculateMonths(loanData[key].date);
+monthsCell.innerText = loanMonths;
 row.appendChild(monthsCell);
 
-let interest =
-loanAmount *
-(rate / 100) *
-loanMonths;
+let interest = loanAmount * (rate / 100) * loanMonths;
 
-let interestCell =
-document.createElement("td");
-
+let interestCell = document.createElement("td");
 interestCell.className="interest";
-
-interestCell.innerText =
-"Rs. "+Math.round(interest).toLocaleString();
-
+interestCell.innerText = "Rs. "+Math.round(interest).toLocaleString();
 row.appendChild(interestCell);
 
-let paidCell =
-document.createElement("td");
-
-let paidInput =
-document.createElement("input");
-
+let paidCell = document.createElement("td");
+let paidInput = document.createElement("input");
 paidInput.type="number";
 paidInput.min="0";
 paidInput.placeholder="Paid";
-
-paidInput.value =
-loanData[key].paid || "";
+paidInput.value = loanData[key].paid || "";
 
 paidInput.onchange=function(){
-
-loanData[key].paid =
-Number(this.value) || 0;
-
-saveLoan();
-renderLoan();
-
+  loanData[key].paid = Number(this.value) || 0;
+  saveLoan();
+  renderLoan();
 };
-
 paidCell.appendChild(paidInput);
 row.appendChild(paidCell);
 
-let interestPaidCell =
-document.createElement("td");
-
-let interestPaidInput =
-document.createElement("input");
-
+let interestPaidCell = document.createElement("td");
+let interestPaidInput = document.createElement("input");
 interestPaidInput.type="number";
 interestPaidInput.min="0";
 interestPaidInput.placeholder="Interest Paid";
-
-interestPaidInput.value =
-loanData[key].interestPaid || "";
+interestPaidInput.value = loanData[key].interestPaid || "";
 
 interestPaidInput.onchange=function(){
-
-loanData[key].interestPaid =
-Number(this.value) || 0;
-
-saveLoan();
-renderLoan();
-
+  loanData[key].interestPaid = Number(this.value) || 0;
+  saveLoan();
+  renderLoan();
 };
-
-interestPaidCell.appendChild(
-interestPaidInput
-);
-
+interestPaidCell.appendChild(interestPaidInput);
 row.appendChild(interestPaidCell);
 
-let principalRemaining =
-Math.max(
-0,
-loanAmount - (Number(loanData[key].paid) || 0)
-);
+let principalRemaining = Math.max(0, loanAmount - (Number(loanData[key].paid) || 0));
+let interestRemaining = Math.max(0, interest - (Number(loanData[key].interestPaid) || 0));
+let remaining = principalRemaining + interestRemaining;
 
-let interestRemaining =
-Math.max(
-0,
-interest - (Number(loanData[key].interestPaid) || 0)
-);
-
-let remaining =
-principalRemaining + interestRemaining;
-
-let remainingCell =
-document.createElement("td");
-
+let remainingCell = document.createElement("td");
 remainingCell.className="remaining";
-
-remainingCell.innerHTML =
-"Rs. "+Math.round(remaining).toLocaleString();
-
+remainingCell.innerHTML = "Rs. "+Math.round(remaining).toLocaleString();
 row.appendChild(remainingCell);
 
-totalLoan +=
-loanAmount;
-
-totalInterest +=
-interest;
-
-totalPaid +=
-Number(loanData[key].paid) || 0;
-
-totalInterestPaid +=
-Number(loanData[key].interestPaid) || 0;
-
-totalRemaining +=
-remaining;
+totalLoan += loanAmount;
+totalInterest += interest;
+totalPaid += Number(loanData[key].paid) || 0;
+totalInterestPaid += Number(loanData[key].interestPaid) || 0;
+totalRemaining += remaining;
 
 tbody.appendChild(row);
 
 });
 
-document.getElementById("totalLoan").innerText =
-"Rs. "+Math.round(totalLoan).toLocaleString();
-
-document.getElementById("totalInterest").innerText =
-"Rs. "+Math.round(totalInterest).toLocaleString();
-
-document.getElementById("totalLoanPaid").innerText =
-"Rs. "+Math.round(totalPaid).toLocaleString();
-
-document.getElementById("totalInterestPaid").innerText =
-"Rs. "+Math.round(totalInterestPaid).toLocaleString();
-
-document.getElementById("totalRemaining").innerText =
-"Rs. "+Math.round(totalRemaining).toLocaleString();
+document.getElementById("totalLoan").innerText = "Rs. "+Math.round(totalLoan).toLocaleString();
+document.getElementById("totalInterest").innerText = "Rs. "+Math.round(totalInterest).toLocaleString();
+document.getElementById("totalLoanPaid").innerText = "Rs. "+Math.round(totalPaid).toLocaleString();
+document.getElementById("totalInterestPaid").innerText = "Rs. "+Math.round(totalInterestPaid).toLocaleString();
+document.getElementById("totalRemaining").innerText = "Rs. "+Math.round(totalRemaining).toLocaleString();
 
 saveLoan();
-
 updateFiveYear();
 
 }
 
 function saveLoan(){
-
-localStorage.setItem(
-"brotherhoodLoan",
-JSON.stringify(loanData)
-);
-
+  localStorage.setItem("brotherhoodLoan", JSON.stringify(loanData));
 }
 
 
 /* 5 YEAR TOTAL SYSTEM */
 
 function getValue(id){
-
-const el =
-document.getElementById(id);
-
-if(!el){
-return 0;
-}
-
-return Number(
-el.innerText
-.replace(/Rs\./g,"")
-.replace(/,/g,"")
-.trim()
-) || 0;
-
+  const el = document.getElementById(id);
+  if(!el) return 0;
+  return Number(el.innerText.replace(/Rs\./g,"").replace(/,/g,"").trim()) || 0;
 }
 
 function money(value){
-
-return "Rs. "+Math.round(value).toLocaleString();
-
+  return "Rs. "+Math.round(value).toLocaleString();
 }
 
 function updateFiveYear(){
@@ -1328,29 +1130,18 @@ document.getElementById("y1Profit").innerText = money(y1Profit);
 document.getElementById("y1Total").innerHTML = "<b>" + money(y1Total) + "</b>";
 
 // Calculate 5-Year Totals
-const fiveSaving = saving;
-const fiveFine = fine;
-const fiveSIP = sip;
-const fiveStock = stock;
-const fiveInvestment = investment;
-const fiveLoan = loan;
-const fiveInterest = interest;
-const fiveProfit = y1Profit;
-const fiveTotal = y1Total;
-
-document.getElementById("fiveSaving").innerText = money(fiveSaving);
-document.getElementById("fiveFine").innerText = money(fiveFine);
-document.getElementById("fiveSIP").innerText = money(fiveSIP);
+document.getElementById("fiveSaving").innerText = money(saving);
+document.getElementById("fiveFine").innerText = money(fine);
+document.getElementById("fiveSIP").innerText = money(sip);
 document.getElementById("fiveStock").innerText = money(fiveStock);
-document.getElementById("fiveInvestment").innerText = money(fiveInvestment);
-document.getElementById("fiveLoan").innerText = money(fiveLoan);
-document.getElementById("fiveInterest").innerText = money(fiveInterest);
-document.getElementById("fiveProfit").innerText = money(fiveProfit);
-document.getElementById("fiveTotal").innerText = money(fiveTotal);
+document.getElementById("fiveInvestment").innerText = money(investment);
+document.getElementById("fiveLoan").innerText = money(loan);
+document.getElementById("fiveInterest").innerText = money(interest);
+document.getElementById("fiveProfit").innerText = money(y1Profit);
+document.getElementById("fiveTotal").innerText = money(y1Total);
 
 }
 
-// Page load huda sabai tables automatic render garna
 window.onload = function(){
   renderSaving();
   renderInvestment();
