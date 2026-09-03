@@ -17,10 +17,6 @@ body{
   color:#222;
 }
 
-/* =========================
-   PREMIUM HEADER DESIGN
-========================= */
-
 .header{
   position:relative;
   background:
@@ -29,54 +25,22 @@ body{
   color:white;
   text-align:center;
   padding:42px 20px 38px;
-  overflow:hidden;
   border-bottom:4px solid #111827;
 }
 
-.header:before{
-  content:"";
-  position:absolute;
-  width:220px;
-  height:220px;
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:50%;
-  top:-120px;
-  left:-70px;
-}
-
-.header:after{
-  content:"";
-  position:absolute;
-  width:260px;
-  height:260px;
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:50%;
-  bottom:-170px;
-  right:-80px;
-}
-
 .header h1{
-  position:relative;
-  z-index:2;
   margin:0;
   font-size:38px;
   font-weight:900;
   letter-spacing:4px;
-  text-shadow:0 3px 12px rgba(0,0,0,.5);
 }
 
 .header p{
-  position:relative;
-  z-index:2;
   margin:10px 0 0;
   font-size:14px;
   letter-spacing:2px;
   opacity:.85;
 }
-
-/* =========================
-   CONTAINER & CARDS
-========================= */
 
 .container{
   max-width:1200px;
@@ -92,37 +56,22 @@ body{
   box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
 
-.card h2{
-  margin-top:0;
-}
-
-/* Found Details special layout */
-
 .found-card{
-  position:relative;
-  overflow:hidden;
   padding:0;
+  overflow:hidden;
 }
 
 .found-top{
-  position:relative;
   padding:28px 25px;
   background:linear-gradient(135deg,#111827,#1f2937);
   color:white;
   text-align:center;
 }
 
-.found-top h2{
-  margin:0;
-  font-size:25px;
-  letter-spacing:1px;
-}
-
 .found-name{
   margin-top:8px;
   font-size:27px;
   font-weight:900;
-  letter-spacing:2px;
 }
 
 .found-content{
@@ -133,7 +82,6 @@ body{
   display:grid;
   grid-template-columns:1fr 1.5fr 1fr;
   gap:15px;
-  align-items:stretch;
 }
 
 .found-info{
@@ -148,17 +96,12 @@ body{
   font-size:12px;
   color:#6b7280;
   text-transform:uppercase;
-  letter-spacing:1px;
   margin-bottom:7px;
 }
 
 .found-info span{
   font-size:16px;
   font-weight:bold;
-}
-
-.start-date{
-  text-align:right;
 }
 
 .leaders{
@@ -169,28 +112,12 @@ body{
 }
 
 .leader-box{
-  background:linear-gradient(135deg,#f8fafc,#eef2f7);
+  background:#f8fafc;
   border:1px solid #e5e7eb;
   border-radius:12px;
   padding:17px;
   text-align:center;
 }
-
-.leader-title{
-  font-size:12px;
-  color:#6b7280;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  margin-bottom:7px;
-}
-
-.leader-name{
-  font-size:18px;
-  font-weight:800;
-  color:#111827;
-}
-
-/* ========================= */
 
 .info-grid{
   display:grid;
@@ -259,14 +186,15 @@ td:first-child{
   color:#555;
 }
 
-.member-list{
-  line-height:1.9;
+.fine-tag{
+  font-size:10px;
+  color:#dc2626;
+  font-weight:bold;
 }
 
-.footer{
-  text-align:center;
-  padding:20px;
-  color:#666;
+.member-total {
+  font-weight: bold;
+  background-color: #f1f5f9;
 }
 
 input{
@@ -280,1117 +208,11 @@ input[type="date"]{
   width:135px;
 }
 
-.rate{
-  font-weight:bold;
-}
-
-.interest{
-  font-size:12px;
-}
-
-.remaining{
-  font-weight:bold;
-}
-
-.member-total {
-  font-weight: bold;
-  background-color: #f1f5f9;
-  color: #0f172a;
-}
-
-/* Mobile */
-@media(max-width:700px){
-
-  .header{
-    padding:32px 15px;
-  }
-
-  .header h1{
-    font-size:27px;
-    letter-spacing:2px;
-  }
-
-  .header p{
-    font-size:11px;
-  }
-
-  .container{
-    padding:12px;
-  }
-
-  .found-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .leaders{
-    grid-column:1 / -1;
-    grid-template-columns:1fr;
-  }
-
-  .start-date{
-    text-align:left;
-  }
-
-  .found-name{
-    font-size:22px;
-  }
-}
-</style>
-</head>
-
-<body>
-
-<div class="header">
-  <h1>🤝 THE BROTHERHOOD</h1>
-  <p>SAVING • INVESTMENT • FINANCIAL RECORD</p>
-</div>
-
-<div class="container">
-
-<div class="card found-card">
-
-  <div class="found-top">
-    <h2>🏢 FOUND DETAILS</h2>
-    <div class="found-name">THE BROTHERHOOD</div>
-  </div>
-
-  <div class="found-content">
-
-    <div class="found-grid">
-
-      <div class="found-info">
-        <b>Monthly Saving</b>
-        <span>Rs. 5,000 / Member</span>
-      </div>
-
-      <div class="found-info">
-        <b>Monthly Collection</b>
-        <span>Rs. 25,000</span>
-      </div>
-
-      <div class="found-info start-date">
-        <b>Start Date</b>
-        <span>2024-01-01</span>
-      </div>
-
-      <div class="leaders">
-
-        <div class="leader-box">
-          <div class="leader-title">👑 Chairman</div>
-          <div class="leader-name">Dipak Mahatara</div>
-        </div>
-
-        <div class="leader-box">
-          <div class="leader-title">📋 Secretary</div>
-          <div class="leader-name">Surya Bahadur Adhikari</div>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-<div class="card">
-<h2>👥 Members (5)</h2>
-
-<div class="member-list">
-1. Dipak Mahatara<br>
-2. Dipendra Mahatara<br>
-3. Rajan Mahatara<br>
-4. Milan Mahatara<br>
-5. Surya Bahadur Adhikari
-</div>
-
-</div>
-
-<div class="card">
-
-<h2>💰 Monthly Saving Record</h2>
-
-<p>
-प्रत्येक सदस्यले प्रत्येक महिना <b>Rs. 5,000</b> जम्मा गर्नुपर्नेछ।
-</p>
-
-<div class="table-wrap">
-
-<table id="savingTable">
-
-<thead>
-<tr>
-<th>Member</th>
-<th>Jan</th>
-<th>Feb</th>
-<th>Mar</th>
-<th>Apr</th>
-<th>May</th>
-<th>Jun</th>
-<th>Jul</th>
-<th>Aug</th>
-<th>Sep</th>
-<th>Oct</th>
-<th>Nov</th>
-<th>Dec</th>
-<th>Total Saved</th>
-</tr>
-</thead>
-
-<tbody></tbody>
-
-</table>
-
-</div>
-
-<br>
-
-<div class="info-grid">
-
-<div class="info">
-<b>Total Collected</b>
-<span id="totalCollected">Rs. 0</span>
-</div>
-
-<div class="info">
-<b>Total Unpaid</b>
-<span id="totalUnpaid">0</span>
-</div>
-
-<div class="info">
-<b>Total Fine</b>
-<span id="totalFine">Rs. 0</span>
-</div>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<h2>📊 Investment Record</h2>
-
-<p>
-प्रत्येक महिनाको <b>SIP = Rs. 5,000</b> र
-<b>Stock Market = Rs. 5,000</b> लगानी गर्ने।
-</p>
-
-<div class="table-wrap">
-
-<table id="investmentTable">
-
-<thead>
-<tr>
-<th>Investment</th>
-<th>Jan</th>
-<th>Feb</th>
-<th>Mar</th>
-<th>Apr</th>
-<th>May</th>
-<th>Jun</th>
-<th>Jul</th>
-<th>Aug</th>
-<th>Sep</th>
-<th>Oct</th>
-<th>Nov</th>
-<th>Dec</th>
-<th>Total Invested</th>
-</tr>
-</thead>
-
-<tbody></tbody>
-
-</table>
-
-</div>
-
-<br>
-
-<div class="info-grid">
-
-<div class="info">
-<b>Total SIP</b>
-<span id="totalSIP">Rs. 0</span>
-</div>
-
-<div class="info">
-<b>Total Stock Market</b>
-<span id="totalStock">Rs. 0</span>
-</div>
-
-<div class="info">
-<b>Grand Total Investment</b>
-<span id="grandInvestment">Rs. 0</span>
-</div>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<h2>💳 Loan Record</h2>
-
-<p>
-Rs. 50,000 भन्दा बढी ऋणमा <b>1.5% Monthly Interest</b> र
-Rs. 50,000 वा कम ऋणमा <b>1.2% Monthly Interest</b> लाग्नेछ।
-</p>
-
-<div class="table-wrap">
-
-<table id="loanTable">
-
-<thead>
-<tr>
-<th>Member</th>
-<th>Loan Date</th>
-<th>Loan Amount</th>
-<th>Rate</th>
-<th>Months</th>
-<th>Interest</th>
-<th>Paid Amount</th>
-<th>Interest Paid</th>
-<th>Remaining Total</th>
-</tr>
-</thead>
-
-<tbody></tbody>
-
-</table>
-
-</div>
-
-<br>
-
-<div class="info-grid">
-
-<div class="info">
-<b>Total Loan</b>
-<span id="totalLoan">Rs. 0</span>
-</div>
-
-<div class="info">
-<b>Total Interest</b>
-<span id="totalInterest">Rs. 0</span>
-</div>
-
-<div class="info">
-<b>Total Paid</b>
-<span id="totalLoanPaid">Rs. 0</span>
-</div>
-
-<div class="info">
-<b>Total Interest Paid</b>
-<span id="totalInterestPaid">Rs. 0</span>
-</div>
-
-<div class="info">
-<b>Total Remaining</b>
-<span id="totalRemaining">Rs. 0</span>
-</div>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<h2>📅 5 Years Total & Profit</h2>
-
-<p>
-प्रत्येक वर्षको Saving, Fine, SIP, Stock Market, Loan, Interest र Profit यहाँ automatic हिसाब हुनेछ।
-</p>
-
-<div class="table-wrap">
-
-<table id="yearTable">
-
-<thead>
-<tr>
-<th>Year</th>
-<th>Saving</th>
-<th>Fine</th>
-<th>SIP</th>
-<th>Stock</th>
-<th>Investment Total</th>
-<th>Loan</th>
-<th>Interest</th>
-<th>Profit</th>
-<th>Total Amount</th>
-</tr>
-</thead>
-
-<tbody>
-
-<tr>
-<td><b>Year 1</b></td>
-<td id="y1Saving">Rs. 0</td>
-<td id="y1Fine">Rs. 0</td>
-<td id="y1SIP">Rs. 0</td>
-<td id="y1Stock">Rs. 0</td>
-<td id="y1Investment">Rs. 0</td>
-<td id="y1Loan">Rs. 0</td>
-<td id="y1Interest">Rs. 0</td>
-<td id="y1Profit">Rs. 0</td>
-<td id="y1Total"><b>Rs. 0</b></td>
-</tr>
-
-<tr>
-<td><b>Year 2</b></td>
-<td id="y2Saving">Rs. 0</td>
-<td id="y2Fine">Rs. 0</td>
-<td id="y2SIP">Rs. 0</td>
-<td id="y2Stock">Rs. 0</td>
-<td id="y2Investment">Rs. 0</td>
-<td id="y2Loan">Rs. 0</td>
-<td id="y2Interest">Rs. 0</td>
-<td id="y2Profit">Rs. 0</td>
-<td id="y2Total"><b>Rs. 0</b></td>
-</tr>
-
-<tr>
-<td><b>Year 3</b></td>
-<td id="y3Saving">Rs. 0</td>
-<td id="y3Fine">Rs. 0</td>
-<td id="y3SIP">Rs. 0</td>
-<td id="y3Stock">Rs. 0</td>
-<td id="y3Investment">Rs. 0</td>
-<td id="y3Loan">Rs. 0</td>
-<td id="y3Interest">Rs. 0</td>
-<td id="y3Profit">Rs. 0</td>
-<td id="y3Total"><b>Rs. 0</b></td>
-</tr>
-
-<tr>
-<td><b>Year 4</b></td>
-<td id="y4Saving">Rs. 0</td>
-<td id="y4Fine">Rs. 0</td>
-<td id="y4SIP">Rs. 0</td>
-<td id="y4Stock">Rs. 0</td>
-<td id="y4Investment">Rs. 0</td>
-<td id="y4Loan">Rs. 0</td>
-<td id="y4Interest">Rs. 0</td>
-<td id="y4Profit">Rs. 0</td>
-<td id="y4Total"><b>Rs. 0</b></td>
-</tr>
-
-<tr>
-<td><b>Year 5</b></td>
-<td id="y5Saving">Rs. 0</td>
-<td id="y5Fine">Rs. 0</td>
-<td id="y5SIP">Rs. 0</td>
-<td id="y5Stock">Rs. 0</td>
-<td id="y5Investment">Rs. 0</td>
-<td id="y5Loan">Rs. 0</td>
-<td id="y5Interest">Rs. 0</td>
-<td id="y5Profit">Rs. 0</td>
-<td id="y5Total"><b>Rs. 0</b></td>
-</tr>
-
-<tr>
-<th>5 YEAR TOTAL</th>
-<th id="fiveSaving">Rs. 0</th>
-<th id="fiveFine">Rs. 0</th>
-<th id="fiveSIP">Rs. 0</th>
-<th id="fiveStock">Rs. 0</th>
-<th id="fiveInvestment">Rs. 0</th>
-<th id="fiveLoan">Rs. 0</th>
-<th id="fiveInterest">Rs. 0</th>
-<th id="fiveProfit">Rs. 0</th>
-<th id="fiveTotal">Rs. 0</th>
-</tr>
-
-</tbody>
-</table>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="footer">
-The Brotherhood © 2026
-</div>
-
-<script>
-
-const members = [
-"Dipak Mahatara",
-"Dipendra Mahatara",
-"Rajan Mahatara",
-"Milan Mahatara",
-"Surya Bahadur Adhikari"
-];
-
-const months = [
-"Jan","Feb","Mar","Apr","May","Jun",
-"Jul","Aug","Sep","Oct","Nov","Dec"
-];
-
-const MONTHLY_AMOUNT = 5000;
-const FINE_AMOUNT = 250;
-
-
-/* SAVING SYSTEM */
-
-let savingData =
-JSON.parse(localStorage.getItem("brotherhoodSaving")) || {};
-
-function renderSaving(){
-
-const tbody =
-document.querySelector("#savingTable tbody");
-
-tbody.innerHTML = "";
-
-let collected = 0;
-let unpaid = 0;
-
-members.forEach((member,memberIndex)=>{
-
-let row = document.createElement("tr");
-
-let nameCell = document.createElement("td");
-nameCell.innerHTML = "<b>"+member+"</b>";
-row.appendChild(nameCell);
-
-let memberSavedAmount = 0;
-
-months.forEach((month,monthIndex)=>{
-
-const key = memberIndex+"-"+monthIndex;
-
-if(!savingData[key]){
-  savingData[key] = { status:"unpaid" };
-}
-
-const cell = document.createElement("td");
-const amount = document.createElement("div");
-
-amount.className="amount";
-amount.innerText="Rs. 5,000";
-
-const button = document.createElement("button");
-button.className="pay-btn";
-
-if(savingData[key].status==="paid"){
-  button.classList.add("paid");
-  button.innerText="Paid";
-  collected += MONTHLY_AMOUNT;
-  memberSavedAmount += MONTHLY_AMOUNT;
-}else{
-  button.classList.add("unpaid");
-  button.innerText="Unpaid";
-  unpaid++;
-}
-
-button.onclick=function(){
-  if(savingData[key].status==="paid"){
-    savingData[key].status="unpaid";
-  }else{
-    savingData[key].status="paid";
-  }
-  saveData();
-  renderSaving();
-};
-
-cell.appendChild(amount);
-cell.appendChild(button);
-row.appendChild(cell);
-
-});
-
-// Added Member Total Column
-let totalCell = document.createElement("td");
-totalCell.className = "member-total";
-totalCell.innerText = "Rs. " + memberSavedAmount.toLocaleString();
-row.appendChild(totalCell);
-
-tbody.appendChild(row);
-
-});
-
-const fine = unpaid * FINE_AMOUNT;
-
-document.getElementById("totalCollected").innerText = "Rs. "+collected.toLocaleString();
-document.getElementById("totalUnpaid").innerText = unpaid;
-document.getElementById("totalFine").innerText = "Rs. "+fine.toLocaleString();
-
-saveData();
-updateFiveYear();
-
-}
-
-function saveData(){
-  localStorage.setItem("brotherhoodSaving", JSON.stringify(savingData));
-}
-
-
-/* INVESTMENT SYSTEM */
-
-const investments = [
-"SIP",
-"Stock Market"
-];
-
-const investmentMonths = [
-"Jan","Feb","Mar","Apr","May","Jun",
-"Jul","Aug","Sep","Oct","Nov","Dec"
-];
-
-const INVESTMENT_AMOUNT = 5000;
-
-let investmentData =
-JSON.parse(localStorage.getItem("brotherhoodInvestment")) || {};
-
-function renderInvestment(){
-
-const tbody = document.querySelector("#investmentTable tbody");
-tbody.innerHTML = "";
-
-let totalSIP = 0;
-let totalStock = 0;
-
-investments.forEach((investment,investmentIndex)=>{
-
-let row = document.createElement("tr");
-
-let nameCell = document.createElement("td");
-nameCell.innerHTML = "<b>"+(investmentIndex + 1)+". "+investment+"</b>";
-row.appendChild(nameCell);
-
-let rowTotalInvested = 0;
-
-investmentMonths.forEach((month,monthIndex)=>{
-
-const key = investmentIndex+"-"+monthIndex;
-
-if(!investmentData[key]){
-  investmentData[key] = { status:"unpaid" };
-}
-
-const cell = document.createElement("td");
-const amount = document.createElement("div");
-
-amount.className="amount";
-amount.innerText="Rs. 5,000";
-
-const button = document.createElement("button");
-button.className="pay-btn";
-
-if(investmentData[key].status==="paid"){
-  button.classList.add("paid");
-  button.innerText="Done";
-
-  rowTotalInvested += INVESTMENT_AMOUNT;
-
-  if(investmentIndex===0){
-    totalSIP += INVESTMENT_AMOUNT;
-  }else{
-    totalStock += INVESTMENT_AMOUNT;
-  }
-
-}else{
-  button.classList.add("unpaid");
-  button.innerText="Update";
-}
-
-button.onclick=function(){
-  if(investmentData[key].status==="paid"){
-    investmentData[key].status="unpaid";
-  }else{
-    investmentData[key].status="paid";
-  }
-  saveInvestment();
-  renderInvestment();
-};
-
-cell.appendChild(amount);
-cell.appendChild(button);
-row.appendChild(cell);
-
-});
-
-// Added Investment Total Column
-let totalCell = document.createElement("td");
-totalCell.className = "member-total";
-totalCell.innerText = "Rs. " + rowTotalInvested.toLocaleString();
-row.appendChild(totalCell);
-
-tbody.appendChild(row);
-
-});
-
-const grandTotal = totalSIP + totalStock;
-
-document.getElementById("totalSIP").innerText = "Rs. "+totalSIP.toLocaleString();
-document.getElementById("totalStock").innerText = "Rs. "+totalStock.toLocaleString();
-document.getElementById("grandInvestment").innerText = "Rs. "+grandTotal.toLocaleString();
-
-saveInvestment();
-updateFiveYear();
-
-}
-
-function saveInvestment(){
-  localStorage.setItem("brotherhoodInvestment", JSON.stringify(investmentData));
-}
-
-
-/* LOAN SYSTEM */
-
-let loanData = JSON.parse(localStorage.getItem("brotherhoodLoan")) || {};
-
-function calculateMonths(loanDate){
-  if(!loanDate) return 0;
-
-  const start = new Date(loanDate);
-  const today = new Date();
-
-  let months = (today.getFullYear() - start.getFullYear()) * 12 + (today.getMonth() - start.getMonth());
-  if(today.getDate() < start.getDate()){
-    months--;
-  }
-  return Math.max(0,months);
-}
-
-function renderLoan(){
-
-const tbody = document.querySelector("#loanTable tbody");
-tbody.innerHTML = "";
-
-let totalLoan = 0;
-let totalInterest = 0;
-let totalPaid = 0;
-let totalInterestPaid = 0;
-let totalRemaining = 0;
-
-members.forEach((member,memberIndex)=>{
-
-const key = memberIndex;
-
-if(!loanData[key]){
-  loanData[key] = { date:"", loan:0, paid:0, interestPaid:0 };
-}
-
-let row = document.createElement("tr");
-
-let nameCell = document.createElement("td");
-nameCell.innerHTML = "<b>"+member+"</b>";
-row.appendChild(nameCell);
-
-let dateCell = document.createElement("td");
-let dateInput = document.createElement("input");
-dateInput.type="date";
-dateInput.value = loanData[key].date || "";
-
-dateInput.onchange=function(){
-  loanData[key].date = this.value;
-  saveLoan();
-  renderLoan();
-};
-dateCell.appendChild(dateInput);
-row.appendChild(dateCell);
-
-let loanCell = document.createElement("td");
-let loanInput = document.createElement("input");
-loanInput.type="number";
-loanInput.min="0";
-loanInput.placeholder="Amount";
-loanInput.value = loanData[key].loan || "";
-
-loanInput.onchange=function(){
-  loanData[key].loan = Number(this.value) || 0;
-  saveLoan();
-  renderLoan();
-};
-loanCell.appendChild(loanInput);
-row.appendChild(loanCell);
-
-let loanAmount = Number(loanData[key].loan) || 0;
-let rate = loanAmount > 50000 ? 1.5 : 1.2;
-
-let rateCell = document.createElement("td");
-rateCell.className="rate";
-rateCell.innerText = rate+"% / month";
-row.appendChild(rateCell);
-
-let monthsCell = document.createElement("td");
-let loanMonths = calculateMonths(loanData[key].date);
-monthsCell.innerText = loanMonths;
-row.appendChild(monthsCell);
-
-let interest = loanAmount * (rate / 100) * loanMonths;
-
-let interestCell = document.createElement("td");
-interestCell.className="interest";
-interestCell.innerText = "Rs. "+Math.round(interest).toLocaleString();
-row.appendChild(interestCell);
-
-let paidCell = document.createElement("td");
-let paidInput = document.createElement("input");
-paidInput.type="number";
-paidInput.min="0";
-paidInput.placeholder="Paid";
-paidInput.value = loanData[key].paid || "";
-
-paidInput.onchange=function(){
-  loanData[key].paid = Number(this.value) || 0;
-  saveLoan();
-  renderLoan();
-};
-paidCell.appendChild(paidInput);
-row.appendChild(paidCell);
-
-let interestPaidCell = document.createElement("td");
-let interestPaidInput = document.createElement("input");
-interestPaidInput.type="number";
-interestPaidInput.min="0";
-interestPaidInput.placeholder="Interest Paid";
-interestPaidInput.value = loanData[key].interestPaid || "";
-
-interestPaidInput.onchange=function(){
-  loanData[key].interestPaid = Number(this.value) || 0;
-  saveLoan();
-  renderLoan();
-};<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Brotherhood</title>
-
-<style>
-*{
-  box-sizing:border-box;
-}
-
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#f3f4f6;
-  color:#222;
-}
-
-/* =========================
-   PREMIUM HEADER DESIGN
-========================= */
-
-.header{
-  position:relative;
-  background:
-    radial-gradient(circle at 50% 20%,rgba(255,255,255,.12),transparent 35%),
-    linear-gradient(135deg,#020617,#111827 45%,#374151);
-  color:white;
-  text-align:center;
-  padding:42px 20px 38px;
-  overflow:hidden;
-  border-bottom:4px solid #111827;
-}
-
-.header:before{
-  content:"";
-  position:absolute;
-  width:220px;
-  height:220px;
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:50%;
-  top:-120px;
-  left:-70px;
-}
-
-.header:after{
-  content:"";
-  position:absolute;
-  width:260px;
-  height:260px;
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:50%;
-  bottom:-170px;
-  right:-80px;
-}
-
-.header h1{
-  position:relative;
-  z-index:2;
-  margin:0;
-  font-size:38px;
-  font-weight:900;
-  letter-spacing:4px;
-  text-shadow:0 3px 12px rgba(0,0,0,.5);
-}
-
-.header p{
-  position:relative;
-  z-index:2;
-  margin:10px 0 0;
-  font-size:14px;
-  letter-spacing:2px;
-  opacity:.85;
-}
-
-/* =========================
-   CONTAINER & CARDS
-========================= */
-
-.container{
-  max-width:1200px;
-  margin:auto;
-  padding:20px;
-}
-
-.card{
-  background:white;
-  border-radius:15px;
-  padding:20px;
-  margin-bottom:20px;
-  box-shadow:0 3px 12px rgba(0,0,0,.08);
-}
-
-.card h2{
-  margin-top:0;
-}
-
-/* Found Details special layout */
-
-.found-card{
-  position:relative;
-  overflow:hidden;
-  padding:0;
-}
-
-.found-top{
-  position:relative;
-  padding:28px 25px;
-  background:linear-gradient(135deg,#111827,#1f2937);
-  color:white;
-  text-align:center;
-}
-
-.found-top h2{
-  margin:0;
-  font-size:25px;
-  letter-spacing:1px;
-}
-
-.found-name{
-  margin-top:8px;
-  font-size:27px;
-  font-weight:900;
-  letter-spacing:2px;
-}
-
-.found-content{
-  padding:20px;
-}
-
-.found-grid{
-  display:grid;
-  grid-template-columns:1fr 1.5fr 1fr;
-  gap:15px;
-  align-items:stretch;
-}
-
-.found-info{
-  background:#f8fafc;
-  border:1px solid #e5e7eb;
-  border-radius:12px;
-  padding:16px;
-}
-
-.found-info b{
-  display:block;
-  font-size:12px;
-  color:#6b7280;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  margin-bottom:7px;
-}
-
-.found-info span{
-  font-size:16px;
-  font-weight:bold;
-}
-
-.start-date{
-  text-align:right;
-}
-
-.leaders{
-  grid-column:1 / -1;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:15px;
-}
-
-.leader-box{
-  background:linear-gradient(135deg,#f8fafc,#eef2f7);
-  border:1px solid #e5e7eb;
-  border-radius:12px;
-  padding:17px;
-  text-align:center;
-}
-
-.leader-title{
-  font-size:12px;
-  color:#6b7280;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  margin-bottom:7px;
-}
-
-.leader-name{
-  font-size:18px;
-  font-weight:800;
-  color:#111827;
-}
-
-/* ========================= */
-
-.info-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:12px;
-}
-
-.info{
-  background:#f9fafb;
-  padding:15px;
-  border-radius:10px;
-}
-
-.info b{
-  display:block;
-  margin-bottom:7px;
-}
-
-.table-wrap{
-  overflow-x:auto;
-}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:1100px;
-}
-
-th,td{
-  border:1px solid #ddd;
-  padding:8px;
-  text-align:center;
-}
-
-th{
-  background:#111827;
-  color:white;
-}
-
-td:first-child{
-  text-align:left;
-  min-width:190px;
-}
-
-.pay-btn{
-  border:0;
-  padding:6px 9px;
-  border-radius:6px;
-  cursor:pointer;
-  font-weight:bold;
-}
-
-.paid{
-  background:#16a34a;
-  color:white;
-}
-
-.unpaid{
-  background:#dc2626;
-  color:white;
-}
-
-.amount{
-  font-size:11px;
-  margin-bottom:4px;
-  color:#555;
-}
-
-.member-list{
-  line-height:1.9;
-}
-
 .footer{
   text-align:center;
   padding:20px;
   color:#666;
 }
-
-input{
-  padding:7px;
-  border:1px solid #ccc;
-  border-radius:6px;
-  width:110px;
-}
-
-input[type="date"]{
-  width:135px;
-}
-
-.rate{
-  font-weight:bold;
-}
-
-.interest{
-  font-size:12px;
-}
-
-.remaining{
-  font-weight:bold;
-}
-
-.member-total {
-  font-weight: bold;
-  background-color: #f1f5f9;
-  color: #0f172a;
-}
-
-/* Mobile */
-@media(max-width:700px){
-
-  .header{
-    padding:32px 15px;
-  }
-
-  .header h1{
-    font-size:27px;
-    letter-spacing:2px;
-  }
-
-  .header p{
-    font-size:11px;
-  }
-
-  .container{
-    padding:12px;
-  }
-
-  .found-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .leaders{
-    grid-column:1 / -1;
-    grid-template-columns:1fr;
-  }
-
-  .start-date{
-    text-align:left;
-  }
-
-  .found-name{
-    font-size:22px;
-  }
-}
 </style>
 </head>
 
@@ -1398,204 +220,82 @@ input[type="date"]{
 
 <div class="header">
   <h1>🤝 THE BROTHERHOOD</h1>
-  <p>SAVING • INVESTMENT • FINANCIAL RECORD</p>
+  <p>AUTOMATIC SAVING & INTEREST RECORD</p>
 </div>
 
 <div class="container">
 
 <div class="card found-card">
-
   <div class="found-top">
     <h2>🏢 FOUND DETAILS</h2>
     <div class="found-name">THE BROTHERHOOD</div>
   </div>
-
   <div class="found-content">
-
     <div class="found-grid">
-
       <div class="found-info">
         <b>Monthly Saving</b>
         <span>Rs. 5,000 / Member</span>
       </div>
-
       <div class="found-info">
         <b>Monthly Collection</b>
         <span>Rs. 25,000</span>
       </div>
-
-      <div class="found-info start-date">
+      <div class="found-info">
         <b>Start Date</b>
         <span>2024-01-01</span>
       </div>
-
       <div class="leaders">
-
         <div class="leader-box">
-          <div class="leader-title">👑 Chairman</div>
-          <div class="leader-name">Dipak Mahatara</div>
+          <b>👑 Chairman</b>
+          <div style="font-size:18px; font-weight:bold;">Dipak Mahatara</div>
         </div>
-
         <div class="leader-box">
-          <div class="leader-title">📋 Secretary</div>
-          <div class="leader-name">Surya Bahadur Adhikari</div>
+          <b>📋 Secretary</b>
+          <div style="font-size:18px; font-weight:bold;">Surya Bahadur Adhikari</div>
         </div>
-
       </div>
-
     </div>
-
   </div>
-
 </div>
 
 <div class="card">
-<h2>👥 Members (5)</h2>
-
-<div class="member-list">
-1. Dipak Mahatara<br>
-2. Dipendra Mahatara<br>
-3. Rajan Mahatara<br>
-4. Milan Mahatara<br>
-5. Surya Bahadur Adhikari
-</div>
-
-</div>
-
-<div class="card">
-
-<h2>💰 Monthly Saving Record</h2>
-
-<p>
-प्रत्येक सदस्यले प्रत्येक महिना <b>Rs. 5,000</b> जम्मा गर्नुपर्नेछ।
-</p>
+<h2>💰 Monthly Saving Record (Auto Fine)</h2>
+<p>अघिल्ला महिनाहरूको भुक्तानी बाँकी (Unpaid) भएमा प्रति महिना <b>Rs. 250 Fine</b> आफैं हिसाब हुन्छ।</p>
 
 <div class="table-wrap">
-
 <table id="savingTable">
-
 <thead>
 <tr>
 <th>Member</th>
-<th>Jan</th>
-<th>Feb</th>
-<th>Mar</th>
-<th>Apr</th>
-<th>May</th>
-<th>Jun</th>
-<th>Jul</th>
-<th>Aug</th>
-<th>Sep</th>
-<th>Oct</th>
-<th>Nov</th>
-<th>Dec</th>
+<th>Jan</th><th>Feb</th><th>Mar</th><th>Apr</th><th>May</th><th>Jun</th>
+<th>Jul</th><th>Aug</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dec</th>
 <th>Total Saved</th>
+<th>Total Fine</th>
 </tr>
 </thead>
-
 <tbody></tbody>
-
 </table>
-
 </div>
 
 <br>
-
 <div class="info-grid">
-
 <div class="info">
 <b>Total Collected</b>
 <span id="totalCollected">Rs. 0</span>
 </div>
-
 <div class="info">
-<b>Total Unpaid</b>
-<span id="totalUnpaid">0</span>
-</div>
-
-<div class="info">
-<b>Total Fine</b>
+<b>Total Fine Auto</b>
 <span id="totalFine">Rs. 0</span>
 </div>
-
 </div>
-
-</div>
-
-<div class="card">
-
-<h2>📊 Investment Record</h2>
-
-<p>
-प्रत्येक महिनाको <b>SIP = Rs. 5,000</b> र
-<b>Stock Market = Rs. 5,000</b> लगानी गर्ने।
-</p>
-
-<div class="table-wrap">
-
-<table id="investmentTable">
-
-<thead>
-<tr>
-<th>Investment</th>
-<th>Jan</th>
-<th>Feb</th>
-<th>Mar</th>
-<th>Apr</th>
-<th>May</th>
-<th>Jun</th>
-<th>Jul</th>
-<th>Aug</th>
-<th>Sep</th>
-<th>Oct</th>
-<th>Nov</th>
-<th>Dec</th>
-<th>Total Invested</th>
-</tr>
-</thead>
-
-<tbody></tbody>
-
-</table>
-
-</div>
-
-<br>
-
-<div class="info-grid">
-
-<div class="info">
-<b>Total SIP</b>
-<span id="totalSIP">Rs. 0</span>
-</div>
-
-<div class="info">
-<b>Total Stock Market</b>
-<span id="totalStock">Rs. 0</span>
-</div>
-
-<div class="info">
-<b>Grand Total Investment</b>
-<span id="grandInvestment">Rs. 0</span>
-</div>
-
-</div>
-
 </div>
 
 <div class="card">
-
-<h2>💳 Loan Record</h2>
-
-<p>
-Rs. 50,000 भन्दा बढी ऋणमा <b>1.5% Monthly Interest</b> र
-Rs. 50,000 वा कम ऋणमा <b>1.2% Monthly Interest</b> लाग्नेछ।
-</p>
+<h2>💳 Loan Record (Auto Interest)</h2>
+<p>ऋण लिएको मिति अनुसार महिना गनेर <b>1.2% / 1.5% Interest</b> आफैं हिसाब हुन्छ।</p>
 
 <div class="table-wrap">
-
 <table id="loanTable">
-
 <thead>
 <tr>
 <th>Member</th>
@@ -1603,174 +303,38 @@ Rs. 50,000 वा कम ऋणमा <b>1.2% Monthly Interest</b> लाग्�
 <th>Loan Amount</th>
 <th>Rate</th>
 <th>Months</th>
-<th>Interest</th>
+<th>Auto Interest</th>
 <th>Paid Amount</th>
 <th>Interest Paid</th>
 <th>Remaining Total</th>
 </tr>
 </thead>
-
 <tbody></tbody>
-
 </table>
-
 </div>
 
 <br>
-
 <div class="info-grid">
-
 <div class="info">
 <b>Total Loan</b>
 <span id="totalLoan">Rs. 0</span>
 </div>
-
 <div class="info">
-<b>Total Interest</b>
+<b>Total Auto Interest</b>
 <span id="totalInterest">Rs. 0</span>
 </div>
-
-<div class="info">
-<b>Total Paid</b>
-<span id="totalLoanPaid">Rs. 0</span>
-</div>
-
-<div class="info">
-<b>Total Interest Paid</b>
-<span id="totalInterestPaid">Rs. 0</span>
-</div>
-
 <div class="info">
 <b>Total Remaining</b>
 <span id="totalRemaining">Rs. 0</span>
 </div>
-
+</div>
 </div>
 
 </div>
 
-<div class="card">
-
-<h2>📅 5 Years Total & Profit</h2>
-
-<p>
-प्रत्येक वर्षको Saving, Fine, SIP, Stock Market, Loan, Interest र Profit यहाँ automatic हिसाब हुनेछ।
-</p>
-
-<div class="table-wrap">
-
-<table id="yearTable">
-
-<thead>
-<tr>
-<th>Year</th>
-<th>Saving</th>
-<th>Fine</th>
-<th>SIP</th>
-<th>Stock</th>
-<th>Investment Total</th>
-<th>Loan</th>
-<th>Interest</th>
-<th>Profit</th>
-<th>Total Amount</th>
-</tr>
-</thead>
-
-<tbody>
-
-<tr>
-<td><b>Year 1</b></td>
-<td id="y1Saving">Rs. 0</td>
-<td id="y1Fine">Rs. 0</td>
-<td id="y1SIP">Rs. 0</td>
-<td id="y1Stock">Rs. 0</td>
-<td id="y1Investment">Rs. 0</td>
-<td id="y1Loan">Rs. 0</td>
-<td id="y1Interest">Rs. 0</td>
-<td id="y1Profit">Rs. 0</td>
-<td id="y1Total"><b>Rs. 0</b></td>
-</tr>
-
-<tr>
-<td><b>Year 2</b></td>
-<td id="y2Saving">Rs. 0</td>
-<td id="y2Fine">Rs. 0</td>
-<td id="y2SIP">Rs. 0</td>
-<td id="y2Stock">Rs. 0</td>
-<td id="y2Investment">Rs. 0</td>
-<td id="y2Loan">Rs. 0</td>
-<td id="y2Interest">Rs. 0</td>
-<td id="y2Profit">Rs. 0</td>
-<td id="y2Total"><b>Rs. 0</b></td>
-</tr>
-
-<tr>
-<td><b>Year 3</b></td>
-<td id="y3Saving">Rs. 0</td>
-<td id="y3Fine">Rs. 0</td>
-<td id="y3SIP">Rs. 0</td>
-<td id="y3Stock">Rs. 0</td>
-<td id="y3Investment">Rs. 0</td>
-<td id="y3Loan">Rs. 0</td>
-<td id="y3Interest">Rs. 0</td>
-<td id="y3Profit">Rs. 0</td>
-<td id="y3Total"><b>Rs. 0</b></td>
-</tr>
-
-<tr>
-<td><b>Year 4</b></td>
-<td id="y4Saving">Rs. 0</td>
-<td id="y4Fine">Rs. 0</td>
-<td id="y4SIP">Rs. 0</td>
-<td id="y4Stock">Rs. 0</td>
-<td id="y4Investment">Rs. 0</td>
-<td id="y4Loan">Rs. 0</td>
-<td id="y4Interest">Rs. 0</td>
-<td id="y4Profit">Rs. 0</td>
-<td id="y4Total"><b>Rs. 0</b></td>
-</tr>
-
-<tr>
-<td><b>Year 5</b></td>
-<td id="y5Saving">Rs. 0</td>
-<td id="y5Fine">Rs. 0</td>
-<td id="y5SIP">Rs. 0</td>
-<td id="y5Stock">Rs. 0</td>
-<td id="y5Investment">Rs. 0</td>
-<td id="y5Loan">Rs. 0</td>
-<td id="y5Interest">Rs. 0</td>
-<td id="y5Profit">Rs. 0</td>
-<td id="y5Total"><b>Rs. 0</b></td>
-</tr>
-
-<tr>
-<th>5 YEAR TOTAL</th>
-<th id="fiveSaving">Rs. 0</th>
-<th id="fiveFine">Rs. 0</th>
-<th id="fiveSIP">Rs. 0</th>
-<th id="fiveStock">Rs. 0</th>
-<th id="fiveInvestment">Rs. 0</th>
-<th id="fiveLoan">Rs. 0</th>
-<th id="fiveInterest">Rs. 0</th>
-<th id="fiveProfit">Rs. 0</th>
-<th id="fiveTotal">Rs. 0</th>
-</tr>
-
-</tbody>
-</table>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="footer">
-The Brotherhood © 2026
-</div>
+<div class="footer">The Brotherhood © 2026</div>
 
 <script>
-
 const members = [
 "Dipak Mahatara",
 "Dipendra Mahatara",
@@ -1779,476 +343,214 @@ const members = [
 "Surya Bahadur Adhikari"
 ];
 
-const months = [
-"Jan","Feb","Mar","Apr","May","Jun",
-"Jul","Aug","Sep","Oct","Nov","Dec"
-];
-
+const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const MONTHLY_AMOUNT = 5000;
-const FINE_AMOUNT = 250;
+const FINE_PER_MONTH = 250;
 
-
-/* SAVING SYSTEM */
-
-let savingData =
-JSON.parse(localStorage.getItem("brotherhoodSaving")) || {};
+let savingData = JSON.parse(localStorage.getItem("brotherhoodSaving")) || {};
 
 function renderSaving(){
+  const tbody = document.querySelector("#savingTable tbody");
+  tbody.innerHTML = "";
 
-const tbody =
-document.querySelector("#savingTable tbody");
+  let totalCollected = 0;
+  let totalFineAll = 0;
+  
+  const currentMonthIdx = new Date().getMonth();
 
-tbody.innerHTML = "";
+  members.forEach((member, memberIndex) => {
+    let row = document.createElement("tr");
+    let nameCell = document.createElement("td");
+    nameCell.innerHTML = "<b>" + member + "</b>";
+    row.appendChild(nameCell);
 
-let collected = 0;
-let unpaid = 0;
+    let memberSaved = 0;
+    let memberFine = 0;
 
-members.forEach((member,memberIndex)=>{
+    months.forEach((month, monthIndex) => {
+      const key = memberIndex + "-" + monthIndex;
+      if(!savingData[key]){
+        savingData[key] = { status: "unpaid" };
+      }
 
-let row = document.createElement("tr");
+      let cell = document.createElement("td");
+      let btn = document.createElement("button");
+      btn.className = "pay-btn";
 
-let nameCell = document.createElement("td");
-nameCell.innerHTML = "<b>"+member+"</b>";
-row.appendChild(nameCell);
+      let isPassedMonth = monthIndex < currentMonthIdx;
+      let isUnpaid = savingData[key].status === "unpaid";
 
-let memberSavedAmount = 0;
+      if(savingData[key].status === "paid"){
+        btn.classList.add("paid");
+        btn.innerText = "Paid";
+        memberSaved += MONTHLY_AMOUNT;
+        totalCollected += MONTHLY_AMOUNT;
+      } else {
+        btn.classList.add("unpaid");
+        btn.innerText = "Unpaid";
+        
+        // Automatic Fine for past unpaid months
+        if(isPassedMonth && isUnpaid){
+          memberFine += FINE_PER_MONTH;
+        }
+      }
 
-months.forEach((month,monthIndex)=>{
+      btn.onclick = function(){
+        savingData[key].status = (savingData[key].status === "paid") ? "unpaid" : "paid";
+        localStorage.setItem("brotherhoodSaving", JSON.stringify(savingData));
+        renderSaving();
+      };
 
-const key = memberIndex+"-"+monthIndex;
+      cell.appendChild(btn);
+      
+      if(isPassedMonth && isUnpaid){
+        let fineInfo = document.createElement("div");
+        fineInfo.className = "fine-tag";
+        fineInfo.innerText = "+Rs.250 Fine";
+        cell.appendChild(fineInfo);
+      }
 
-if(!savingData[key]){
-  savingData[key] = { status:"unpaid" };
+      row.appendChild(cell);
+    });
+
+    let totalCell = document.createElement("td");
+    totalCell.className = "member-total";
+    totalCell.innerText = "Rs. " + memberSaved.toLocaleString();
+    row.appendChild(totalCell);
+
+    let fineCell = document.createElement("td");
+    fineCell.style.color = "red";
+    fineCell.style.fontWeight = "bold";
+    fineCell.innerText = "Rs. " + memberFine.toLocaleString();
+    row.appendChild(fineCell);
+
+    totalFineAll += memberFine;
+    tbody.appendChild(row);
+  });
+
+  document.getElementById("totalCollected").innerText = "Rs. " + totalCollected.toLocaleString();
+  document.getElementById("totalFine").innerText = "Rs. " + totalFineAll.toLocaleString();
 }
 
-const cell = document.createElement("td");
-const amount = document.createElement("div");
-
-amount.className="amount";
-amount.innerText="Rs. 5,000";
-
-const button = document.createElement("button");
-button.className="pay-btn";
-
-if(savingData[key].status==="paid"){
-  button.classList.add("paid");
-  button.innerText="Paid";
-  collected += MONTHLY_AMOUNT;
-  memberSavedAmount += MONTHLY_AMOUNT;
-}else{
-  button.classList.add("unpaid");
-  button.innerText="Unpaid";
-  unpaid++;
-}
-
-button.onclick=function(){
-  if(savingData[key].status==="paid"){
-    savingData[key].status="unpaid";
-  }else{
-    savingData[key].status="paid";
-  }
-  saveData();
-  renderSaving();
-};
-
-cell.appendChild(amount);
-cell.appendChild(button);
-row.appendChild(cell);
-
-});
-
-// Added Member Total Column
-let totalCell = document.createElement("td");
-totalCell.className = "member-total";
-totalCell.innerText = "Rs. " + memberSavedAmount.toLocaleString();
-row.appendChild(totalCell);
-
-tbody.appendChild(row);
-
-});
-
-const fine = unpaid * FINE_AMOUNT;
-
-document.getElementById("totalCollected").innerText = "Rs. "+collected.toLocaleString();
-document.getElementById("totalUnpaid").innerText = unpaid;
-document.getElementById("totalFine").innerText = "Rs. "+fine.toLocaleString();
-
-saveData();
-updateFiveYear();
-
-}
-
-function saveData(){
-  localStorage.setItem("brotherhoodSaving", JSON.stringify(savingData));
-}
-
-
-/* INVESTMENT SYSTEM */
-
-const investments = [
-"SIP",
-"Stock Market"
-];
-
-const investmentMonths = [
-"Jan","Feb","Mar","Apr","May","Jun",
-"Jul","Aug","Sep","Oct","Nov","Dec"
-];
-
-const INVESTMENT_AMOUNT = 5000;
-
-let investmentData =
-JSON.parse(localStorage.getItem("brotherhoodInvestment")) || {};
-
-function renderInvestment(){
-
-const tbody = document.querySelector("#investmentTable tbody");
-tbody.innerHTML = "";
-
-let totalSIP = 0;
-let totalStock = 0;
-
-investments.forEach((investment,investmentIndex)=>{
-
-let row = document.createElement("tr");
-
-let nameCell = document.createElement("td");
-nameCell.innerHTML = "<b>"+(investmentIndex + 1)+". "+investment+"</b>";
-row.appendChild(nameCell);
-
-let rowTotalInvested = 0;
-
-investmentMonths.forEach((month,monthIndex)=>{
-
-const key = investmentIndex+"-"+monthIndex;
-
-if(!investmentData[key]){
-  investmentData[key] = { status:"unpaid" };
-}
-
-const cell = document.createElement("td");
-const amount = document.createElement("div");
-
-amount.className="amount";
-amount.innerText="Rs. 5,000";
-
-const button = document.createElement("button");
-button.className="pay-btn";
-
-if(investmentData[key].status==="paid"){
-  button.classList.add("paid");
-  button.innerText="Done";
-
-  rowTotalInvested += INVESTMENT_AMOUNT;
-
-  if(investmentIndex===0){
-    totalSIP += INVESTMENT_AMOUNT;
-  }else{
-    totalStock += INVESTMENT_AMOUNT;
-  }
-
-}else{
-  button.classList.add("unpaid");
-  button.innerText="Update";
-}
-
-button.onclick=function(){
-  if(investmentData[key].status==="paid"){
-    investmentData[key].status="unpaid";
-  }else{
-    investmentData[key].status="paid";
-  }
-  saveInvestment();
-  renderInvestment();
-};
-
-cell.appendChild(amount);
-cell.appendChild(button);
-row.appendChild(cell);
-
-});
-
-// Added Investment Total Column
-let totalCell = document.createElement("td");
-totalCell.className = "member-total";
-totalCell.innerText = "Rs. " + rowTotalInvested.toLocaleString();
-row.appendChild(totalCell);
-
-tbody.appendChild(row);
-
-});
-
-const grandTotal = totalSIP + totalStock;
-
-document.getElementById("totalSIP").innerText = "Rs. "+totalSIP.toLocaleString();
-document.getElementById("totalStock").innerText = "Rs. "+totalStock.toLocaleString();
-document.getElementById("grandInvestment").innerText = "Rs. "+grandTotal.toLocaleString();
-
-saveInvestment();
-updateFiveYear();
-
-}
-
-function saveInvestment(){
-  localStorage.setItem("brotherhoodInvestment", JSON.stringify(investmentData));
-}
-
-
-/* LOAN SYSTEM */
-
+/* LOAN AUTOMATIC SYSTEM */
 let loanData = JSON.parse(localStorage.getItem("brotherhoodLoan")) || {};
 
 function calculateMonths(loanDate){
   if(!loanDate) return 0;
-
   const start = new Date(loanDate);
   const today = new Date();
-
+  
   let months = (today.getFullYear() - start.getFullYear()) * 12 + (today.getMonth() - start.getMonth());
   if(today.getDate() < start.getDate()){
     months--;
   }
-  return Math.max(0,months);
+  return Math.max(0, months);
 }
 
 function renderLoan(){
+  const tbody = document.querySelector("#loanTable tbody");
+  tbody.innerHTML = "";
 
-const tbody = document.querySelector("#loanTable tbody");
-tbody.innerHTML = "";
+  let totalLoan = 0;
+  let totalInterest = 0;
+  let totalRemaining = 0;
 
-let totalLoan = 0;
-let totalInterest = 0;
-let totalPaid = 0;
-let totalInterestPaid = 0;
-let totalRemaining = 0;
+  members.forEach((member, memberIndex) => {
+    const key = memberIndex;
+    if(!loanData[key]){
+      loanData[key] = { date:"", loan:0, paid:0, interestPaid:0 };
+    }
 
-members.forEach((member,memberIndex)=>{
+    let row = document.createElement("tr");
+    
+    // Member Name
+    row.innerHTML += `<td><b>${member}</b></td>`;
 
-const key = memberIndex;
+    // Date
+    let dateTd = document.createElement("td");
+    let dateInp = document.createElement("input");
+    dateInp.type = "date";
+    dateInp.value = loanData[key].date || "";
+    dateInp.onchange = function(){
+      loanData[key].date = this.value;
+      localStorage.setItem("brotherhoodLoan", JSON.stringify(loanData));
+      renderLoan();
+    };
+    dateTd.appendChild(dateInp);
+    row.appendChild(dateTd);
 
-if(!loanData[key]){
-  loanData[key] = { date:"", loan:0, paid:0, interestPaid:0 };
-}
+    // Loan Amount
+    let loanTd = document.createElement("td");
+    let loanInp = document.createElement("input");
+    loanInp.type = "number";
+    loanInp.value = loanData[key].loan || "";
+    loanInp.onchange = function(){
+      loanData[key].loan = Number(this.value) || 0;
+      localStorage.setItem("brotherhoodLoan", JSON.stringify(loanData));
+      renderLoan();
+    };
+    loanTd.appendChild(loanInp);
+    row.appendChild(loanTd);
 
-let row = document.createElement("tr");
+    let loanAmt = Number(loanData[key].loan) || 0;
+    let rate = loanAmt > 50000 ? 1.5 : 1.2;
+    let monthsCnt = calculateMonths(loanData[key].date);
+    
+    // Automatic Interest Calculation
+    let autoInterest = loanAmt * (rate / 100) * monthsCnt;
 
-let nameCell = document.createElement("td");
-nameCell.innerHTML = "<b>"+member+"</b>";
-row.appendChild(nameCell);
+    row.innerHTML += `<td><b>${rate}%</b></td>`;
+    row.innerHTML += `<td>${monthsCnt}</td>`;
+    row.innerHTML += `<td style="color:#16a34a; font-weight:bold;">Rs. ${Math.round(autoInterest).toLocaleString()}</td>`;
 
-let dateCell = document.createElement("td");
-let dateInput = document.createElement("input");
-dateInput.type="date";
-dateInput.value = loanData[key].date || "";
+    // Paid Amount
+    let paidTd = document.createElement("td");
+    let paidInp = document.createElement("input");
+    paidInp.type = "number";
+    paidInp.value = loanData[key].paid || "";
+    paidInp.onchange = function(){
+      loanData[key].paid = Number(this.value) || 0;
+      localStorage.setItem("brotherhoodLoan", JSON.stringify(loanData));
+      renderLoan();
+    };
+    paidTd.appendChild(paidInp);
+    row.appendChild(paidTd);
 
-dateInput.onchange=function(){
-  loanData[key].date = this.value;
-  saveLoan();
-  renderLoan();
-};
-dateCell.appendChild(dateInput);
-row.appendChild(dateCell);
+    // Interest Paid Amount
+    let intPaidTd = document.createElement("td");
+    let intPaidInp = document.createElement("input");
+    intPaidInp.type = "number";
+    intPaidInp.value = loanData[key].interestPaid || "";
+    intPaidInp.onchange = function(){
+      loanData[key].interestPaid = Number(this.value) || 0;
+      localStorage.setItem("brotherhoodLoan", JSON.stringify(loanData));
+      renderLoan();
+    };
+    intPaidTd.appendChild(intPaidInp);
+    row.appendChild(intPaidTd);
 
-let loanCell = document.createElement("td");
-let loanInput = document.createElement("input");
-loanInput.type="number";
-loanInput.min="0";
-loanInput.placeholder="Amount";
-loanInput.value = loanData[key].loan || "";
+    let remPrincipal = Math.max(0, loanAmt - (Number(loanData[key].paid) || 0));
+    let remInterest = Math.max(0, autoInterest - (Number(loanData[key].interestPaid) || 0));
+    let totalRem = remPrincipal + remInterest;
 
-loanInput.onchange=function(){
-  loanData[key].loan = Number(this.value) || 0;
-  saveLoan();
-  renderLoan();
-};
-loanCell.appendChild(loanInput);
-row.appendChild(loanCell);
+    row.innerHTML += `<td style="font-weight:bold; color:#dc2626;">Rs. ${Math.round(totalRem).toLocaleString()}</td>`;
 
-let loanAmount = Number(loanData[key].loan) || 0;
-let rate = loanAmount > 50000 ? 1.5 : 1.2;
+    totalLoan += loanAmt;
+    totalInterest += autoInterest;
+    totalRemaining += totalRem;
 
-let rateCell = document.createElement("td");
-rateCell.className="rate";
-rateCell.innerText = rate+"% / month";
-row.appendChild(rateCell);
+    tbody.appendChild(row);
+  });
 
-let monthsCell = document.createElement("td");
-let loanMonths = calculateMonths(loanData[key].date);
-monthsCell.innerText = loanMonths;
-row.appendChild(monthsCell);
-
-let interest = loanAmount * (rate / 100) * loanMonths;
-
-let interestCell = document.createElement("td");
-interestCell.className="interest";
-interestCell.innerText = "Rs. "+Math.round(interest).toLocaleString();
-row.appendChild(interestCell);
-
-let paidCell = document.createElement("td");
-let paidInput = document.createElement("input");
-paidInput.type="number";
-paidInput.min="0";
-paidInput.placeholder="Paid";
-paidInput.value = loanData[key].paid || "";
-
-paidInput.onchange=function(){
-  loanData[key].paid = Number(this.value) || 0;
-  saveLoan();
-  renderLoan();
-};
-paidCell.appendChild(paidInput);
-row.appendChild(paidCell);
-
-let interestPaidCell = document.createElement("td");
-let interestPaidInput = document.createElement("input");
-interestPaidInput.type="number";
-interestPaidInput.min="0";
-interestPaidInput.placeholder="Interest Paid";
-interestPaidInput.value = loanData[key].interestPaid || "";
-
-interestPaidInput.onchange=function(){
-  loanData[key].interestPaid = Number(this.value) || 0;
-  saveLoan();
-  renderLoan();
-};
-interestPaidCell.appendChild(interestPaidInput);
-row.appendChild(interestPaidCell);
-
-let principalRemaining = Math.max(0, loanAmount - (Number(loanData[key].paid) || 0));
-let interestRemaining = Math.max(0, interest - (Number(loanData[key].interestPaid) || 0));
-let remaining = principalRemaining + interestRemaining;
-
-let remainingCell = document.createElement("td");
-remainingCell.className="remaining";
-remainingCell.innerHTML = "Rs. "+Math.round(remaining).toLocaleString();
-row.appendChild(remainingCell);
-
-totalLoan += loanAmount;
-totalInterest += interest;
-totalPaid += Number(loanData[key].paid) || 0;
-totalInterestPaid += Number(loanData[key].interestPaid) || 0;
-totalRemaining += remaining;
-
-tbody.appendChild(row);
-
-});
-
-document.getElementById("totalLoan").innerText = "Rs. "+Math.round(totalLoan).toLocaleString();
-document.getElementById("totalInterest").innerText = "Rs. "+Math.round(totalInterest).toLocaleString();
-document.getElementById("totalLoanPaid").innerText = "Rs. "+Math.round(totalPaid).toLocaleString();
-document.getElementById("totalInterestPaid").innerText = "Rs. "+Math.round(totalInterestPaid).toLocaleString();
-document.getElementById("totalRemaining").innerText = "Rs. "+Math.round(totalRemaining).toLocaleString();
-
-saveLoan();
-updateFiveYear();
-
-}
-
-function saveLoan(){
-  localStorage.setItem("brotherhoodLoan", JSON.stringify(loanData));
-}
-
-
-/* 5 YEAR TOTAL SYSTEM */
-
-function getValue(id){
-  const el = document.getElementById(id);
-  if(!el) return 0;
-  return Number(el.innerText.replace(/Rs\./g,"").replace(/,/g,"").trim()) || 0;
-}
-
-function money(value){
-  return "Rs. "+Math.round(value).toLocaleString();
-}
-
-function updateFiveYear(){
-
-const saving = getValue("totalCollected");
-const fine = getValue("totalFine");
-const sip = getValue("totalSIP");
-const stock = getValue("totalStock");
-const investment = getValue("grandInvestment");
-const loan = getValue("totalLoan");
-const interest = getValue("totalInterest");
-
-// Calculation for Year 1
-const y1Profit = fine + interest;
-const y1Total = saving + fine + interest;
-
-document.getElementById("y1Saving").innerText = money(saving);
-document.getElementById("y1Fine").innerText = money(fine);
-document.getElementById("y1SIP").innerText = money(sip);
-document.getElementById("y1Stock").innerText = money(stock);
-document.getElementById("y1Investment").innerText = money(investment);
-document.getElementById("y1Loan").innerText = money(loan);
-document.getElementById("y1Interest").innerText = money(interest);
-document.getElementById("y1Profit").innerText = money(y1Profit);
-document.getElementById("y1Total").innerHTML = "<b>" + money(y1Total) + "</b>";
-
-// Calculate 5-Year Totals
-document.getElementById("fiveSaving").innerText = money(saving);
-document.getElementById("fiveFine").innerText = money(fine);
-document.getElementById("fiveSIP").innerText = money(sip);
-document.getElementById("fiveStock").innerText = money(fiveStock);
-document.getElementById("fiveInvestment").innerText = money(investment);
-document.getElementById("fiveLoan").innerText = money(loan);
-document.getElementById("fiveInterest").innerText = money(interest);
-document.getElementById("fiveProfit").innerText = money(y1Profit);
-document.getElementById("fiveTotal").innerText = money(y1Total);
-
+  document.getElementById("totalLoan").innerText = "Rs. " + Math.round(totalLoan).toLocaleString();
+  document.getElementById("totalInterest").innerText = "Rs. " + Math.round(totalInterest).toLocaleString();
+  document.getElementById("totalRemaining").innerText = "Rs. " + Math.round(totalRemaining).toLocaleString();
 }
 
 window.onload = function(){
   renderSaving();
-  renderInvestment();
   renderLoan();
 };
-
 </script>
 </body>
 </html>
-
-interestPaidCell.appendChild(interestPaidInput);
-row.appendChild(interestPaidCell);
-
-let principalRemaining = Math.max(0, loanAmount - (Number(loanData[key].paid) || 0));
-let interestRemaining = Math.max(0, interest - (Number(loanData[key].interestPaid) || 0));
-let remaining = principalRemaining + interestRemaining;
-
-let remainingCell = document.createElement("td");
-remainingCell.className="remaining";
-remainingCell.innerHTML = "Rs. "+Math.round(remaining).toLocaleString();
-row.appendChild(remainingCell);
-
-totalLoan += loanAmount;
-totalInterest += interest;
-totalPaid += Number(loanData[key].paid) || 0;
-totalInterestPaid += Number(loanData[key].interestPaid) || 0;
-totalRemaining += remaining;
-
-tbody.appendChild(row);
-
-});
-
-document.getElementById("totalLoan").innerText = "Rs. "+Math.round(totalLoan).toLocaleString();
-document.getElementById("totalInterest").innerText = "Rs. "+Math.round(totalInterest).toLocaleString();
-document.getElementById("totalLoanPaid").innerText = "Rs. "+Math.round(totalPaid).toLocaleString();
-document.getElementById("totalInterestPaid").innerText = "Rs. "+Math.round(totalInterestPaid).toLocaleString();
-document.getElementById("totalRemaining").innerText = "Rs. "+Math.round(totalRemaining).toLocaleString();
-
-saveLoan();
-updateFiveYear();
-
-}
-
-function saveLoan(){
-  localStorage.setItem("brotherhoodLoan", JSON.stringify(loanData));
-}
-
-
-/* 5 YEAR TOTAL SYSTEM */
-
-function getValue(id){
-  const el = document.getElementById(id);
-  if(!el) return 0;
-  return Number(el.innerText
