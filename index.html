@@ -3,110 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>महिनावारी रु. ५,००० अटोमेटिक हिसाब</title>
+    <title>महिनावारी रु. ५,००० बचत तथा अटोमेटिक हिसाब</title>
     <style>
         * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #f4f7f6; margin: 0; padding: 20px; }
-        .container { max-width: 1000px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .container { max-width: 1100px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         h2 { text-align: center; color: #2c3e50; margin-bottom: 20px; }
         
+        /* Stats Dashboard */
         .stats { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
-        .card { flex: 1; background: #3498db; color: white; padding: 15px; border-radius: 8px; text-align: center; min-width: 200px; }
+        .card { flex: 1; background: #3498db; color: white; padding: 15px; border-radius: 8px; text-align: center; min-width: 180px; }
         .card.green { background: #2ecc71; }
         .card.red { background: #e74c3c; }
-        .card h3 { margin: 0; font-size: 16px; }
-        .card p { margin: 5px 0 0 0; font-size: 22px; font-weight: bold; }
+        .card.orange { background: #e67e22; }
+        .card.darkred { background: #c0392b; }
+        .card h3 { margin: 0; font-size: 14px; }
+        .card p { margin: 5px 0 0 0; font-size: 20px; font-weight: bold; }
 
+        /* Search Box */
         .search-box { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; }
 
-        table { width: 100%; border-collapse: collapse; }
+        /* Responsive Table */
+        .table-wrapper { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; min-width: 850px; }
         th, td { padding: 12px; text-align: center; border-bottom: 1px solid #ddd; }
-        th { background-color: #34495e; color: white; }
+        th { background-color: #34495e; color: white; font-size: 14px; }
         tr:hover { background-color: #f1f1f1; }
         
         .amount-paid { color: #27ae60; font-weight: bold; }
         .amount-zero { color: #e74c3c; font-weight: bold; }
-        .loading { text-align: center; font-weight: bold; padding: 20px; color: #7f8c8d; }
+        .fine-text { color: #d35400; font-weight: bold; font-size: 13px; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>महिनावारी रु. ५,००० बचत तथा अटोमेटिक हिसाब</h2>
+    <h2>महिनावारी रु. ५,००० बचत, फाइन र ब्याज हिसाब-किताब</h2>
 
+    <!-- Summary Box -->
     <div class="stats">
         <div class="card">
             <h3>कुल सदस्य</h3>
             <p id="total-members">०</p>
         </div>
         <div class="card green">
-            <h3>जम्मा सङ्कलित रकम</h3>
+            <h3>जम्मा सङ्कलित</h3>
             <p id="total-collected">रु. ०</p>
         </div>
         <div class="card red">
-            <h3>जम्मा उठ्न बाँकी</h3>
-            <p id="total-due">रु. ०</p>
+            <h3>जम्मा मूल बाँकी</h3>
+            <p id="total-principal-due">रु. ०</p>
+        </div>
+        <div class="card orange">
+            <h3>जम्मा Fine + ब्याज</h3>
+            <p id="total-fine-interest">रु. ०</p>
+        </div>
+        <div class="card darkred">
+            <h3>कुल असुल गर्न बाँकी</h3>
+            <p id="grand-total-due">रु. ०</p>
         </div>
     </div>
 
+    <!-- Search Bar -->
     <input type="text" id="searchInput" class="search-box" onkeyup="searchMember()" placeholder="सदस्यको नाम खोज्नुहोस्...">
 
-    <table>
-        <thead>
-            <tr>
-                <th>क्र.सं.</th>
-                <th>सदस्यको नाम</th>
-                <th>वैशाख</th>
-                <th>जेठ</th>
-                <th>असार</th>
-                <th>जम्मा तिरेको</th>
-                <th>बाँकी रकम</th>
-            </tr>
-        </thead>
-        <tbody id="member-table">
-            <tr><td colspan="7" class="loading">डाटा लोड हुँदैछ, कृपया पर्खनुहोस्...</td></tr>
-        </tbody>
-    </table>
+    <!-- Member Table -->
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>क्र.सं.</th>
+                    <th>सदस्यको नाम</th>
+                    <th>वैशाख</th>
+                    <th>जेठ</th>
+                    <th>असार</th>
+                    <th>तिरेको जम्मा</th>
+                    <th>बाँकी मूल</th>
+                    <th>Fine + ब्याज</th>
+                    <th>कुल बुझाउन बाँकी</th>
+                </tr>
+            </thead>
+            <tbody id="member-table">
+                <!-- Data will load here -->
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <script>
-    // यहाँ आफ्नो Google Apps Script को URL पेस्ट गर्नुहोस्
-    const apiURL = "YOUR_APPS_SCRIPT_URL_HERE";
+    // ==========================================
+    // १. यहाँ सदस्यहरूको डाटा एडिट गर्नुहोस् (UPDATE HERE)
+    // ==========================================
+    const members = [
+        { id: 1, name: "राम श्रेष्ठ", baishakh: 5000, jeth: 5000, ashar: 0, fine_override: 0 },
+        { id: 2, name: "श्याम शर्मा", baishakh: 5000, jeth: 0, ashar: 0, fine_override: 0 },
+        { id: 3, name: "हरि गुरुङ", baishakh: 0, jeth: 0, ashar: 0, fine_override: 100 },
+        { id: 4, name: "सीता थापा", baishakh: 5000, jeth: 5000, ashar: 5000, fine_override: 0 }
+    ];
 
-    // ३ महिनाको प्रति महिना रु. ५,००० को हिसाबले जम्मा हुनुपर्ने रकम = १५,०००
-    const totalTargetPerMember = 15000; 
+    // ==========================================
+    // २. हिसाब गर्ने नियम (SETTINGS)
+    // ==========================================
+    const monthlyAmount = 5000;           // प्रति महिना रु. ५,०००
+    const totalTargetPerMember = 15000;    // ३ महिनाको कुल १५,०००
+    const finePerUnpaidMonth = 200;       // नतिरेको प्रति महिना रु. २०० फाइन
+    const monthlyInterestRate = 0.015;    // बाँकी रकममा १.५% मासिक ब्याज
 
-    async function fetchData() {
-        try {
-            const response = await fetch(apiURL);
-            const members = await response.json();
-            renderTable(members);
-        } catch (error) {
-            document.getElementById("member-table").innerHTML = `<tr><td colspan="7" style="color:red;">डाटा लोड हुन सकेन! कृपया Google Sheet को Web App URL जाँच गर्नुहोस्।</td></tr>`;
-        }
-    }
-
-    function renderTable(members) {
+    // ==========================================
+    // ३. अटोमेटिक हिसाब र टेबल रेन्डर गर्ने कोड
+    // ==========================================
+    function renderTable() {
         const tbody = document.getElementById("member-table");
         tbody.innerHTML = "";
 
         let grandTotalCollected = 0;
-        let grandTotalDue = 0;
+        let grandTotalPrincipalDue = 0;
+        let grandTotalFineInterest = 0;
 
         members.forEach((m, index) => {
-            // अङ्कमा नभए 0 मान्ने (Auto Parse Number)
             let bAmount = parseFloat(m.baishakh) || 0;
             let jAmount = parseFloat(m.jeth) || 0;
             let aAmount = parseFloat(m.ashar) || 0;
+            let extraFine = parseFloat(m.fine_override) || 0;
 
-            // अटोमेटिक जोड (Sum Calculation)
             let totalPaid = bAmount + jAmount + aAmount;
-            let totalDue = totalTargetPerMember - totalPaid;
+            let principalDue = totalTargetPerMember - totalPaid;
+            if (principalDue < 0) principalDue = 0;
 
-            if (totalDue < 0) totalDue = 0; // यदि बढी तिरेको छ भने बाँकी 0 देखाउने
+            // नतिरेको महिना गन्ती गरेर अटोमेटिक फाइन
+            let unpaidMonthsCount = 0;
+            if (bAmount < monthlyAmount) unpaidMonthsCount++;
+            if (jAmount < monthlyAmount) unpaidMonthsCount++;
+            if (aAmount < monthlyAmount) unpaidMonthsCount++;
+
+            let autoFine = unpaidMonthsCount * finePerUnpaidMonth;
+            let interestAmount = principalDue * monthlyInterestRate;
+            let totalFineAndInterest = autoFine + interestAmount + extraFine;
+            let totalPayableDue = principalDue + totalFineAndInterest;
 
             grandTotalCollected += totalPaid;
-            grandTotalDue += totalDue;
+            grandTotalPrincipalDue += principalDue;
+            grandTotalFineInterest += totalFineAndInterest;
 
             let row = `<tr>
                 <td>${index + 1}</td>
@@ -115,18 +152,23 @@
                 <td class="${jAmount > 0 ? 'amount-paid' : 'amount-zero'}">रु. ${jAmount.toLocaleString()}</td>
                 <td class="${aAmount > 0 ? 'amount-paid' : 'amount-zero'}">रु. ${aAmount.toLocaleString()}</td>
                 <td style="color: green; font-weight: bold;">रु. ${totalPaid.toLocaleString()}</td>
-                <td style="color: red; font-weight: bold;">रु. ${totalDue.toLocaleString()}</td>
+                <td style="color: #c0392b; font-weight: bold;">रु. ${principalDue.toLocaleString()}</td>
+                <td class="fine-text">रु. ${Math.round(totalFineAndInterest).toLocaleString()}</td>
+                <td style="color: red; font-weight: bold; background: #fadbd8;">रु. ${Math.round(totalPayableDue).toLocaleString()}</td>
             </tr>`;
 
             tbody.innerHTML += row;
         });
 
-        // Dashboard/Summary Update
+        // Dashboard Summary Update
         document.getElementById("total-members").innerText = members.length;
         document.getElementById("total-collected").innerText = "रु. " + grandTotalCollected.toLocaleString();
-        document.getElementById("total-due").innerText = "रु. " + grandTotalDue.toLocaleString();
+        document.getElementById("total-principal-due").innerText = "रु. " + grandTotalPrincipalDue.toLocaleString();
+        document.getElementById("total-fine-interest").innerText = "रु. " + Math.round(grandTotalFineInterest).toLocaleString();
+        document.getElementById("grand-total-due").innerText = "रु. " + Math.round(grandTotalPrincipalDue + grandTotalFineInterest).toLocaleString();
     }
 
+    // सर्च गर्ने फिचर
     function searchMember() {
         let input = document.getElementById("searchInput").value.toLowerCase();
         let rows = document.querySelectorAll("#member-table tr");
@@ -141,7 +183,8 @@
         });
     }
 
-    fetchData();
+    // पेज लोड हुँदा रन गर्ने
+    renderTable();
 </script>
 
 </body>
