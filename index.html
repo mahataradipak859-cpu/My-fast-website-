@@ -736,7 +736,9 @@ const MONTHLY_AMOUNT = 5000;
 const FINE_AMOUNT = 250;
 
 
-/* SAVING SYSTEM */
+/* =========================
+   SAVING SYSTEM
+========================= */
 
 let savingData =
 JSON.parse(localStorage.getItem("brotherhoodSaving")) || {};
@@ -857,7 +859,9 @@ JSON.stringify(savingData)
 renderSaving();
 
 
-/* INVESTMENT SYSTEM */
+/* =========================
+   INVESTMENT SYSTEM
+========================= */
 
 const investments = [
 "SIP",
@@ -992,7 +996,9 @@ JSON.stringify(investmentData)
 renderInvestment();
 
 
-/* LOAN SYSTEM */
+/* =========================
+   LOAN SYSTEM
+========================= */
 
 let loanData =
 JSON.parse(localStorage.getItem("brotherhoodLoan")) || {};
@@ -1060,6 +1066,9 @@ nameCell.innerHTML =
 
 row.appendChild(nameCell);
 
+
+/* LOAN DATE */
+
 let dateCell =
 document.createElement("td");
 
@@ -1082,6 +1091,9 @@ renderLoan();
 
 dateCell.appendChild(dateInput);
 row.appendChild(dateCell);
+
+
+/* LOAN AMOUNT */
 
 let loanCell =
 document.createElement("td");
@@ -1109,6 +1121,9 @@ renderLoan();
 loanCell.appendChild(loanInput);
 row.appendChild(loanCell);
 
+
+/* RATE */
+
 let loanAmount =
 Number(loanData[key].loan) || 0;
 
@@ -1125,6 +1140,9 @@ rate+"% / month";
 
 row.appendChild(rateCell);
 
+
+/* MONTHS */
+
 let monthsCell =
 document.createElement("td");
 
@@ -1135,6 +1153,9 @@ monthsCell.innerText =
 loanMonths;
 
 row.appendChild(monthsCell);
+
+
+/* INTEREST */
 
 let interest =
 loanAmount *
@@ -1150,6 +1171,9 @@ interestCell.innerText =
 "Rs. "+Math.round(interest).toLocaleString();
 
 row.appendChild(interestCell);
+
+
+/* PAID AMOUNT */
 
 let paidCell =
 document.createElement("td");
@@ -1176,6 +1200,9 @@ renderLoan();
 
 paidCell.appendChild(paidInput);
 row.appendChild(paidCell);
+
+
+/* INTEREST PAID */
 
 let interestPaidCell =
 document.createElement("td");
@@ -1206,16 +1233,21 @@ interestPaidInput
 
 row.appendChild(interestPaidCell);
 
+
+/* REMAINING */
+
 let principalRemaining =
 Math.max(
 0,
-loanAmount - (Number(loanData[key].paid) || 0)
+loanAmount -
+(Number(loanData[key].paid) || 0)
 );
 
 let interestRemaining =
 Math.max(
 0,
-interest - (Number(loanData[key].interestPaid) || 0)
+interest -
+(Number(loanData[key].interestPaid) || 0)
 );
 
 let remaining =
@@ -1230,6 +1262,9 @@ remainingCell.innerHTML =
 "Rs. "+Math.round(remaining).toLocaleString();
 
 row.appendChild(remainingCell);
+
+
+/* TOTALS */
 
 totalLoan +=
 loanAmount;
@@ -1250,8 +1285,500 @@ tbody.appendChild(row);
 
 });
 
+
 document.getElementById("totalLoan").innerText =
 "Rs. "+Math.round(totalLoan).toLocaleString();
 
 document.getElementById("totalInterest").innerText =
-"Rs. "+Math.round(totalInterest).toLo
+"Rs. "+Math.round(totalInterest).toLocaleString();
+
+document.getElementById("totalLoanPaid").innerText =
+"Rs. "+Math.round(totalPaid).toLocaleString();
+
+document.getElementById("totalInterestPaid").innerText =
+"Rs. "+Math.round(totalInterestPaid).toLocaleString();
+
+document.getElementById("totalRemaining").innerText =
+"Rs. "+Math.round(totalRemaining).toLocaleString();
+
+saveLoan();
+
+updateFiveYear();
+
+}
+
+function saveLoan(){
+
+localStorage.setItem(
+"brotherhoodLoan",
+JSON.stringify(loanData)
+);
+
+}
+
+renderLoan();
+
+
+/* =========================
+   5 YEAR SUMMARY
+========================= */
+
+function getValue(id){
+
+const element =
+document.getElementById(id);
+
+if(!element){
+return 0;
+}
+
+return Number(element.value) || 0;
+
+}
+
+
+function updateFiveYear(){
+
+let fiveSaving = 0;
+let fiveFine = 0;
+let fiveSIP = 0;
+let fiveStock = 0;
+let fiveInvestment = 0;
+let fiveLoan = 0;
+let fiveInterest = 0;
+let fiveProfit = 0;
+let fiveTotal = 0;
+
+
+/* CURRENT AUTOMATIC DATA */
+
+let savingTotal = 0;
+let fineTotal = 0;
+
+if(typeof savingData !== "undefined"){
+
+Object.keys(savingData).forEach(key=>{
+
+if(savingData[key].status === "paid"){
+
+savingTotal += MONTHLY_AMOUNT;
+
+}
+
+});
+
+const unpaidCount =
+Object.values(savingData).filter(
+item => item.status === "unpaid"
+).length;
+
+fineTotal =
+unpaidCount * FINE_AMOUNT;
+
+}
+
+
+let sipTotal = 0;
+let stockTotal = 0;
+
+if(typeof investmentData !== "undefined"){
+
+Object.keys(investmentData).forEach(key=>{
+
+if(investmentData[key].status === "paid"){
+
+const parts =
+key.split("-");
+
+if(Number(parts[0]) === 0){
+
+sipTotal += INVESTMENT_AMOUNT;
+
+}else{
+
+stockTotal += INVESTMENT_AMOUNT;
+
+}
+
+}
+
+});
+
+}
+
+
+let loanTotal = 0;
+let interestTotal = 0;
+
+if(typeof loanData !== "undefined"){
+
+Object.keys(loanData).forEach(key=>{
+
+const data =
+loanData[key];
+
+const loan =
+Number(data.loan) || 0;
+
+const loanMonths =
+calculateMonths(data.date);
+
+const rate =
+loan > 50000 ? 1.5 : 1.2;
+
+const interest =
+loan *
+(rate / 100) *
+loanMonths;
+
+loanTotal += loan;
+
+interestTotal += interest;
+
+});
+
+}
+
+
+/* YEAR 1–5 */
+
+for(let i=1;i<=5;i++){
+
+let saving =
+getValue("y"+i+"Saving");
+
+let fine =
+getValue("y"+i+"Fine");
+
+let sip =
+getValue("y"+i+"SIP");
+
+let stock =
+getValue("y"+i+"Stock");
+
+let loan =
+getValue("y"+i+"Loan");
+
+let interest =
+getValue("y"+i+"Interest");
+
+
+/*
+YEAR 1 empty fields use
+current automatic records.
+Other years remain manual.
+*/
+
+if(i === 1){
+
+if(saving === 0){
+saving = savingTotal;
+}
+
+if(fine === 0){
+fine = fineTotal;
+}
+
+if(sip === 0){
+sip = sipTotal;
+}
+
+if(stock === 0){
+stock = stockTotal;
+}
+
+if(loan === 0){
+loan = loanTotal;
+}
+
+if(interest === 0){
+interest = interestTotal;
+}
+
+}
+
+
+const investment =
+sip + stock;
+
+
+/*
+Profit:
+Fine + Interest
+*/
+
+const profit =
+fine + interest;
+
+
+/*
+Total Amount
+*/
+
+const total =
+saving +
+fine +
+investment +
+interest;
+
+
+/* DISPLAY */
+
+document.getElementById(
+"y"+i+"Investment"
+).innerText =
+"Rs. "+
+Math.round(investment).toLocaleString();
+
+
+document.getElementById(
+"y"+i+"Profit"
+).innerText =
+"Rs. "+
+Math.round(profit).toLocaleString();
+
+
+document.getElementById(
+"y"+i+"Total"
+).innerHTML =
+"<b>Rs. "+
+Math.round(total).toLocaleString()+
+"</b>";
+
+
+/* TOTAL */
+
+fiveSaving += saving;
+fiveFine += fine;
+fiveSIP += sip;
+fiveStock += stock;
+fiveInvestment += investment;
+fiveLoan += loan;
+fiveInterest += interest;
+fiveProfit += profit;
+fiveTotal += total;
+
+}
+
+
+/* 5 YEAR TOTAL */
+
+document.getElementById("fiveSaving").innerText =
+"Rs. "+Math.round(fiveSaving).toLocaleString();
+
+document.getElementById("fiveFine").innerText =
+"Rs. "+Math.round(fiveFine).toLocaleString();
+
+document.getElementById("fiveSIP").innerText =
+"Rs. "+Math.round(fiveSIP).toLocaleString();
+
+document.getElementById("fiveStock").innerText =
+"Rs. "+Math.round(fiveStock).toLocaleString();
+
+document.getElementById("fiveInvestment").innerText =
+"Rs. "+Math.round(fiveInvestment).toLocaleString();
+
+document.getElementById("fiveLoan").innerText =
+"Rs. "+Math.round(fiveLoan).toLocaleString();
+
+document.getElementById("fiveInterest").innerText =
+"Rs. "+Math.round(fiveInterest).toLocaleString();
+
+document.getElementById("fiveProfit").innerText =
+"Rs. "+Math.round(fiveProfit).toLocaleString();
+
+document.getElementById("fiveTotal").innerText =
+"Rs. "+Math.round(fiveTotal).toLocaleString();
+
+}
+
+
+/* =========================
+   YEAR INPUT AUTO UPDATE
+========================= */
+
+for(let i=1;i<=5;i++){
+
+[
+"Saving",
+"Fine",
+"SIP",
+"Stock",
+"Loan",
+"Interest"
+].forEach(type=>{
+
+const input =
+document.getElementById(
+"y"+i+type
+);
+
+if(input){
+
+input.addEventListener(
+"input",
+function(){
+
+updateFiveYear();
+
+});
+
+}
+
+});
+
+}
+
+
+/* =========================
+   SAVE YEAR DATA
+========================= */
+
+function saveYearData(){
+
+let yearData = {};
+
+for(let i=1;i<=5;i++){
+
+yearData[i] = {
+
+saving:getValue("y"+i+"Saving"),
+
+fine:getValue("y"+i+"Fine"),
+
+sip:getValue("y"+i+"SIP"),
+
+stock:getValue("y"+i+"Stock"),
+
+loan:getValue("y"+i+"Loan"),
+
+interest:getValue("y"+i+"Interest")
+
+};
+
+}
+
+localStorage.setItem(
+"brotherhoodYearData",
+JSON.stringify(yearData)
+);
+
+}
+
+
+/* =========================
+   LOAD YEAR DATA
+========================= */
+
+function loadYearData(){
+
+const saved =
+JSON.parse(
+localStorage.getItem("brotherhoodYearData")
+);
+
+if(!saved){
+return;
+}
+
+for(let i=1;i<=5;i++){
+
+if(!saved[i]){
+continue;
+}
+
+document.getElementById(
+"y"+i+"Saving"
+).value =
+saved[i].saving || "";
+
+document.getElementById(
+"y"+i+"Fine"
+).value =
+saved[i].fine || "";
+
+document.getElementById(
+"y"+i+"SIP"
+).value =
+saved[i].sip || "";
+
+document.getElementById(
+"y"+i+"Stock"
+).value =
+saved[i].stock || "";
+
+document.getElementById(
+"y"+i+"Loan"
+).value =
+saved[i].loan || "";
+
+document.getElementById(
+"y"+i+"Interest"
+).value =
+saved[i].interest || "";
+
+}
+
+}
+
+
+/* =========================
+   YEAR INPUT SAVE
+========================= */
+
+for(let i=1;i<=5;i++){
+
+[
+"Saving",
+"Fine",
+"SIP",
+"Stock",
+"Loan",
+"Interest"
+].forEach(type=>{
+
+const input =
+document.getElementById(
+"y"+i+type
+);
+
+if(input){
+
+input.addEventListener(
+"change",
+function(){
+
+saveYearData();
+
+updateFiveYear();
+
+});
+
+}
+
+});
+
+}
+
+
+/* LOAD SAVED YEAR DATA */
+
+loadYearData();
+
+updateFiveYear();
+
+
+/* =========================
+   AUTO REFRESH LOAN
+========================= */
+
+setInterval(function(){
+
+renderLoan();
+
+},60000);
+
+</script>
+
+</body>
+</html>
