@@ -1,1 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Brotherhood</title>
 
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f3f4f6;
+  color:#222;
+}
+
+.header{
+  position:relative;
+  background:
+    radial-gradient(circle at 50% 20%,rgba(255,255,255,.12),transparent 35%),
+    linear-gradient(135deg,#020617,#111827 45%,#374151);
+  color:white;
+  text-align:center;
+  padding:42px 20px 38px;
+  border-bottom:4px solid #111827;
+}
+
+.header h1{
+  margin:0;
+  font-size:38px;
+  font-weight:900;
+  letter-spacing:4px;
+}
+
+.header p{
+  margin:10px 0 0;
+  font-size:14px;
+  letter-spacing:2px;
+  opacity:.85;
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+}
+
+.card{
+  background:white;
+  border-radius:15px;
+  padding:20px;
+  margin-bottom:20px;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.found-card{
+  padding:0;
+  overflow:hidden;
+}
+
+.found-top{
+  padding:28px 25px;
+  background:linear-gradient(135deg,#111827,#1f2937);
+  color:white;
+  text-align:center;
+}
+
+.found-name{
+  margin-top:8px;
+  font-size:27px;
+  font-weight:900;
+}
+
+.found-content{
+  padding:20px;
+}
+
+.found-grid{
+  display:grid;
+  grid-template-columns:1fr 1.5fr 1fr;
+  gap:15px;
+}
+
+.found-info{
+  background:#f8fafc;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:16px;
+}
+
+.found-info b{
+  display:block;
+  font-size:12px;
+  color:#6b7280;
+  text-transform:uppercase;
+  margin-bottom:7px;
+}
+
+.found-info span{
+  font-size:16px;
+  font-weight:bold;
+}
+
+.leaders{
+  grid-column:1 / -1;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+.leader-box{
+  background:#f8fafc;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:17px;
+  text-align:center;
+}
+
+/* SANO GOLO PROFILE PHOTO STYLING */
+.profile-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #111827;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:12px;
+}
+
+.info{
+  background:#f9fafb;
+  padding:15px;
+  border-radius:10px;
+}
+
+.info b{
+  display:block;
+  margin-bottom:7px;
+}
+
+.table-wrap{
+  overflow-x:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:1100px;
+}
+
+th,td{
+  border:1px solid #ddd;
+  padding:8px;
+  text-align:center;
+}
+
+th{
+  background:#111827;
+  color:white;
+}
+
+td:first-child{
+  text-align:left;
+  min-width:190px;
+}
+
+.pay-btn{
+  border:0;
+  padding:6px 9px;
+  border-radius:6px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.paid{
+  background:#16a34a;
+  color:white;
+}
+
+.unpaid{
+  background:#dc2626;
+  color:white;
+}
+
+.amount{
+  font-size:11px;
+  margin-bottom:4px;
+  color:#555;
+}
+
+.fine-tag{
+  font-size:10px;
+  color:#dc2626;
+  font-weight:bold;
+}
+
+.member-total {
+  font-weight: bold;
+  background-color: #f1f5f9;
+}
+
+input{
+  padding:7px;
+  border:1px solid #ccc;
+  border-radius:6px;
+  width:110px;
+}
+
+input[type="date"]{
+  width:135px;
+}
+
+.footer{
+  text-align:center;
+  padding:20px;
+  color:#666;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>🤝 THE BROTHERHOOD</h1>
+  <p>AUTOMATIC SAVING & INTEREST RECORD</p>
+</div>
+
+<div class="container">
+
+<div class="card found-card">
+  <div class="found-top">
+    <h2>🏢 FOUND DETAILS</h2>
+    <div class="found-name">THE BROTHERHOOD</div>
+  </div>
+  <div class="found-content">
+    <div class="found-grid">
+      <div class="found-info">
+        <b>Monthly Saving</b>
+        <span>Rs. 5,000 / Member</span>
+      </div>
+      <div class="found-info">
+        <b>Monthly Collection</b>
+        <span>Rs. 25,000</span>
+      </div>
+      <div class="found-info">
+        <b>Start Date</b>
+        <span>2024-01-01</span>
+      </div>
+      <div class="leaders">
+        <div class="leader-box">
+          <img src="chairman.jpg" class="profile-img" alt="Dipak Mahatara" onerror="this.src='https://via.placeholder.com/60?text=Dipak'">
+          <div><b>👑 Chairman</b></div>
+          <div style="font-size:18px; font-weight:bold; margin-top:4px;">Dipak Mahatara</div>
+        </div>
+        <div class="leader-box">
+          <img src="secretary.jpg" class="profile-img" alt="Surya Bahadur Adhikari" onerror="this.src='https://via.placeholder.com/60?text=Surya'">
+          <div><b>📋 Secretary</b></div>
+          <div style="font-size:18px; font-weight:bold; margin-top:4px;">Surya Bahadur Adhikari</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+<h2>💰 Monthly Saving Record (Auto Fine)</h2>
+<p>अघिल्ला महिनाहरूको भुक्तानी बाँकी (Unpaid) भएमा प्रति महिना <b>Rs. 250 Fine</b> आफैं हिसाब हुन्छ।</p>
+
+<div class="table-wrap">
+<table id="savingTable">
+<thead>
+<tr>
+<th>Member</th>
+<th>Jan</th><th>Feb</th><th>Mar</th><th>Apr</th><th>May</th><th>Jun</th>
+<th>Jul</th><th>Aug</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dec</th>
+<th>Total Saved</th>
+<th>Total Fine</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+</div>
+
+<br>
+<div class="info-grid">
+<div class="info">
+<b>Total Collected</b>
+<span id="totalCollected">Rs. 0</span>
+</div>
+<div class="info">
+<b>Total Fine Auto</b>
+<span id="totalFine">Rs. 0</span>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h2>💳 Loan Record (Auto Interest)</h2>
+<p>ऋण लिएको मिति अनुसार महिना गनेर <b>1.2% / 1.5% Interest</b> आफैं हिसाब हुन्छ।</p>
+
+<div class="table-wrap">
+<table id="loanTable">
+<thead>
+<tr>
+<th>Member</th>
+<th>Loan Date</th>
+<th>Loan Amount</th>
+<th>Rate</th>
+<th>Months</th>
+<th>Auto Interest</th>
+<th>Paid Amount</th>
+<th>Interest Paid</th>
+<th>Remaining Total</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+</div>
+
+<br>
+<div class="info-grid">
+<div class="info">
+<b>Total Loan</b>
+<span id="totalLoan">Rs. 0</span>
+</div>
+<div class="info">
+<b>Total Auto Interest</b>
+<span id="totalInterest">Rs. 0</span>
+</div>
+<div class="info">
+<b>Total Remaining</b>
+<span id="totalRemaining">Rs. 0</span>
+</div>
+</div>
+</div>
+
+</div>
+
+<div class="footer">The Brotherhood © 2026</div>
+
+<script>
+const members = [
+"Dipak Mahatara",
+"Dipendra Mahatara",
+"Rajan Mahatara",
+"Milan Mahatara",
+"Surya Bahadur Adhikari"
+];
+
+const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const MONTHLY_AMOUNT = 5000;
+const FINE_PER_MONTH = 250;
+
+let savingData = JSON.parse(localStorage.getItem("brotherhoodSaving")) || {};
+
+function renderSaving(){
+  const tbody = document.querySelector("#savingTable tbody");
+  tbody.innerHTML = "";
+
+  let totalCollected = 0;
+  let totalFineAll = 0;
+  
+  const currentMonthIdx = new Date().getMonth();
+
+  members.forEach((member, memberIndex) => {
+    let row = document.createElement("tr");
+    let nameCell = document.createElement("td");
+    nameCell.innerHTML = "<b>" + member + "</b>";
+    row.appendChild(nameCell);
+
+    let memberSaved = 0;
+    let memberFine = 0;
+
+    months.forEach((month, monthIndex) => {
+      const key = memberIndex + "-" + monthIndex;
+      if(!savingData[key]){
+        savingData[key] = { status: "unpaid" };
+      }
+
+      let cell = document.createElement("td");
+      let btn = document.createElement("button");
+      btn.className = "pay-btn";
+
+      let isPassedMonth = monthIndex < currentMonthIdx;
+      let isUnpaid = savingData[key].status === "unpaid";
+
+      if(savingData[key].status === "paid"){
+        btn.classList.add("paid");
+        btn.innerText = "Paid";
+        memberSaved += MONTHLY_AMOUNT;
+        totalCollected += MONTHLY_AMOUNT;
+      } else {
+        btn.classList.add("unpaid");
+        btn.innerText = "Unpaid";
+        
+        // Automatic Fine for past unpaid months
+        if(isPassedMonth && isUnpaid){
+          memberFine += FINE_PER_MONTH;
+        }
+      }
+
+      btn.onclick = function(){
+        savingData[key].status = (savingData[key].status === "paid") ? "unpaid" : "paid";
+        localStorage.setItem("brotherhoodSaving", JSON.stringify(savingData));
+        renderSaving();
+      };
+
+      cell.appendChild(btn);
+      
+      if(isPassedMonth && isUnpaid){
+        let fineInfo = document.createElement("div");
+        fineInfo.className = "fine-tag";
+        fineInfo.innerText = "+Rs.250 Fine";
+        cell.appendChild(fineInfo);
+      }
+
+      row.appendChild(cell);
+    });
+
+    let totalCell = document.createElement("td");
+    totalCell.className = "member-total";
+    totalCell.innerText = "Rs. " + memberSaved.toLocaleString();
+    row.appendChild(totalCell);
+
+    let fineCell = document.createElement("td");
+    fineCell.style.color = "red";
+    fineCell.style.fontWeight = "bold";
+    fineCell.innerText = "Rs. " + memberFine.toLocaleString();
+    row.appendChild(fineCell);
+
+    totalFineAll += memberFine;
+    tbody.appendChild(row);
+  });
+
+  document.getElementById("totalCollected").innerText = "Rs. " + totalCollected.toLocaleString();
+  document.getElementById("totalFine").innerText = "Rs. " + totalFineAll.toLocaleString();
+}
+
+/* LOAN AUTOMATIC SYSTEM */
+let loanData = JSON.parse(localStorage.getItem("brotherhoodLoan")) || {};
+
+function calculateMonths(loanDate){
+  if(!loanDate) return 0;
+  const start = new Date(loanDate);
+  const today = new Date();
+  
+  let months = (today.getFullYear() - start.getFullYear()) * 12 + (today.getMonth() - start.getMonth());
+  if(today.getDate() < start.getDate()){
+    months--;
+  }
+  return Math.max(0, months);
+}
+
+function renderLoan(){
+  const tbody = document.querySelector("#loanTable tbody");
+  tbody.innerHTML = "";
+
+  let totalLoan = 0;
+  let totalInterest = 0;
+  let totalRemaining = 0;
+
+  members.forEach((member, memberIndex) => {
+    const key = memberIndex;
+    if(!loanData[key]){
+      loanData[key] = { date:"", loan:0, paid:0, interestPaid:0 };
+    }
+
+    let row = document.createElement("tr");
+    
+    // Member Name
+    row.innerHTML += `<td><b>${member}</b></td>`;
+
+    // Date
+    let dateTd = document.createElement("td");
+    let dateInp = document.createElement("input");
+    dateInp.type = "date";
+    dateInp.value = loanData[key].date || "";
+    dateInp.onchange = function(){
+      loanData[key].date = this.value;
+      localStorage.setItem("brotherhoodLoan", JSON.stringify(loanData));
+      renderLoan();
+    };
+    dateTd.appendChild(dateInp);
+    row.appendChild(dateTd);
+
+    // Loan Amount
+    let loanTd = document.createElement("td");
+    let loanInp = document.createElement("input");
+    loanInp.type = "number";
+    loanInp.value = loanData[key].loan || "";
+    loanInp.onchange = function(){
+      loanData[key].loan = Number(this.value) || 0;
+      localStorage.setItem("brotherhoodLoan", JSON.stringify(loanData));
+      renderLoan();
+    };
+    loanTd.appendChild(loanInp);
+    row.appendChild(loanTd);
+
+    let loanAmt = Number(loanData[key].loan) || 0;
+    let rate = loanAmt > 50000 ? 1.5 : 1.2;
+    let monthsCnt = calculateMonths(loanData[key].date);
+    
+    // Automatic Interest Calculation
+    let autoInterest = loanAmt * (rate / 100) * monthsCnt;
+
+    row.innerHTML += `<td><b>${rate}%</b></td>`;
+    row.innerHTML += `<td>${monthsCnt}</td>`;
+    row.innerHTML += `<td style="color:#16a34a; font-weight:bold;">Rs. ${Math.round(autoInterest).toLocaleString()}</td>`;
+
+    // Paid Amount
+    let paidTd = document.createElement("td");
+    let paidInp = document.createElement("input");
+    paidInp.type = "number";
+    paidInp.value = loanData[key].paid || "";
+    paidInp.onchange = function(){
+      loanData[key].paid = Number(this.value) || 0;
+      localStorage.setItem("brotherhoodLoan", JSON.stringify(loanData));
+      renderLoan();
+    };
+    paidTd.appendChild(paidInp);
+    row.appendChild(paidTd);
+
+    // Interest Paid Amount
+    let intPaidTd = document.createElement("td");
+    let intPaidInp = document.createElement("input");
+    intPaidInp.type = "number";
+    intPaidInp.value = loanData[key].interestPaid || "";
+    intPaidInp.onchange = function(){
+      loanData[key].interestPaid = Number(this.value) || 0;
+      localStorage.setItem("brotherhoodLoan", JSON.stringify(loanData));
+      renderLoan();
+    };
+    intPaidTd.appendChild(intPaidInp);
+    row.appendChild(intPaidTd);
+
+    let remPrincipal = Math.max(0, loanAmt - (Number(loanData[key].paid) || 0));
+    let remInterest = Math.max(0, autoInterest - (Number(loanData[key].interestPaid) || 0));
+    let totalRem = remPrincipal + remInterest;
+
+    row.innerHTML += `<td style="font-weight:bold; color:#dc2626;">Rs. ${Math.round(totalRem).toLocaleString()}</td>`;
+
+    totalLoan += loanAmt;
+    totalInterest += autoInterest;
+    totalRemaining += totalRem;
+
+    tbody.appendChild(row);
+  });
+
+  document.getElementById("totalLoan").innerText = "Rs. " + Math.round(totalLoan).toLocaleString();
+  document.getElementById("totalInterest").innerText = "Rs. " + Math.round(totalInterest).toLocaleString();
+  document.getElementById("totalRemaining").innerText = "Rs. " + Math.round(totalRemaining).toLocaleString();
+}
+
+window.onload = function(){
+  renderSaving();
+  renderLoan();
+};
+</script>
+</body>
+</html>
