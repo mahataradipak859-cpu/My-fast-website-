@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>महिनावारी रु. ५,००० बचत हिसाब</title>
+    <title>महिनावारी रु. ५,००० अटोमेटिक हिसाब</title>
     <style>
         * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #f4f7f6; margin: 0; padding: 20px; }
         .container { max-width: 1000px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         h2 { text-align: center; color: #2c3e50; margin-bottom: 20px; }
         
-        /* Stats Box */
         .stats { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
         .card { flex: 1; background: #3498db; color: white; padding: 15px; border-radius: 8px; text-align: center; min-width: 200px; }
         .card.green { background: #2ecc71; }
@@ -18,25 +17,23 @@
         .card h3 { margin: 0; font-size: 16px; }
         .card p { margin: 5px 0 0 0; font-size: 22px; font-weight: bold; }
 
-        /* Search Bar */
         .search-box { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; }
 
-        /* Table Style */
-        table { width: 100%; border-collapse: collapse; overflow-x: auto; display: block; }
+        table { width: 100%; border-collapse: collapse; }
         th, td { padding: 12px; text-align: center; border-bottom: 1px solid #ddd; }
         th { background-color: #34495e; color: white; }
         tr:hover { background-color: #f1f1f1; }
         
-        .status-paid { background: #2ecc71; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; }
-        .status-unpaid { background: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; }
+        .amount-paid { color: #27ae60; font-weight: bold; }
+        .amount-zero { color: #e74c3c; font-weight: bold; }
+        .loading { text-align: center; font-weight: bold; padding: 20px; color: #7f8c8d; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>महिनावारी रु. ५,००० बचत तथा हिसाब-किताब</h2>
+    <h2>महिनावारी रु. ५,००० बचत तथा अटोमेटिक हिसाब</h2>
 
-    <!-- Summary Box -->
     <div class="stats">
         <div class="card">
             <h3>कुल सदस्य</h3>
@@ -52,41 +49,44 @@
         </div>
     </div>
 
-    <!-- Search Box -->
     <input type="text" id="searchInput" class="search-box" onkeyup="searchMember()" placeholder="सदस्यको नाम खोज्नुहोस्...">
 
-    <!-- Table -->
     <table>
         <thead>
             <tr>
                 <th>क्र.सं.</th>
                 <th>सदस्यको नाम</th>
-                <th>वैशाख (५०००)</th>
-                <th>जेठ (५०००)</th>
-                <th>असार (५०००)</th>
+                <th>वैशाख</th>
+                <th>जेठ</th>
+                <th>असार</th>
                 <th>जम्मा तिरेको</th>
-                <th>बाँकी</th>
+                <th>बाँकी रकम</th>
             </tr>
         </thead>
         <tbody id="member-table">
-            <!-- JavaScript ले डाटा यहाँ हाल्छ -->
+            <tr><td colspan="7" class="loading">डाटा लोड हुँदैछ, कृपया पर्खनुहोस्...</td></tr>
         </tbody>
     </table>
 </div>
 
 <script>
-    // नमुना डाटा (यसलाई पछि Google Sheet सँग जोडिनेछ)
-    const members = [
-        { id: 1, name: "राम श्रेष्ठ", baishakh: "Paid", jeth: "Paid", ashar: "Unpaid" },
-        { id: 2, name: "श्याम शर्मा", baishakh: "Paid", jeth: "Paid", ashar: "Paid" },
-        { id: 3, name: "हरि गुरुङ", baishakh: "Paid", jeth: "Unpaid", ashar: "Unpaid" },
-        { id: 4, name: "सीता थापा", baishakh: "Unpaid", jeth: "Unpaid", ashar: "Unpaid" }
-    ];
+    // यहाँ आफ्नो Google Apps Script को URL पेस्ट गर्नुहोस्
+    const apiURL = "YOUR_APPS_SCRIPT_URL_HERE";
 
-    const monthlyAmount = 5000;
-    const totalMonths = 3; // वैशाख, जेठ, असार (३ महिना)
+    // ३ महिनाको प्रति महिना रु. ५,००० को हिसाबले जम्मा हुनुपर्ने रकम = १५,०००
+    const totalTargetPerMember = 15000; 
 
-    function renderTable() {
+    async function fetchData() {
+        try {
+            const response = await fetch(apiURL);
+            const members = await response.json();
+            renderTable(members);
+        } catch (error) {
+            document.getElementById("member-table").innerHTML = `<tr><td colspan="7" style="color:red;">डाटा लोड हुन सकेन! कृपया Google Sheet को Web App URL जाँच गर्नुहोस्।</td></tr>`;
+        }
+    }
+
+    function renderTable(members) {
         const tbody = document.getElementById("member-table");
         tbody.innerHTML = "";
 
@@ -94,14 +94,16 @@
         let grandTotalDue = 0;
 
         members.forEach((m, index) => {
-            // कसले कति महिना तिर्यो حساب गर्ने
-            let paidMonths = 0;
-            if (m.baishakh === "Paid") paidMonths++;
-            if (m.jeth === "Paid") paidMonths++;
-            if (m.ashar === "Paid") paidMonths++;
+            // अङ्कमा नभए 0 मान्ने (Auto Parse Number)
+            let bAmount = parseFloat(m.baishakh) || 0;
+            let jAmount = parseFloat(m.jeth) || 0;
+            let aAmount = parseFloat(m.ashar) || 0;
 
-            let totalPaid = paidMonths * monthlyAmount;
-            let totalDue = (totalMonths - paidMonths) * monthlyAmount;
+            // अटोमेटिक जोड (Sum Calculation)
+            let totalPaid = bAmount + jAmount + aAmount;
+            let totalDue = totalTargetPerMember - totalPaid;
+
+            if (totalDue < 0) totalDue = 0; // यदि बढी तिरेको छ भने बाँकी 0 देखाउने
 
             grandTotalCollected += totalPaid;
             grandTotalDue += totalDue;
@@ -109,9 +111,9 @@
             let row = `<tr>
                 <td>${index + 1}</td>
                 <td><strong>${m.name}</strong></td>
-                <td><span class="${m.baishakh === 'Paid' ? 'status-paid' : 'status-unpaid'}">${m.baishakh}</span></td>
-                <td><span class="${m.jeth === 'Paid' ? 'status-paid' : 'status-unpaid'}">${m.jeth}</span></td>
-                <td><span class="${m.ashar === 'Paid' ? 'status-paid' : 'status-unpaid'}">${m.ashar}</span></td>
+                <td class="${bAmount > 0 ? 'amount-paid' : 'amount-zero'}">रु. ${bAmount.toLocaleString()}</td>
+                <td class="${jAmount > 0 ? 'amount-paid' : 'amount-zero'}">रु. ${jAmount.toLocaleString()}</td>
+                <td class="${aAmount > 0 ? 'amount-paid' : 'amount-zero'}">रु. ${aAmount.toLocaleString()}</td>
                 <td style="color: green; font-weight: bold;">रु. ${totalPaid.toLocaleString()}</td>
                 <td style="color: red; font-weight: bold;">रु. ${totalDue.toLocaleString()}</td>
             </tr>`;
@@ -119,19 +121,18 @@
             tbody.innerHTML += row;
         });
 
-        // Dashboard Summary Update
+        // Dashboard/Summary Update
         document.getElementById("total-members").innerText = members.length;
         document.getElementById("total-collected").innerText = "रु. " + grandTotalCollected.toLocaleString();
         document.getElementById("total-due").innerText = "रु. " + grandTotalDue.toLocaleString();
     }
 
-    // Search Feature
     function searchMember() {
         let input = document.getElementById("searchInput").value.toLowerCase();
         let rows = document.querySelectorAll("#member-table tr");
 
         rows.forEach(row => {
-            let name = row.children[1].innerText.toLowerCase();
+            let name = row.children[1] ? row.children[1].innerText.toLowerCase() : "";
             if (name.includes(input)) {
                 row.style.display = "";
             } else {
@@ -140,9 +141,9 @@
         });
     }
 
-    // Run when loaded
-    renderTable();
+    fetchData();
 </script>
 
 </body>
 </html>
+
